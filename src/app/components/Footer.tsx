@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const footerContainerStyle: React.CSSProperties = {
   maxWidth: '1200px',
@@ -30,6 +31,16 @@ const Footer = () => (
   <footer style={{ background: 'var(--background)', color: 'var(--foreground)', padding: '2rem 0 0 0', fontFamily: 'var(--font-dm-serif)' }}>
     <div style={footerContainerStyle}>
       <div className="footer-sections" style={sectionsWrapperStyle}>
+        {/* Links */}
+        <div style={sectionStyle}>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>
+            <Link href="/">Home</Link>
+          </div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>
+            <Link href="/team" style={{ color: 'inherit', textDecoration: 'none' }}>Team</Link>
+          </div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+        </div>
         {/* Social Media */}
         <div style={sectionStyle}>
           <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
@@ -37,17 +48,12 @@ const Footer = () => (
           <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
         </div>
         {/* Address */}
-        <div style={sectionStyle}>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
-        </div>
-        {/* Links */}
         <div style={rightAlignSectionStyle}>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
         </div>
+        
         {/* Links 2 (right aligned) */}
         <div style={rightAlignSectionStyle}>
           <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
