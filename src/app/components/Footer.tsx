@@ -1,8 +1,80 @@
 import React from 'react';
 
+const footerContainerStyle: React.CSSProperties = {
+  maxWidth: '1200px',
+  margin: '0 auto',
+  padding: '0 2vw',
+  width: '100%'
+};
+
+const sectionsWrapperStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  width: '100%',
+  flexWrap: 'wrap',
+  gap: '1.5rem',
+};
+
+const sectionStyle: React.CSSProperties = {
+  flex: 1,
+  minWidth: 0
+};
+
+const rightAlignSectionStyle: React.CSSProperties = {
+  ...sectionStyle,
+  textAlign: 'right'
+};
+
 const Footer = () => (
-  <footer style={{height: '30vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-    <h1>Footer</h1>
+  <footer style={{ background: 'var(--background)', color: 'var(--foreground)', padding: '2rem 0 0 0', fontFamily: 'var(--font-dm-serif)' }}>
+    <div style={footerContainerStyle}>
+      <div className="footer-sections" style={sectionsWrapperStyle}>
+        {/* Social Media */}
+        <div style={sectionStyle}>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
+        </div>
+        {/* Address */}
+        <div style={sectionStyle}>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
+        </div>
+        {/* Links */}
+        <div style={rightAlignSectionStyle}>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+        </div>
+        {/* Links 2 (right aligned) */}
+        <div style={rightAlignSectionStyle}>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+        </div>
+      </div>
+      <hr style={{ border: 'none', borderTop: '0.5rem solid var(--foreground)', margin: '0.5rem 0 0.5rem 0', width: '100%' }} />
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <img
+          src="/NeuroTUM.svg"
+          alt="NeuroTUM logo"
+          style={{ maxWidth: '1200px', width: '100%', height: 'auto', display: 'block' }}
+        />
+      </div>
+    </div>
+    <style>{`
+      @media (max-width: 700px) {
+        .footer-sections {
+          flex-direction: column !important;
+          gap: 0.5rem !important;
+        }
+        .footer-sections > div {
+          text-align: left !important;
+        }
+      }
+    `}</style>
   </footer>
 );
 
