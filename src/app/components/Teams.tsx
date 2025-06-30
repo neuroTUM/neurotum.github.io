@@ -16,6 +16,12 @@ const teamMembers = [
     works: '#',
   },
   {
+    initials: 'NEU',
+    name: 'Neuromotion',
+    bio: '#',
+    works: '#',
+  },
+  {
     initials: 'OPS',
     name: 'Ops',
     bio: '#',
