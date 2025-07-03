@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const filters = ['All Members', 'Board', 'Operations', 'BCI'];
 
@@ -19,6 +20,21 @@ const descriptions: Record<string, string> = {
   'BCI': 'The BCI team pioneers brain-computer interface research.',
 };
 
+const members = [
+  { name: 'Alice Smith', team: 'Board' },
+  { name: 'Bob Johnson', team: 'Operations' },
+  { name: 'Charlie Lee', team: 'BCI' },
+  { name: 'Diana Prince', team: 'Board' },
+  { name: 'Ethan Hunt', team: 'Operations' },
+  { name: 'Fiona Gallagher', team: 'BCI' },
+];
+
+const letterAnimation = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+};
+
 export default function MemberExplorer() {
   const [selected, setSelected] = useState('All Members');
 
@@ -31,18 +47,37 @@ export default function MemberExplorer() {
           padding: '0 1rem',
         }}
       >
-        <h1
-          style={{
-            fontSize: 'clamp(2.5rem, 8vw, 8rem)',
-            fontWeight: 700,
-            margin: 0,
-            lineHeight: 1,
-            fontFamily: 'serif',
-            wordBreak: 'break-word',
-          }}
-        >
-          {headings[selected]}
-        </h1>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.h1
+            key={selected}
+            style={{
+              fontSize: 'clamp(2.5rem, 8vw, 8rem)',
+              fontWeight: 700,
+              margin: 0,
+              lineHeight: 1,
+              fontFamily: 'serif',
+              wordBreak: 'break-word',
+              position: 'relative',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.05em',
+            }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ staggerChildren: 0.03 }}
+          >
+            {headings[selected].split('').map((char, i) => (
+              <motion.span
+                key={char + i}
+                variants={letterAnimation}
+                style={{ display: 'inline-block' }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </motion.h1>
+        </AnimatePresence>
         <p
           style={{
             fontSize: '1rem',
@@ -88,6 +123,7 @@ export default function MemberExplorer() {
           ))}
         </div>
         <div
+          className="member-explorer-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -96,11 +132,34 @@ export default function MemberExplorer() {
             minHeight: 500,
           }}
         >
-          <div style={{ background: '#dbccb1', height: 250, borderRadius: 4 }} />
-          <div style={{ background: '#dbccb1', height: 250, borderRadius: 4 }} />
-          <div style={{ background: '#dbccb1', height: 250, borderRadius: 4 }} />
-          <div style={{ background: '#dbccb1', height: 250, borderRadius: 4, gridColumn: '1/3' }} />
-          <div style={{ background: '#dbccb1', height: 250, borderRadius: 4 }} />
+          <AnimatePresence initial={false}>
+            {members
+              .filter(member => selected === 'All Members' || member.team === selected)
+              .map((member, idx) => (
+                <motion.div
+                  key={member.name + idx}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  style={{
+                    background: '#dbccb1',
+                    height: 400,
+                    borderRadius: 4,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.5rem',
+                    fontWeight: 600,
+                    fontFamily: 'serif',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                  }}
+                >
+                  {member.name}
+                </motion.div>
+              ))}
+          </AnimatePresence>
         </div>
       </div>
       <style>{`

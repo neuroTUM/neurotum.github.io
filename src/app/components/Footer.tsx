@@ -41,24 +41,12 @@ const Footer = () => (
           </div>
           <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
         </div>
-        {/* Social Media */}
-        <div style={sectionStyle}>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Social Media</div>
-        </div>
-        {/* Address */}
+     
+      {/* Address */}
         <div style={rightAlignSectionStyle}>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Address</div>
-        </div>
-        
-        {/* Links 2 (right aligned) */}
-        <div style={rightAlignSectionStyle}>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Technische Universität München</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Boltzmannstraße 11</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>85748 Garching bei München</div>
         </div>
       </div>
       <hr style={{ border: 'none', borderTop: '0.5rem solid var(--foreground)', margin: '0.5rem 0 0.5rem 0', width: '100%' }} />
