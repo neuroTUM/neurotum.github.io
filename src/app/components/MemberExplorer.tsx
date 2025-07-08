@@ -3,31 +3,8 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-
-const filters = ['All Members', 'Board', 'Operations', 'BCI'];
-
-const headings: Record<string, string> = {
-  'All Members': 'All Members',
-  'Board': 'Board',
-  'Operations': 'Operations',
-  'BCI': 'BCI',
-};
-
-const descriptions: Record<string, string> = {
-  'All Members': 'Meet all the amazing members of our organization.',
-  'Board': 'The Board oversees the strategic direction and governance.',
-  'Operations': 'The Operations team ensures everything runs smoothly.',
-  'BCI': 'The BCI team pioneers brain-computer interface research.',
-};
-
-const members = [
-  { name: 'Alice Smith', team: 'Board' },
-  { name: 'Bob Johnson', team: 'Operations' },
-  { name: 'Charlie Lee', team: 'BCI' },
-  { name: 'Diana Prince', team: 'Board' },
-  { name: 'Ethan Hunt', team: 'Operations' },
-  { name: 'Fiona Gallagher', team: 'BCI' },
-];
+import Papa from 'papaparse';
+import { useEffect } from 'react';
 
 const letterAnimation = {
   initial: { opacity: 0, y: 20 },
@@ -36,10 +13,39 @@ const letterAnimation = {
 };
 
 export default function MemberExplorer() {
-  const [selected, setSelected] = useState('All Members');
+  const [members, setMembers] = useState<any[]>([]);
+  const [groupFilter, setGroupFilter] = useState<string>('All');
+  const [groups, setGroups] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch('/members_SoSe2025.csv')
+      .then((response) => response.text())
+      .then((csvText) => {
+        const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true, delimiter: ';' });
+        let data = parsed.data as any[];
+        // Collect all unique groups from Team and Status
+        let allGroups = new Set<string>();
+        data.forEach(member => {
+          const teamGroups = (member.Team || '').split(',').map((g: string) => g.trim()).filter(Boolean);
+          const statusGroups = (member.Status || '').split(',').map((g: string) => g.trim()).filter(Boolean);
+          teamGroups.forEach((g: string) => allGroups.add(g));
+          statusGroups.forEach((g: string) => allGroups.add(g));
+        });
+        setMembers(data);
+        setGroups(['All', ...Array.from(allGroups)]);
+      });
+  }, []);
+
+  const filteredMembers = groupFilter === 'All'
+    ? members
+    : members.filter(member => {
+        const teamGroups = (member.Team || '').split(',').map((g: string) => g.trim());
+        const statusGroups = (member.Status || '').split(',').map((g: string) => g.trim());
+        return teamGroups.includes(groupFilter) || statusGroups.includes(groupFilter);
+      });
 
   return (
-    <section style={{ background: '#f9f4ec', padding: '2rem 0', minHeight: '100vh' }}>
+    <section style={{ padding: '2rem 0', minHeight: '100vh' }}>
       <div
         style={{
           maxWidth: 1200,
@@ -49,7 +55,7 @@ export default function MemberExplorer() {
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.h1
-            key={selected}
+            key={groupFilter}
             style={{
               fontSize: 'clamp(2.5rem, 8vw, 8rem)',
               fontWeight: 700,
@@ -67,7 +73,7 @@ export default function MemberExplorer() {
             exit="exit"
             transition={{ staggerChildren: 0.03 }}
           >
-            {headings[selected].split('').map((char, i) => (
+            {groupFilter.split('').map((char, i) => (
               <motion.span
                 key={char + i}
                 variants={letterAnimation}
@@ -87,38 +93,33 @@ export default function MemberExplorer() {
             marginBottom: '1.5rem',
           }}
         >
-          {descriptions[selected]}
+          {`Showing ${filteredMembers.length} members`}
         </p>
-        <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            margin: '2rem 0',
-            flexWrap: 'wrap',
-          }}
-        >
-          {filters.map((filter) => (
+        {/* Group filter row */}
+        <div style={{ display: 'flex', gap: '1rem', margin: '2rem 0 2rem 0', flexWrap: 'wrap' }}>
+          {groups.map((group) => (
             <button
-              key={filter}
-              onClick={() => setSelected(filter)}
+              key={group}
+              onClick={() => setGroupFilter(group)}
               style={{
-                padding: '0.5rem 1.5rem',
-                borderRadius: '1rem',
-                border: selected === filter ? 'none' : '2px solid #000',
-                background: selected === filter ? '#000' : 'transparent',
-                color: selected === filter ? '#fff' : '#000',
+                padding: '0.5rem 2rem',
+                borderRadius: '1.5rem',
+                border: groupFilter === group ? 'none' : '2px solid #111',
+                background: groupFilter === group ? '#111' : 'transparent',
+                color: groupFilter === group ? '#fff' : '#111',
                 fontWeight: 700,
-                fontSize: '1.25rem',
+                fontSize: '1.4rem',
                 cursor: 'pointer',
                 fontFamily: 'serif',
                 transition: 'background 0.2s, color 0.2s',
                 minWidth: 120,
-                minHeight: 44,
+                minHeight: 48,
                 boxSizing: 'border-box',
                 outline: 'none',
+                boxShadow: groupFilter === group ? '0 2px 8px rgba(0,0,0,0.08)' : 'none',
               }}
             >
-              {filter}
+              {group}
             </button>
           ))}
         </div>
@@ -126,47 +127,54 @@ export default function MemberExplorer() {
           className="member-explorer-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gridTemplateRows: 'repeat(2, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gridTemplateRows: 'auto',
             gap: '2rem',
             minHeight: 500,
+            justifyItems: 'center',
           }}
         >
           <AnimatePresence initial={false}>
-            {members
-              .filter(member => selected === 'All Members' || member.team === selected)
-              .map((member, idx) => (
-                <motion.div
-                  key={member.name + idx}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  style={{
-                    background: '#dbccb1',
-                    height: 400,
-                    borderRadius: 4,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.5rem',
-                    fontWeight: 600,
-                    fontFamily: 'serif',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                  }}
-                >
-                  {member.name}
-                </motion.div>
-              ))}
+            {filteredMembers.map((member, idx) => (
+              <motion.div
+                key={member.Name + idx}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                style={{
+                  background: '#dbccb1',
+                  height: 350,
+                  borderRadius: 4,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  fontFamily: 'serif',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                  padding: 16,
+                  textAlign: 'center',
+                  width: '100%',
+                  maxWidth: 350,
+                }}
+              >
+                <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{member.Name}</div>
+                <div style={{ marginTop: 4 }}>{member.Team}</div>
+                <div style={{ marginTop: 4, fontSize: '0.95rem', color: '#555' }}>{member.Status}</div>
+                {member['Study course'] && <div style={{ marginTop: 4, fontSize: '0.9rem', color: '#777' }}>{member['Study course']}</div>}
+              </motion.div>
+            ))}
           </AnimatePresence>
         </div>
       </div>
       <style>{`
         @media (max-width: 900px) {
           .member-explorer-grid {
-            grid-template-columns: 1fr 1fr !important;
-            grid-template-rows: repeat(3, 1fr) !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-rows: auto !important;
           }
         }
         @media (max-width: 600px) {
