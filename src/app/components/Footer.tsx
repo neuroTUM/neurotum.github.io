@@ -39,7 +39,9 @@ const Footer = () => (
           <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>
             <Link href="/team" style={{ color: 'inherit', textDecoration: 'none' }}>Team</Link>
           </div>
-          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Links</div>
+          <div style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>
+            <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</Link>
+          </div>
         </div>
      
       {/* Address */}
