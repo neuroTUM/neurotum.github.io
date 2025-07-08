@@ -12,6 +12,17 @@ const letterAnimation = {
   exit: { opacity: 0, y: -20 },
 };
 
+// Team descriptions dictionary
+const teamDescriptions: { [key: string]: string } = {
+  Electronics: "The Electronics team designs, builds, and tests hardware for our neurotechnology projects, focusing on circuit design, PCB layout, and embedded systems.",
+  Neuromotion: "The Neuromotion team explores the intersection of neuroscience and movement, working on projects related to motor control, rehabilitation, and brain-machine interfaces.",
+  BCI: "The BCI (Brain-Computer Interface) team develops systems that enable direct communication between the brain and external devices, pushing the boundaries of neurotechnology.",
+  Biomatrix: "The Biomatrix team focuses on computational neuroscience, data analysis, and the development of algorithms to interpret complex neural data.",
+  OpenHardware: "The OpenHardware team is dedicated to creating open-source hardware solutions for neuroscience research, making advanced tools accessible to everyone.",
+  Operations: "The Operations team ensures the smooth running of the organization, handling logistics, event planning, and internal coordination.",
+  // Add more as needed
+};
+
 export default function MemberExplorer() {
   const [members, setMembers] = useState<any[]>([]);
   const [groupFilter, setGroupFilter] = useState<string>('All');
@@ -73,7 +84,7 @@ export default function MemberExplorer() {
             exit="exit"
             transition={{ staggerChildren: 0.03 }}
           >
-            {groupFilter.split('').map((char, i) => (
+            {(groupFilter === 'All' ? 'NeuroTUM' : groupFilter).split('').map((char, i) => (
               <motion.span
                 key={char + i}
                 variants={letterAnimation}
@@ -84,6 +95,7 @@ export default function MemberExplorer() {
             ))}
           </motion.h1>
         </AnimatePresence>
+        {/* Description or count row */}
         <p
           style={{
             fontSize: '1rem',
@@ -93,7 +105,11 @@ export default function MemberExplorer() {
             marginBottom: '1.5rem',
           }}
         >
-          {`Showing ${filteredMembers.length} members`}
+          {groupFilter === 'All'
+            ? `Showing ${filteredMembers.length} members`
+            : teamDescriptions[groupFilter]
+              ? teamDescriptions[groupFilter]
+              : `No description available for "${groupFilter}".`}
         </p>
         {/* Group filter row */}
         <div style={{ display: 'flex', gap: '1rem', margin: '2rem 0 2rem 0', flexWrap: 'wrap' }}>
@@ -190,4 +206,4 @@ export default function MemberExplorer() {
       `}</style>
     </section>
   );
-} 
+}
