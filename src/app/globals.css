@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
 
 :root {
-  --background: #FDF7EF;
+  --background: #fdf7ef;
   --foreground: #171717;
-  --color-primary: #FDF7EF;
-  --color-secondary: #E1CEB3;
-  --color-accent: #F6E1C6;
-  --font-dm-serif: 'DM Serif Display', Arial, Helvetica, sans-serif;
+  --color-primary: #fdf7ef;
+  --color-secondary: #e1ceb3;
+  --color-accent: #f6e1c6;
+  --font-dm-serif: "DM Serif Display", Arial, Helvetica, sans-serif;
 }
 
 html,

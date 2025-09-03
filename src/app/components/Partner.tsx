@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 const ROWS = [
   [200, 300, 150, 250], // Row 1
@@ -14,25 +14,25 @@ const RECT_GAP = 32;
 const Partner = () => (
   <section
     style={{
-      height: '90vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
+      height: "90vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
       gap: `${GAP}px`,
-      background: 'var(--background)',
-      overflow: 'hidden',
+      background: "var(--background)",
+      overflow: "hidden",
     }}
   >
     {ROWS.map((rects, rowIdx) => (
       <div
         key={rowIdx}
         style={{
-          display: 'flex',
+          display: "flex",
           gap: `${RECT_GAP}px`,
           height: `${ROW_HEIGHT}px`,
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
         }}
       >
         {rects.map((width, i) => (
@@ -40,10 +40,10 @@ const Partner = () => (
             key={i}
             style={{
               width: `${width}px`,
-              height: '100%',
-              background: 'var(--color-secondary)',
-              borderRadius: '12px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+              height: "100%",
+              background: "var(--color-secondary)",
+              borderRadius: "12px",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
             }}
           />
         ))}
@@ -52,4 +52,4 @@ const Partner = () => (
   </section>
 );
 
-export default Partner; 
+export default Partner;

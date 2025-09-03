@@ -1,5 +1,5 @@
-import Footer from '../components/Footer';
-import TeamSelection from '../components/MemberExplorer';
+import Footer from "../components/Footer";
+import TeamSelection from "../components/MemberExplorer";
 
 export default function TeamPage() {
   return (
@@ -8,4 +8,4 @@ export default function TeamPage() {
       <Footer />
     </div>
   );
-} 
+}

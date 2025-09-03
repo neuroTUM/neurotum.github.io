@@ -1,7 +1,12 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-const navItems = ["Home", "About", "Team", "Contact"];
+const navItems: Record<string, string> = {
+  Home: "/",
+  About: "/#about",
+  Team: "/team",
+  Contact: "/contact",
+};
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -10,8 +15,8 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navbarStyle: React.CSSProperties = {
@@ -21,10 +26,8 @@ const Navbar: React.FC = () => {
     transform: "translateX(-50%)",
     width: scrolled ? "min(90vw, 420px)" : "100vw",
     borderRadius: scrolled ? 999 : "0 0 0 0",
-    background: 'var(--background)',
-    boxShadow: scrolled
-      ? "0 8px 32px rgba(0,0,0,0.16)"
-      : "0 2px 16px rgba(0,0,0,0.10)",
+    background: "var(--background)",
+    boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.16)" : "0 2px 16px rgba(0,0,0,0.10)",
     padding: scrolled ? "0.7rem 2.8rem" : "0.5rem 2rem",
     opacity: 1,
     border: scrolled ? "1.5px solid #eaeaea" : "none",
@@ -55,18 +58,19 @@ const Navbar: React.FC = () => {
 
   return (
     <nav style={navbarStyle}>
-      {navItems.map((item) => (
-        <span
-          key={item}
-          style={navItemStyle}
-          onMouseOver={e => (e.currentTarget.style.color = '#0070f3')}
-          onMouseOut={e => (e.currentTarget.style.color = '#222')}
-        >
-          {item}
-        </span>
+      {Object.entries(navItems).map(([name, ref]) => (
+        <a key={name} href={ref}>
+          <span
+            style={navItemStyle}
+            onMouseOver={(e) => (e.currentTarget.style.color = "#0070f3")}
+            onMouseOut={(e) => (e.currentTarget.style.color = "#222")}
+          >
+            {name}
+          </span>
+        </a>
       ))}
     </nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;
