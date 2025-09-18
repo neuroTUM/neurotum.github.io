@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+// import Image from "next/image";
 
 const footerContainerStyle: React.CSSProperties = {
   maxWidth: "1200px",
@@ -82,7 +83,7 @@ const Footer = () => (
           alignItems: "center",
         }}
       >
-        <img
+        <img // TODO: replace with next/image when possible
           src="/NeuroTUM.svg"
           alt="NeuroTUM logo"
           style={{
