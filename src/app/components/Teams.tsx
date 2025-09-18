@@ -1,29 +1,34 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
-const teamMembers = [
+const TEAMS = [
   {
     initials: "BCI",
     name: "BCI",
+    teamLink: "/team?selected=BCI",
     bio: "#",
     works: "#",
   },
   {
     initials: "ELE",
     name: "Electronics",
+    teamLink: "/team?selected=Electronics",
     bio: "#",
     works: "#",
   },
   {
     initials: "NEU",
     name: "Neuromotion",
+    teamLink: "/team?selected=Neuromotion",
     bio: "#",
     works: "#",
   },
   {
     initials: "OPS",
     name: "Ops",
+    teamLink: "/team?selected=Operations",
     bio: "#",
     works: "#",
   },
@@ -31,7 +36,7 @@ const teamMembers = [
 
 const Teams = () => {
   const [activeIndex, setActiveIndex] = useState(1); // Default to A.P.
-  const activeMember = teamMembers[activeIndex];
+  const activeMember = TEAMS[activeIndex];
   const lastName = activeMember.name.split(". ").pop() || "";
   const bigLetter = lastName.charAt(0);
 
@@ -81,9 +86,9 @@ const Teams = () => {
           padding: "0 2vw",
         }}
       >
-        {teamMembers.map((member, idx) => (
+        {TEAMS.map((team, idx) => (
           <div
-            key={member.name}
+            key={team.name}
             onMouseEnter={() => setActiveIndex(idx)}
             style={{
               cursor: "pointer",
@@ -100,23 +105,32 @@ const Teams = () => {
                 flexWrap: "wrap",
               }}
             >
-              <div
+              <Link
+                href={team.teamLink}
                 style={{
-                  fontSize: "clamp(2.5rem, 6vw, 7rem)",
-                  fontWeight: idx === activeIndex ? 700 : 600,
-                  color: idx === activeIndex ? "#fff" : "#888",
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.04em",
-                  transition: "color 0.2s",
                   flex: 1,
                   minWidth: 0,
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
+                  textDecoration: "none",
+                  color: "inherit",
+                  cursor: "pointer",
                 }}
               >
-                {member.name}
-              </div>
+                <div
+                  style={{
+                    fontSize: "clamp(2.5rem, 6vw, 7rem)",
+                    fontWeight: idx === activeIndex ? 700 : 600,
+                    color: idx === activeIndex ? "#fff" : "#888",
+                    lineHeight: 1.1,
+                    letterSpacing: "-0.04em",
+                    transition: "color 0.2s",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {team.name}
+                </div>
+              </Link>
               <div
                 style={{
                   display: "flex",
@@ -127,7 +141,7 @@ const Teams = () => {
                 }}
               >
                 <a
-                  href={member.bio}
+                  href={team.bio}
                   style={{
                     color: "#ccc",
                     textDecoration: "underline",
@@ -136,10 +150,10 @@ const Teams = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {member.initials} Team
+                  {team.initials} Team
                 </a>
                 <a
-                  href={member.works}
+                  href={team.works}
                   style={{ color: "#ccc", textDecoration: "underline" }}
                   target="_blank"
                   rel="noopener noreferrer"

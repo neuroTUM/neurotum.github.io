@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 const navItems: Record<string, string> = {
   Home: "/",
-  About: "/#about",
   Team: "/team",
   Contact: "/contact",
 };

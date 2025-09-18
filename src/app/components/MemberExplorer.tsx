@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const letterAnimation = {
   initial: { opacity: 0, y: 20 },
@@ -372,7 +373,7 @@ const MEMBERS: Member[] = [
   },
 ];
 
-const MemberCard: React.FC<Member> = ({name, team, status, studyCourse}: Member) => {
+const MemberCard: React.FC<Member> = ({ name, team, status, studyCourse }: Member) => {
   return (
     <>
       <div style={{ fontSize: "1.3rem", fontWeight: 700 }}>{name}</div>
@@ -385,11 +386,43 @@ const MemberCard: React.FC<Member> = ({name, team, status, studyCourse}: Member)
   );
 };
 
-export default function MemberExplorer() {
-  const [teamFilter, setTeamFilter] = useState<Filter>("All");
+const MemberExplorer = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedParam = searchParams.get("selected");
+
+  const [teamFilter, setTeamFilter] = useState<Filter>(() =>
+    selectedParam && TEAM_LABELS.includes(selectedParam) ? selectedParam : "All",
+  );
+
+  useEffect(() => {
+    if (selectedParam && !TEAM_LABELS.includes(selectedParam)) {
+      const params = new URLSearchParams(searchParams.toString());
+
+      params.delete("selected");
+
+      router.replace(`?${params.toString()}`);
+    }
+
+    setTeamFilter(selectedParam || "All");
+  }, [selectedParam, router, searchParams]);
 
   const filteredMembers =
     teamFilter === "All" ? MEMBERS : MEMBERS.filter((member) => member.team === teamFilter);
+
+  const handleFilterClick = (group: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (group === "All") {
+      params.delete("selected");
+    } else {
+      params.set("selected", group);
+    }
+
+    router.push(`?${params.toString()}`);
+
+    setTeamFilter(group);
+  };
 
   return (
     <section style={{ padding: "2rem 0", minHeight: "100vh" }}>
@@ -455,7 +488,7 @@ export default function MemberExplorer() {
           {TEAM_LABELS.map((group) => (
             <button
               key={group}
-              onClick={() => setTeamFilter(group)}
+              onClick={() => handleFilterClick(group)}
               style={{
                 padding: "0.5rem 2rem",
                 borderRadius: "1.5rem",
@@ -516,7 +549,7 @@ export default function MemberExplorer() {
                   maxWidth: 350,
                 }}
               >
-               <MemberCard {...member} />
+                <MemberCard {...member} />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -542,4 +575,6 @@ export default function MemberExplorer() {
       `}</style>
     </section>
   );
-}
+};
+
+export { MemberExplorer };

@@ -1,10 +1,12 @@
+"use client";
+
 import Footer from "../components/Footer";
-import TeamSelection from "../components/MemberExplorer";
+import { MemberExplorer } from "../components/MemberExplorer";
 
 export default function TeamPage() {
   return (
     <div>
-      <TeamSelection />
+      <MemberExplorer />
       <Footer />
     </div>
   );
