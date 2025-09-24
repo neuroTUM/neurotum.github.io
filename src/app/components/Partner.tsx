@@ -1,15 +1,58 @@
 "use client";
 
 import React from "react";
+const GAP = 60;
 
-const ROWS = [
-  [200, 300, 150, 250], // Row 1
-  [250, 180, 320, 210], // Row 2
-  [180, 260, 220, 300], // Row 3
+const collaboratorImages = [
+  "/collaborator_images/fortiss.png",
+  "/collaborator_images/makerspace.png",
+  "/collaborator_images/mbraintrain.png",
+  "/collaborator_images/TUM_associate_professorship_of_neuroelectronics.png",
+  "/collaborator_images/TUM_chair_of_ai_processor_design.png",
+  "/collaborator_images/TUM_institute_of_cognitive_systems.png",
+  "/collaborator_images/TUM_venture_labs.png",
 ];
-const ROW_HEIGHT = 60;
-const GAP = 40;
-const RECT_GAP = 32;
+
+const sponsorImages = [
+  "/sponsor_images/industrial_innovators.svg",
+  "/sponsor_images/TUM_bund_der_freunde.svg",
+];
+
+interface ImageGridProps {
+  images: string[];
+  title: string;
+}
+
+const ImageGrid = ({ images, title }: ImageGridProps) => (
+  <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
+    <h2 style={{ textAlign: "center", marginBottom: "3rem" }}>{title}</h2>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "3rem",
+        padding: "0 2rem",
+        rowGap: "4rem",
+      }}
+    >
+      {images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`${title} ${index + 1}`}
+          style={{
+            height: "120px",
+            maxWidth: "300px",
+            objectFit: "contain",
+            transition: "filter 0.3s",
+          }}
+        />
+      ))}
+    </div>
+  </div>
+);
 
 const Partner = () => (
   <section
@@ -23,32 +66,8 @@ const Partner = () => (
       overflow: "hidden",
     }}
   >
-    {ROWS.map((rects, rowIdx) => (
-      <div
-        key={rowIdx}
-        style={{
-          display: "flex",
-          gap: `${RECT_GAP}px`,
-          height: `${ROW_HEIGHT}px`,
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        {rects.map((width, i) => (
-          <div
-            key={i}
-            style={{
-              width: `${width}px`,
-              height: "100%",
-              background: "var(--color-secondary)",
-              borderRadius: "12px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-            }}
-          />
-        ))}
-      </div>
-    ))}
+    <ImageGrid images={collaboratorImages} title="Our Collaborators" />
+    <ImageGrid images={sponsorImages} title="Our Sponsors" />
   </section>
 );
 
