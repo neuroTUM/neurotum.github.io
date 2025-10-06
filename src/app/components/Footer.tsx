@@ -54,6 +54,11 @@ const Footer = () => (
               Contact
             </Link>
           </div>
+          <div style={{ fontSize: "1.3rem", marginBottom: "0.2rem" }}>
+            <Link href="/impressum" style={{ color: "inherit", textDecoration: "none" }}>
+              Impressum
+            </Link>
+          </div>
         </div>
 
         {/* Address */}
@@ -64,6 +69,11 @@ const Footer = () => (
           <div style={{ fontSize: "1.3rem", marginBottom: "0.2rem" }}>Boltzmannstraße 11</div>
           <div style={{ fontSize: "1.3rem", marginBottom: "0.2rem" }}>
             85748 Garching bei München
+          </div>
+          <div style={{ fontSize: "1.3rem", marginBottom: "0.2rem" }}>
+            <Link href="/privacy-policy" style={{ color: "inherit", textDecoration: "none" }}>
+               Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
