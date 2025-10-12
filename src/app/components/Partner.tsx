@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+
 const GAP = 60;
 
 const collaboratorImages = [
@@ -38,7 +40,7 @@ const ImageGrid = ({ images, title }: ImageGridProps) => (
       }}
     >
       {images.map((image, index) => (
-        <img
+        <Image
           key={index}
           src={image}
           alt={`${title} ${index + 1}`}

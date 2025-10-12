@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 type SideCardProps = {
   title: string;
@@ -124,7 +125,7 @@ const About = () => {
           background: "#000",
         }}
       >
-        <img
+        <Image
           src="/team_photos/team_sose25.jpg"
           alt="neuroTUM team photo"
           style={{
