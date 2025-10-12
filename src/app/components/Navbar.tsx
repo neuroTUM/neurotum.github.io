@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const navItems: Record<string, string> = {
   Home: "/",
@@ -60,7 +61,7 @@ const Navbar: React.FC = () => {
   return (
     <nav style={navbarStyle}>
       {Object.entries(navItems).map(([name, ref]) => (
-        <a key={name} href={ref}>
+        <Link key={name} href={ref}>
           <span
             style={navItemStyle}
             onMouseOver={(e) => (e.currentTarget.style.color = "#0070f3")}
@@ -68,7 +69,7 @@ const Navbar: React.FC = () => {
           >
             {name}
           </span>
-        </a>
+        </Link>
       ))}
     </nav>
   );

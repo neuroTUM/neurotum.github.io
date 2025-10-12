@@ -140,7 +140,7 @@ const Teams = () => {
                   flexShrink: 0,
                 }}
               >
-                <a
+                <Link
                   href={team.bio}
                   style={{
                     color: "#ccc",
@@ -151,15 +151,15 @@ const Teams = () => {
                   rel="noopener noreferrer"
                 >
                   {team.initials} Team
-                </a>
-                <a
+                </Link>
+                <Link
                   href={team.works}
                   style={{ color: "#ccc", textDecoration: "underline" }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Projects
-                </a>
+                </Link>
               </div>
             </div>
             <hr

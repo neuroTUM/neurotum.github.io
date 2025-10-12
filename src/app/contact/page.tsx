@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 export default function ContactPage() {
   return (
@@ -55,7 +56,7 @@ export default function ContactPage() {
         >
           <li>
             <strong>Email:</strong>{" "}
-            <a
+            <Link
               href="mailto:team@neurotum.com"
               style={{
                 color: "#0a0a3c",
@@ -64,11 +65,11 @@ export default function ContactPage() {
               }}
             >
               team@neurotum.com
-            </a>
+            </Link>
           </li>
           <li>
             <strong>Phone:</strong>{" "}
-            <a
+            <Link
               href="tel:+4917634396551"
               style={{
                 color: "#0a0a3c",
@@ -77,11 +78,11 @@ export default function ContactPage() {
               }}
             >
               +49 176 34396551
-            </a>
+            </Link>
           </li>
           <li>
             <strong>LinkedIn:</strong>{" "}
-            <a
+            <Link
               href="https://www.linkedin.com/company/neurotum/"
               target="_blank"
               rel="noopener noreferrer"
@@ -92,7 +93,7 @@ export default function ContactPage() {
               }}
             >
               neurotum
-            </a>
+            </Link>
           </li>
           <li style={{ marginTop: "1.5rem" }}>
             <strong>Address:</strong>
