@@ -5,6 +5,7 @@ const navItems: Record<string, string> = {
   Home: "/",
   Team: "/team",
   Contact: "/contact",
+  Apply: "/join-us"
 };
 
 const Navbar: React.FC = () => {

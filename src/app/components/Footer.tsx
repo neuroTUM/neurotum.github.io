@@ -72,7 +72,7 @@ const Footer = () => (
           </div>
           <div style={{ fontSize: "1.3rem", marginBottom: "0.2rem" }}>
             <Link href="/privacy-policy" style={{ color: "inherit", textDecoration: "none" }}>
-               Privacy Policy
+              Privacy Policy
             </Link>
           </div>
         </div>
