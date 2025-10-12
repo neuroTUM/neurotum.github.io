@@ -36,55 +36,63 @@ const TEAM_POSITIONS = [
   },
   {
     name: "BCI (Brain-Computer Interface)",
-    description: <>
-      Within this group, we are developing a brain-computer interface (BCI). 
-      By collecting EEG signals, processing them, and classifying them, we could offer quadriplegic people the possibility of controlling virtual environments (e.g. mouse cursor on a screen) with only their brains. 
-      We envision this to be translated into the real world into a project such as a mind-controlled wheelchair or robotic arm. This team consists of different sub-teams that work together to put the different pieces of the BCI together. 
-      The first milestone of this team was the participation in the ETH Cybathlon 2024 - BCI race. We are now continuing our work to improve the system and planning the organization of possible sub-projects to work on in the BCI team for the winter sememster 25/26.
-      <br />
-      <br />
-      what are we looking for:
-      <br />
-      <ul>
-        <li>
-          Excitement about the fields of assistive technologies and neurotechnology.
-        </li>
-        <li>
-          motivation and interest to learn about the other aspects of the BCI system, experimental design and integration of ethical concerns into the project
-        </li>
-        <li>
-          have worked in a team on a (technical) project and/or are interested in team work
-        </li>
-      </ul>
-      <br />
-      what we offer in our onboarding:
-      <br />
-      <ul>
-        <li>
-          introduction to brain-computer interfaces, more specifically focused on EEG-based mobile BCIs
-        </li>
-        <li>
-          tutorials on the different components of our BCI pipeline (in the form of Python notebooks and workshops)
-        </li>
-        <li>
-          introduction to how to conduct an experimental session (including data collection, training and running the online pipeline)
-        </li>
-      </ul>
-      <br />
-      as a member of the BCI time you will:
-      <br />
-      <ul>
-        <li>
-          help conduct experiments to do data collection, train the pilot and test new implementations
-        </li>
-        <li>
-          attend weekly meetings and work sessions
-        </li>
-        <li>
-          have 10/15 hours of time each week to contribute to one of the subprojects of the BCI team (we can try and find ways for you to combine the project work you are doing in the team with classes, project courses and mandatory internships for you to get credits)
-        </li>
-      </ul>
-    </>,
+    description: (
+      <>
+        Within this group, we are developing a brain-computer interface (BCI). By collecting EEG
+        signals, processing them, and classifying them, we could offer quadriplegic people the
+        possibility of controlling virtual environments (e.g. mouse cursor on a screen) with only
+        their brains. We envision this to be translated into the real world into a project such as a
+        mind-controlled wheelchair or robotic arm. This team consists of different sub-teams that
+        work together to put the different pieces of the BCI together. The first milestone of this
+        team was the participation in the ETH Cybathlon 2024 - BCI race. We are now continuing our
+        work to improve the system and planning the organization of possible sub-projects to work on
+        in the BCI team for the winter sememster 25/26.
+        <br />
+        <br />
+        what are we looking for:
+        <br />
+        <ul>
+          <li>Excitement about the fields of assistive technologies and neurotechnology.</li>
+          <li>
+            motivation and interest to learn about the other aspects of the BCI system, experimental
+            design and integration of ethical concerns into the project
+          </li>
+          <li>have worked in a team on a (technical) project and/or are interested in team work</li>
+        </ul>
+        <br />
+        what we offer in our onboarding:
+        <br />
+        <ul>
+          <li>
+            introduction to brain-computer interfaces, more specifically focused on EEG-based mobile
+            BCIs
+          </li>
+          <li>
+            tutorials on the different components of our BCI pipeline (in the form of Python
+            notebooks and workshops)
+          </li>
+          <li>
+            introduction to how to conduct an experimental session (including data collection,
+            training and running the online pipeline)
+          </li>
+        </ul>
+        <br />
+        as a member of the BCI time you will:
+        <br />
+        <ul>
+          <li>
+            help conduct experiments to do data collection, train the pilot and test new
+            implementations
+          </li>
+          <li>attend weekly meetings and work sessions</li>
+          <li>
+            have 10/15 hours of time each week to contribute to one of the subprojects of the BCI
+            team (we can try and find ways for you to combine the project work you are doing in the
+            team with classes, project courses and mandatory internships for you to get credits)
+          </li>
+        </ul>
+      </>
+    ),
     positions: [
       {
         title: "Experimental Design",
@@ -129,11 +137,13 @@ const TEAM_POSITIONS = [
       },
       {
         title: "3D Design & End-Effector",
-        description: "You will design and prototype adaptive end-effectors that enable the robotic arm to perform practical tasks such as grasping utensils or opening doors.",
+        description:
+          "You will design and prototype adaptive end-effectors that enable the robotic arm to perform practical tasks such as grasping utensils or opening doors.",
       },
       {
         title: "BCI Systems",
-        description: "You will develop and optimize real-time brain-computer interface pipelines, ensuring fast, accurate, and user-friendly control of the robotic arm.",
+        description:
+          "You will develop and optimize real-time brain-computer interface pipelines, ensuring fast, accurate, and user-friendly control of the robotic arm.",
       },
     ],
   },
@@ -149,9 +159,7 @@ const TEAM_POSITIONS = [
     positions: [
       {
         title: "Communication (Social Media, Graphic Design, Scientific Communication)",
-        description: <>
-          
-        </>,
+        description: <></>,
       },
       {
         title: "Sponsorship Manager",

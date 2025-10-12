@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const GAP = 60;
 
 const collaboratorImages = [
@@ -42,7 +43,7 @@ const ImageGrid = ({ images, title }: ImageGridProps) => (
       {images.map((image, index) => (
         <Image
           key={index}
-          src={image}
+          src={`${basePath}/${image}`}
           alt={`${title} ${index + 1}`}
           height={120}
           width={300}

@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 type SideCardProps = {
   title: string;
   body: string;
@@ -126,7 +128,7 @@ const About = () => {
         }}
       >
         <Image
-          src="/team_photos/team_sose25.jpg"
+          src={`${basePath}/team_photos/team_sose25.jpg`}
           alt="neuroTUM team photo"
           fill
           style={{
