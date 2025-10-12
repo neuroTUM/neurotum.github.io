@@ -44,8 +44,11 @@ const ImageGrid = ({ images, title }: ImageGridProps) => (
           key={index}
           src={image}
           alt={`${title} ${index + 1}`}
+          height={120}
+          width={300}
           style={{
             height: "120px",
+            width: "auto",
             maxWidth: "300px",
             objectFit: "contain",
             transition: "filter 0.3s",

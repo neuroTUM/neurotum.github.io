@@ -97,15 +97,17 @@ const Footer = () => (
         }}
       >
         <Image
-          src="/NeuroTUM.svg"
-          alt="NeuroTUM logo"
-          style={{
-            maxWidth: "1200px",
-            width: "100%",
-            height: "auto",
-            display: "block",
-          }}
-        />
+  src="/NeuroTUM.svg"
+  alt="NeuroTUM logo"
+  width={1200}
+  height={300}
+  style={{
+    maxWidth: "1200px",
+    width: "100%",
+    height: "auto",
+    display: "block",
+  }}
+/>
       </div>
     </div>
     <style>{`

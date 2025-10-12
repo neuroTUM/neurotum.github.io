@@ -128,13 +128,9 @@ const About = () => {
         <Image
           src="/team_photos/team_sose25.jpg"
           alt="neuroTUM team photo"
+          fill
           style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
-            display: "block",
           }}
         />
       </div>

@@ -6,12 +6,16 @@ const nextConfig: NextConfig = {
     output: "export",
     reactStrictMode: true,
     pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-    basePath: "/webpage",
-    assetPrefix: "/webpage",
+    basePath: basePath,
+    assetPrefix: basePath,
 
     // FIXME: We should lint our codebase!
     eslint: {
         ignoreDuringBuilds: true,
+    },
+
+    images: {
+        unoptimized: true,
     },
 };
 
