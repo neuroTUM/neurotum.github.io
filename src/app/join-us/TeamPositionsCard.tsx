@@ -159,15 +159,110 @@ const TEAM_POSITIONS = [
     positions: [
       {
         title: "Communication (Social Media, Graphic Design, Scientific Communication)",
-        description: <></>,
+        description: (
+          <>
+              <p>
+                <strong>We are looking for:</strong>
+              </p>
+              <ul>
+                <li>People excited about networking and talking to companies.</li>
+                <li>Creative minds for posters, merch and template designs.</li>
+                <li>Interest in science communication towards a general audience.</li>
+                <li>
+                  General motivation and interest in the field of neuroscience and neuroengineering.
+                </li>
+              </ul>
+          </>
+        ),
       },
       {
-        title: "Sponsorship Manager",
-        description: "Identify and communicate with sponsors, managing financial partnerships.",
+        title: "Ethics",
+        description: (
+          <>
+            The Ethics and Responsibility Officer ensures that ethics is not just a theoretical
+            concern but a fundamental part of neuroTUM's engineering and research processes. By
+            embedding structured ethical engagement, decision-making tools, and user-centred design
+            principles, the team will help establish neuroTUM as a model for responsible student-led
+            innovation in neurotechnology. The role involves organising ethical workshops for the
+            community body (in G&D, neuroethics, AI ethics etc.) curating resources for ethical
+            education of our team, and embedding ethical tools and engagement into neuroTUM's
+            culture and processes.
+            <br />
+            <br />
+            <p>
+              <strong>Nice to have:</strong>
+            </p>
+            <ul>
+              <li>
+                Strong interest in the intersection of ethics, neurotechnology, and responsible
+                innovation Possible background in ethical topics, philosophy, psychology, HCI,
+                responsible design, or other related fields.
+              </li>
+              <li>
+                Familiarity with value-sensitive design and responsible innovation frameworks
+                Previous experience / contacts for organising workshops or seminars on ethical
+                topics (gender & diversity, neuroethics, AI ethics, etc.).
+              </li>
+              <li>
+                Willingness to discuss ethical concepts with an interdisciplinary team! Passion for
+                promoting social responsibility in the development of neuroTUM's projects.
+              </li>
+            </ul>
+            <br />
+            <p>
+              <strong>What we offer:</strong>
+            </p>
+            <ul>
+              <li>
+                Opportunity to organise and lead workshops, and collaborate with experts and fellow
+                students to make a positive impact through technology.
+              </li>
+              <li>
+                Shape the ethical direction of neuroTUM's projects and gain hands-on experience in
+                integrating ethics into neuroengineering team projects.
+              </li>
+            </ul>
+          </>
+        ),
       },
       {
-        title: "Communications Lead",
-        description: "Develop internal and external communication materials for club visibility.",
+        title: "Sponsorship",
+        description: (
+          <>
+            Working on neurotechnology-related or research projects is not a cheap hobby to have.
+            Our teams need financial and material means to achieve their work reliably. As a student
+            organization, we rely on constant support from research chairs and industry partners.
+            <br />
+            <br />
+            <p>
+              <strong>Nice to have:</strong>
+            </p>
+            <ul>
+              <li>
+                Interest and excitement in reaching out to potential sponsors and collaborators.
+              </li>
+              <li>Experience with outreach and partner management.</li>
+              <li>Experience with customer relations management (CRM systems).</li>
+            </ul>
+            <br />
+            <p>
+              <strong>What we offer:</strong>
+            </p>
+            <ul>
+              <li>
+                Opportunity to get in touch with leading innovative companies and define neuroTUM's
+                strategic development.
+              </li>
+              <li>
+                Opportunity to be part of the process of creating a respected research organization.
+              </li>
+              <li>
+                Be part of a vibrant, dynamic, and supportive student community, collaborating
+                closely with peers passionate about research and responsible innovation.{" "}
+              </li>
+            </ul>
+          </>
+        ),
       },
     ],
   },
