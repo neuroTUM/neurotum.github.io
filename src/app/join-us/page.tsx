@@ -7,43 +7,45 @@ import JourneyTimelineCard from "./JourneyTimelineCard";
 import ApplyNowCard from "./ApplyNowCard";
 import MissionCard from "./MissionCard";
 import ApplicationTimelineCard from "./ApplicationTimelineCard";
+import Footer from "../components/Footer";
 
 const JoinUsPage: React.FC = () => {
   return (
-    <section
-      style={{
-        padding: "5rem 1rem",
-        background: "var(--background)",
-        color: "var(--foreground)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "3rem",
-      }}
-    >
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+    <>
+      <section
         style={{
-          fontSize: "clamp(2rem, 6vw, 6rem)",
-          fontWeight: 600,
-          fontFamily: "serif",
-          textAlign: "center",
-          marginBottom: "1rem",
-          color: "#111",
+          padding: "5rem 1rem",
+          background: "var(--background)",
+          color: "var(--foreground)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "3rem",
         }}
       >
-        Join Us at NeuroTUM
-      </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{
+            fontSize: "clamp(2rem, 6vw, 6rem)",
+            fontWeight: 600,
+            fontFamily: "serif",
+            textAlign: "center",
+            marginBottom: "1rem",
+            color: "#111",
+          }}
+        >
+          Join Us at NeuroTUM
+        </motion.h1>
 
-      <MissionCard />
-      <ApplicationTimelineCard />
-      <JourneyTimelineCard />
-      <TeamsPositionsCard />
-      <ApplyNowCard />
+        <MissionCard />
+        <ApplicationTimelineCard />
+        <JourneyTimelineCard />
+        <TeamsPositionsCard />
+        <ApplyNowCard />
 
-      <style>{`
+        <style>{`
         h3 {
           font-size: 1.3rem;
           font-weight: 700;
@@ -64,7 +66,9 @@ const JoinUsPage: React.FC = () => {
           }
         }
       `}</style>
-    </section>
+      </section>
+      <Footer />
+    </>
   );
 };
 
