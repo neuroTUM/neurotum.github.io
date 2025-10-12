@@ -16,7 +16,8 @@ const nextConfig: NextConfig = {
     },
 
     images: {
-        unoptimized: true,
+        loader: "custom",
+        loaderFile: "./image-loader.ts"
     },
 };
 
