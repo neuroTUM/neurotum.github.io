@@ -8,6 +8,12 @@ Still in progres...
 First download bun. Bun will serve as your runtime and package/task manager. You may use other package managers
 during local development, but make sure to use bun when adding any dependencies to keep the lock-file up to date.
 
+To install the needed dependencies:
+
+```sh
+bun install
+```
+
 To run the dev server:
 
 ```sh
