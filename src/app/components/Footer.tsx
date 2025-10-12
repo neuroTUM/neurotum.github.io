@@ -4,8 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
 const footerContainerStyle: React.CSSProperties = {
   maxWidth: "1200px",
   margin: "0 auto",
@@ -98,7 +96,7 @@ const Footer = () => (
         }}
       >
         <Image
-          src={`${basePath}/NeuroTUM.svg`}
+          src="/NeuroTUM.svg"
           alt="NeuroTUM logo"
           width={1200}
           height={300}

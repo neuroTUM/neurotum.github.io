@@ -43,7 +43,7 @@ const ImageGrid = ({ images, title }: ImageGridProps) => (
       {images.map((image, index) => (
         <Image
           key={index}
-          src={`${basePath}/${image}`}
+          src={image}
           alt={`${title} ${index + 1}`}
           height={120}
           width={300}
