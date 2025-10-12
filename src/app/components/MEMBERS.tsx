@@ -1,4 +1,5 @@
 "use client";
+
 import { Member } from "./MemberExplorer";
 
 export const MEMBERS: Member[] = [
