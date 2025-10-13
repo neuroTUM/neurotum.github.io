@@ -42,3 +42,7 @@ next-env.d.ts
 
 # my notes
 notes.md
+
+# envs are public for now since they do not have any real hidden information
+!.env.production
+!.env.development

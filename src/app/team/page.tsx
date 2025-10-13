@@ -6,7 +6,9 @@ import { MemberExplorer } from "../components/MemberExplorer";
 
 export default function TeamPage() {
   return (
-    <div>
+    <div style={{
+      marginTop: "1rem"
+    }}>
       <Suspense>
         <MemberExplorer />
       </Suspense>
