@@ -19,6 +19,7 @@ const collaboratorImages = [
 const sponsorImages = [
   "/sponsor_images/industrial_innovators.svg",
   "/sponsor_images/TUM_bund_der_freunde.svg",
+  "/sponsor_images/mouser-electronics.png",
 ];
 
 interface ImageGridProps {
