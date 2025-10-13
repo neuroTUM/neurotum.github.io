@@ -73,7 +73,7 @@ const Hero: React.FC = () => (
             x: direction === 1 ? ["0%", "-50%"] : ["-50%", "0%"],
           }}
           transition={{
-            duration: 18,
+            duration: 60,
             ease: "linear",
             repeat: Infinity,
           }}
