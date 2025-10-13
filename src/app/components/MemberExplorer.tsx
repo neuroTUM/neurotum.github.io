@@ -24,7 +24,12 @@ const TEAM_DESCRIPTIONS: Record<string, string> = {
 
 const TEAM_LABELS = Object.keys(TEAM_DESCRIPTIONS);
 
-type Team = keyof typeof TEAM_DESCRIPTIONS;
+export enum Team {
+  Electronics = "Electronics",
+  Neuromotion = "Neuromotion",
+  BCI = "BCI", 
+  Operations = "Operations",
+}
 type Status =
   | "Member"
   | "Team Lead"
@@ -32,6 +37,7 @@ type Status =
   | "Passive Member"
   | "Advisor Member";
 type Filter = "All" | Team;
+
 
 export interface Member {
   name: string;
