@@ -62,7 +62,28 @@ const SideCard: React.FC<SideCardProps> = ({ title, body, side, offsetY }) => {
   );
 };
 
-const About = () => {
+type CardContent = {
+  title: string;
+  body: string;
+  side: "left" | "right";
+};
+
+const cards: CardContent[] = [
+  {
+    title: "What are we working on?",
+    body: "We enable students of all backgrounds to explore the intersection of engineering and neuroscience by developing a brain–computer interface, an EEG device, and brain‑inspired software and hardware.",
+    side: "left",
+  },
+  {
+    title: "Who are we?",
+    body: "Our interdisciplinary and diverse team of 37 students brings together engineering, medical, social studies and science students from 22 nationalities.",
+    side: "right",
+  },
+];
+
+const MOBILE_BREAKPOINT = 768;
+
+const DesktopAbout: React.FC<{ content: CardContent[] }> = ({ content }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [offsetY, setOffsetY] = useState(0);
 
@@ -135,20 +156,103 @@ const About = () => {
         />
       </div>
       {/* Left and right content cards */}
-      <SideCard
-        title="What are we working on?"
-        body="We enable students of all backgrounds to explore the intersection of engineering and neuroscience by developing a brain–computer interface, an EEG device, and brain‑inspired software and hardware."
-        side="left"
-        offsetY={offsetY}
-      />
-      <SideCard
-        title="Who are we?"
-        body="Our interdisciplinary and diverse team of 37 students brings together engineering, medical, social studies and science students from 22 nationalities."
-        side="right"
-        offsetY={offsetY}
-      />
+      {content.map((card) => (
+        <SideCard
+          key={card.title}
+          title={card.title}
+          body={card.body}
+          side={card.side}
+          offsetY={offsetY}
+        />
+      ))}
     </section>
   );
+};
+
+const MobileAbout: React.FC<{ content: CardContent[] }> = ({ content }) => (
+  <section
+    style={{
+      width: "100%",
+      background: "var(--background)",
+      padding: "56px 20px 64px",
+    }}
+  >
+    <div
+      style={{
+        maxWidth: 540,
+        margin: "0 auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+      }}
+    >
+      {content.map(({ title, body }) => (
+        <div
+          key={title}
+          style={{
+            background: "var(--color-secondary)",
+            borderRadius: 16,
+            boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
+            padding: "24px",
+            color: "#0b0f1a",
+            textAlign: "left",
+          }}
+        >
+          <h3
+            style={{
+              margin: 0,
+              fontSize: 20,
+              lineHeight: 1.3,
+              letterSpacing: -0.2,
+            }}
+          >
+            {title}
+          </h3>
+          <p
+            style={{
+              marginTop: 12,
+              fontSize: 15,
+              lineHeight: 1.6,
+              color: "#223",
+              opacity: 0.92,
+            }}
+          >
+            {body}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+const About = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+
+    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) =>
+      setIsMobile(event.matches);
+
+    updateMatch(mediaQuery);
+
+    const handleChange = (event: MediaQueryListEvent) =>
+      setIsMobile(event.matches);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  if (isMobile) {
+    return <MobileAbout content={cards} />;
+  }
+
+  return <DesktopAbout content={cards} />;
 };
 
 export default About;

@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const GAP = 60;
+const MOBILE_BREAKPOINT = 768;
 
 const collaboratorImages = [
   "/collaborator_images/fortiss.png",
@@ -25,33 +26,42 @@ const sponsorImages = [
 interface ImageGridProps {
   images: string[];
   title: string;
+  isMobile: boolean;
 }
 
-const ImageGrid = ({ images, title }: ImageGridProps) => (
+const ImageGrid = ({ images, title, isMobile }: ImageGridProps) => (
   <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-    <h2 style={{ textAlign: "center", marginBottom: "3rem" }}>{title}</h2>
+    <h2
+      style={{
+        textAlign: "center",
+        marginBottom: isMobile ? "2.25rem" : "3rem",
+        fontSize: isMobile ? 24 : 28,
+      }}
+    >
+      {title}
+    </h2>
     <div
       style={{
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
-        gap: "3rem",
-        padding: "0 2rem",
-        rowGap: "4rem",
+        gap: isMobile ? "1.75rem" : "3rem",
+        padding: isMobile ? "0 1.5rem" : "0 2rem",
+        rowGap: isMobile ? "2.5rem" : "4rem",
       }}
     >
       {images.map((image, index) => (
         <Image
           key={index}
-          src={image}
+          src={`${basePath}${image}`}
           alt={`${title} ${index + 1}`}
-          height={120}
-          width={300}
+          height={isMobile ? 72 : 120}
+          width={isMobile ? 180 : 300}
           style={{
-            height: "120px",
+            height: isMobile ? "72px" : "120px",
             width: "auto",
-            maxWidth: "300px",
+            maxWidth: isMobile ? "200px" : "300px",
             objectFit: "contain",
             transition: "filter 0.3s",
           }}
@@ -61,21 +71,54 @@ const ImageGrid = ({ images, title }: ImageGridProps) => (
   </div>
 );
 
-const Partner = () => (
-  <section
-    style={{
-      height: "90vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      gap: `${GAP}px`,
-      background: "var(--background)",
-      overflow: "hidden",
-    }}
-  >
-    <ImageGrid images={collaboratorImages} title="Our Collaborators" />
-    <ImageGrid images={sponsorImages} title="Our Sponsors" />
-  </section>
-);
+const Partner = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+
+    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) =>
+      setIsMobile(event.matches);
+
+    updateMatch(mediaQuery);
+
+    const handleChange = (event: MediaQueryListEvent) =>
+      setIsMobile(event.matches);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  return (
+    <section
+      style={{
+        minHeight: isMobile ? "auto" : "90vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        gap: isMobile ? "3rem" : `${GAP}px`,
+        background: "var(--background)",
+        overflow: "hidden",
+        padding: isMobile ? "56px 0 72px" : "0",
+      }}
+    >
+      <ImageGrid
+        images={collaboratorImages}
+        title="Our Collaborators"
+        isMobile={isMobile}
+      />
+      <ImageGrid
+        images={sponsorImages}
+        title="Our Sponsors"
+        isMobile={isMobile}
+      />
+    </section>
+  );
+};
 
 export default Partner;
