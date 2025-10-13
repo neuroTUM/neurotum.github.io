@@ -208,12 +208,6 @@ export const MEMBERS: Member[] = [
     studyCourse: "phD student at Medical University Vienna",
   },
   {
-    name: "Thien Le",
-    team: "Neuromotion",
-    status: "Advisor Member",
-    studyCourse: "phD student at Medical University Vienna",
-  },
-  {
     name: "Fauzi Sholichin",
     team: "Operations",
     status: "Member",
