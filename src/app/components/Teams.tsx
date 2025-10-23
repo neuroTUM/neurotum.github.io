@@ -8,29 +8,29 @@ const TEAMS = [
     initials: "BCI",
     name: "BCI",
     teamLink: "/team?selected=BCI",
-    bio: "#",
-    works: "#",
+    bio: "/team?selected=BCI",
+    works: "/team?selected=BCI",
   },
   {
     initials: "ELE",
     name: "Electronics",
     teamLink: "/team?selected=Electronics",
-    bio: "#",
-    works: "#",
+    bio: "/team?selected=Electronics",
+    works: "/team?selected=Electronics",
   },
   {
     initials: "NEU",
     name: "Neuromotion",
     teamLink: "/team?selected=Neuromotion",
-    bio: "#",
-    works: "#",
+    bio: "/team?selected=Neuromotion",
+    works: "/team?selected=Neuromotion",
   },
   {
     initials: "OPS",
     name: "Ops",
     teamLink: "/team?selected=Operations",
-    bio: "#",
-    works: "#",
+    bio: "/team?selected=Operations",
+    works: "/team?selected=Operations",
   },
 ];
 
@@ -147,16 +147,12 @@ const Teams = () => {
                     textDecoration: "underline",
                     marginRight: "1vw",
                   }}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   {team.initials} Team
                 </Link>
                 <Link
                   href={team.works}
                   style={{ color: "#ccc", textDecoration: "underline" }}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Projects
                 </Link>
