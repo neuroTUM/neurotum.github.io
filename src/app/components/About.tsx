@@ -33,7 +33,7 @@ const SideCard: React.FC<SideCardProps> = ({ title, body, side, offsetY }) => {
         display: "flex",
         flexDirection: "column",
         padding: 24,
-        color: "#0b0f1a",
+        color: "var(--color-text-dark)",
       }}
     >
       <h3
@@ -42,7 +42,7 @@ const SideCard: React.FC<SideCardProps> = ({ title, body, side, offsetY }) => {
           fontSize: 22,
           lineHeight: 1.2,
           letterSpacing: -0.2,
-          color: "#0b0f1a",
+          color: "var(--color-text-dark)",
         }}
       >
         {title}
@@ -52,7 +52,7 @@ const SideCard: React.FC<SideCardProps> = ({ title, body, side, offsetY }) => {
           marginTop: 12,
           fontSize: 14,
           lineHeight: 1.6,
-          color: "#223",
+          color: "var(--color-text-dark)",
           opacity: 0.9,
         }}
       >
@@ -118,7 +118,7 @@ const DesktopAbout: React.FC<{ content: CardContent[] }> = ({ content }) => {
       ref={sectionRef}
       style={{
         position: "relative",
-        height: "80vh",
+        height: "100vh",
         width: "100%",
         maxWidth: 1200,
         margin: "0 auto",
@@ -135,8 +135,8 @@ const DesktopAbout: React.FC<{ content: CardContent[] }> = ({ content }) => {
           position: "absolute",
           left: "50%",
           top: "50%",
-          width: 600,
-          height: 820, // increased height
+          width: 700,
+          height: 920,
           zIndex: 2,
           borderRadius: 24,
           boxShadow: "0 32px 96px rgba(0,0,0,0.08)",

@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
     transform: "translateX(-50%)",
     width: scrolled ? "min(90vw, 420px)" : "100vw",
     borderRadius: scrolled ? 999 : "0 0 0 0",
-    background: "var(--background)",
+    background: "var(--foreground)",
     boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.16)" : "0 2px 16px rgba(0,0,0,0.10)",
     padding: scrolled ? "0.7rem 2.8rem" : "0.5rem 2rem",
     opacity: 1,

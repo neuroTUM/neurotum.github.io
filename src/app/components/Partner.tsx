@@ -30,12 +30,14 @@ interface ImageGridProps {
 }
 
 const ImageGrid = ({ images, title, isMobile }: ImageGridProps) => (
-  <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
+  <div style={{ width: "100%", margin: "0 auto" }}>
     <h2
       style={{
         textAlign: "center",
         marginBottom: isMobile ? "2.25rem" : "3rem",
         fontSize: isMobile ? 24 : 28,
+        // Ensure title inherits the dark color from the card container
+        color: "inherit", 
       }}
     >
       {title}
@@ -47,7 +49,7 @@ const ImageGrid = ({ images, title, isMobile }: ImageGridProps) => (
         justifyContent: "center",
         alignItems: "center",
         gap: isMobile ? "1.75rem" : "3rem",
-        padding: isMobile ? "0 1.5rem" : "0 2rem",
+        padding: isMobile ? "0" : "0 2rem", // Removed side padding here as the card has padding
         rowGap: isMobile ? "2.5rem" : "4rem",
       }}
     >
@@ -64,6 +66,8 @@ const ImageGrid = ({ images, title, isMobile }: ImageGridProps) => (
             maxWidth: isMobile ? "200px" : "300px",
             objectFit: "contain",
             transition: "filter 0.3s",
+            // Optional: If your logos are white, you might need to invert them 
+            // or remove this filter if they are already colored/dark
           }}
         />
       ))}
@@ -101,22 +105,38 @@ const Partner = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        gap: isMobile ? "3rem" : `${GAP}px`,
-        background: "var(--background)",
+        alignItems: "center",
+        background: "var(--background)", // Dark background of the page
         overflow: "hidden",
-        padding: isMobile ? "56px 0 72px" : "0",
+        padding: isMobile ? "40px 20px" : "80px 40px", // Padding around the card
       }}
     >
-      <ImageGrid
-        images={collaboratorImages}
-        title="Our Collaborators"
-        isMobile={isMobile}
-      />
-      <ImageGrid
-        images={sponsorImages}
-        title="Our Sponsors"
-        isMobile={isMobile}
-      />
+      {/* THE OFF-WHITE ROUNDED CARD */}
+      <div
+        style={{
+          backgroundColor: "var(--foreground)", // Off-white background
+          color: "var(--background)", // Dark text (inverted for contrast)
+          borderRadius: isMobile ? "24px" : "40px", // Rounded corners
+          padding: isMobile ? "40px 20px" : "80px 60px", // Inner spacing
+          width: "100%",
+          maxWidth: "1200px",
+          display: "flex",
+          flexDirection: "column",
+          gap: isMobile ? "3rem" : `${GAP}px`,
+          boxShadow: "0 10px 30px rgba(0,0,0,0.2)", // Optional subtle shadow for depth
+        }}
+      >
+        <ImageGrid
+          images={collaboratorImages}
+          title="Our Collaborators"
+          isMobile={isMobile}
+        />
+        <ImageGrid
+          images={sponsorImages}
+          title="Our Sponsors"
+          isMobile={isMobile}
+        />
+      </div>
     </section>
   );
 };

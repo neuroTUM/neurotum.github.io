@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
 
 :root {
-  --background: #fdf7ef;
-  --foreground: #171717;
+  --color-neurotum-pink: #ec8896;
+  --color-neurotum-blue: #030349;
+  --color-neurotum-white: #fdf7ef;
+  --background: #030349;
+  --foreground: #fdf7ef;
   --color-primary: #fdf7ef;
-  --color-secondary: #e1ceb3;
+  --color-secondary: #ec8896;
   --color-accent: #f6e1c6;
+  --color-text-light: #fdf7ef;
+  --color-text-dark: #030349;
   --font-dm-serif: "DM Serif Display", Arial, Helvetica, sans-serif;
 }
 
