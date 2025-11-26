@@ -112,10 +112,7 @@ const JourneyTimelineCard: React.FC = () => (
       />
       <TimelineItem
         title="Semester 2"
-        items={[
-          "Continue project work in your team",
-          "Take a lead position in your application area",
-        ]}
+        items={["Continue project work in your team", "Take a lead position in your application area"]}
       />
       <TimelineItem
         title="Semester 3+"
@@ -126,10 +123,7 @@ const JourneyTimelineCard: React.FC = () => (
       />
       <TimelineItem
         title="Alumni"
-        items={[
-          "Join Christmas parties and alumni events",
-          "Mentor new members and stay connected",
-        ]}
+        items={["Join Christmas parties and alumni events", "Mentor new members and stay connected"]}
         isLast
       />
     </div>

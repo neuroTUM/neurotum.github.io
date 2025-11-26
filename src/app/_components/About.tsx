@@ -26,9 +26,7 @@ const SideCard: React.FC<SideCardProps> = ({ title, body, side, offsetY }) => {
         borderRadius: 16,
         boxShadow: "0 16px 64px rgba(0,0,0,0.06)",
         textAlign: "center",
-        transform: isLeft
-          ? `translateY(calc(-50% + ${offsetY * 0.6}px))`
-          : `translateY(${offsetY * 0.6}px)`,
+        transform: isLeft ? `translateY(calc(-50% + ${offsetY * 0.6}px))` : `translateY(${offsetY * 0.6}px)`,
         willChange: "transform",
         display: "flex",
         flexDirection: "column",
@@ -157,13 +155,7 @@ const DesktopAbout: React.FC<{ content: CardContent[] }> = ({ content }) => {
       </div>
       {/* Left and right content cards */}
       {content.map((card) => (
-        <SideCard
-          key={card.title}
-          title={card.title}
-          body={card.body}
-          side={card.side}
-          offsetY={offsetY}
-        />
+        <SideCard key={card.title} title={card.title} body={card.body} side={card.side} offsetY={offsetY} />
       ))}
     </section>
   );
@@ -231,13 +223,11 @@ const About = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
 
-    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) =>
-      setIsMobile(event.matches);
+    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) => setIsMobile(event.matches);
 
     updateMatch(mediaQuery);
 
-    const handleChange = (event: MediaQueryListEvent) =>
-      setIsMobile(event.matches);
+    const handleChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
 
     if (typeof mediaQuery.addEventListener === "function") {
       mediaQuery.addEventListener("change", handleChange);

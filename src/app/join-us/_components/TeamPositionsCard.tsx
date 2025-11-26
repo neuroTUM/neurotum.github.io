@@ -9,21 +9,19 @@ const TEAM_POSITIONS = [
     name: "Electronics",
     description: (
       <>
-        The goal of this team is the design and build of a custom Electroencephalogram (EEG) system,
-        including active electrodes. This device is a key component of a brain-computer interface
-        (BCI), which allows the collection of neuronal data. As commercial systems are prohibitively
-        expensive despite comparatively low material cost, we have set out to build our own. Within
-        this team, members will get to dive into the world of circuit & PCB design for both analogue
-        and digital systems, soldering, and embedded programming for microcontrollers. Take a look
-        at our social media to see what we've been up to!
+        The goal of this team is the design and build of a custom Electroencephalogram (EEG) system, including active
+        electrodes. This device is a key component of a brain-computer interface (BCI), which allows the collection of
+        neuronal data. As commercial systems are prohibitively expensive despite comparatively low material cost, we
+        have set out to build our own. Within this team, members will get to dive into the world of circuit & PCB design
+        for both analogue and digital systems, soldering, and embedded programming for microcontrollers. Take a look at
+        our social media to see what we've been up to!
         <br />
         <br />
         <p>Nice to have:</p>
         <ul>
           <li>
             <p>
-              Some experience with electronics, PCB design, and programming - however these are not
-              hard requirements.
+              Some experience with electronics, PCB design, and programming - however these are not hard requirements.
             </p>
           </li>
           <li>
@@ -38,15 +36,14 @@ const TEAM_POSITIONS = [
     name: "BCI (Brain-Computer Interface)",
     description: (
       <>
-        Within this group, we are developing a brain-computer interface (BCI). By collecting EEG
-        signals, processing them, and classifying them, we could offer quadriplegic people the
-        possibility of controlling virtual environments (e.g. mouse cursor on a screen) with only
-        their brains. We envision this to be translated into the real world into a project such as a
-        mind-controlled wheelchair or robotic arm. This team consists of different sub-teams that
-        work together to put the different pieces of the BCI together. The first milestone of this
-        team was the participation in the ETH Cybathlon 2024 - BCI race. We are now continuing our
-        work to improve the system and planning the organization of possible sub-projects to work on
-        in the BCI team for the winter sememster 25/26.
+        Within this group, we are developing a brain-computer interface (BCI). By collecting EEG signals, processing
+        them, and classifying them, we could offer quadriplegic people the possibility of controlling virtual
+        environments (e.g. mouse cursor on a screen) with only their brains. We envision this to be translated into the
+        real world into a project such as a mind-controlled wheelchair or robotic arm. This team consists of different
+        sub-teams that work together to put the different pieces of the BCI together. The first milestone of this team
+        was the participation in the ETH Cybathlon 2024 - BCI race. We are now continuing our work to improve the system
+        and planning the organization of possible sub-projects to work on in the BCI team for the winter sememster
+        25/26.
         <br />
         <br />
         what are we looking for:
@@ -54,8 +51,8 @@ const TEAM_POSITIONS = [
         <ul>
           <li>Excitement about the fields of assistive technologies and neurotechnology.</li>
           <li>
-            motivation and interest to learn about the other aspects of the BCI system, experimental
-            design and integration of ethical concerns into the project
+            motivation and interest to learn about the other aspects of the BCI system, experimental design and
+            integration of ethical concerns into the project
           </li>
           <li>have worked in a team on a (technical) project and/or are interested in team work</li>
         </ul>
@@ -63,32 +60,25 @@ const TEAM_POSITIONS = [
         what we offer in our onboarding:
         <br />
         <ul>
+          <li>introduction to brain-computer interfaces, more specifically focused on EEG-based mobile BCIs</li>
           <li>
-            introduction to brain-computer interfaces, more specifically focused on EEG-based mobile
-            BCIs
+            tutorials on the different components of our BCI pipeline (in the form of Python notebooks and workshops)
           </li>
           <li>
-            tutorials on the different components of our BCI pipeline (in the form of Python
-            notebooks and workshops)
-          </li>
-          <li>
-            introduction to how to conduct an experimental session (including data collection,
-            training and running the online pipeline)
+            introduction to how to conduct an experimental session (including data collection, training and running the
+            online pipeline)
           </li>
         </ul>
         <br />
         as a member of the BCI time you will:
         <br />
         <ul>
-          <li>
-            help conduct experiments to do data collection, train the pilot and test new
-            implementations
-          </li>
+          <li>help conduct experiments to do data collection, train the pilot and test new implementations</li>
           <li>attend weekly meetings and work sessions</li>
           <li>
-            have 10/15 hours of time each week to contribute to one of the subprojects of the BCI
-            team (we can try and find ways for you to combine the project work you are doing in the
-            team with classes, project courses and mandatory internships for you to get credits)
+            have 10/15 hours of time each week to contribute to one of the subprojects of the BCI team (we can try and
+            find ways for you to combine the project work you are doing in the team with classes, project courses and
+            mandatory internships for you to get credits)
           </li>
         </ul>
       </>
@@ -105,8 +95,7 @@ const TEAM_POSITIONS = [
       },
       {
         title: "Signal processing",
-        description:
-          "Work on designing better digital filters and other (new) signal processing methods.",
+        description: "Work on designing better digital filters and other (new) signal processing methods.",
       },
       {
         title: "Machine/Deep Learning",
@@ -115,8 +104,7 @@ const TEAM_POSITIONS = [
       },
       {
         title: "IT-Security of mobile BCI devices",
-        description:
-          "Research on neural data privacy and security of EEG-based mobile BCI systems.",
+        description: "Research on neural data privacy and security of EEG-based mobile BCI systems.",
       },
       {
         title: "Software engineering and infrastructures",
@@ -161,17 +149,15 @@ const TEAM_POSITIONS = [
         title: "Communication (Social Media, Graphic Design, Scientific Communication)",
         description: (
           <>
-              <p>
-                <strong>We are looking for:</strong>
-              </p>
-              <ul>
-                <li>People excited about networking and talking to companies.</li>
-                <li>Creative minds for posters, merch and template designs.</li>
-                <li>Interest in science communication towards a general audience.</li>
-                <li>
-                  General motivation and interest in the field of neuroscience and neuroengineering.
-                </li>
-              </ul>
+            <p>
+              <strong>We are looking for:</strong>
+            </p>
+            <ul>
+              <li>People excited about networking and talking to companies.</li>
+              <li>Creative minds for posters, merch and template designs.</li>
+              <li>Interest in science communication towards a general audience.</li>
+              <li>General motivation and interest in the field of neuroscience and neuroengineering.</li>
+            </ul>
           </>
         ),
       },
@@ -179,14 +165,12 @@ const TEAM_POSITIONS = [
         title: "Ethics",
         description: (
           <>
-            The Ethics and Responsibility Officer ensures that ethics is not just a theoretical
-            concern but a fundamental part of neuroTUM's engineering and research processes. By
-            embedding structured ethical engagement, decision-making tools, and user-centred design
-            principles, the team will help establish neuroTUM as a model for responsible student-led
-            innovation in neurotechnology. The role involves organising ethical workshops for the
-            community body (in G&D, neuroethics, AI ethics etc.) curating resources for ethical
-            education of our team, and embedding ethical tools and engagement into neuroTUM's
-            culture and processes.
+            The Ethics and Responsibility Officer ensures that ethics is not just a theoretical concern but a
+            fundamental part of neuroTUM's engineering and research processes. By embedding structured ethical
+            engagement, decision-making tools, and user-centred design principles, the team will help establish neuroTUM
+            as a model for responsible student-led innovation in neurotechnology. The role involves organising ethical
+            workshops for the community body (in G&D, neuroethics, AI ethics etc.) curating resources for ethical
+            education of our team, and embedding ethical tools and engagement into neuroTUM's culture and processes.
             <br />
             <br />
             <p>
@@ -194,18 +178,17 @@ const TEAM_POSITIONS = [
             </p>
             <ul>
               <li>
-                Strong interest in the intersection of ethics, neurotechnology, and responsible
-                innovation Possible background in ethical topics, philosophy, psychology, HCI,
-                responsible design, or other related fields.
+                Strong interest in the intersection of ethics, neurotechnology, and responsible innovation Possible
+                background in ethical topics, philosophy, psychology, HCI, responsible design, or other related fields.
               </li>
               <li>
-                Familiarity with value-sensitive design and responsible innovation frameworks
-                Previous experience / contacts for organising workshops or seminars on ethical
-                topics (gender & diversity, neuroethics, AI ethics, etc.).
+                Familiarity with value-sensitive design and responsible innovation frameworks Previous experience /
+                contacts for organising workshops or seminars on ethical topics (gender & diversity, neuroethics, AI
+                ethics, etc.).
               </li>
               <li>
-                Willingness to discuss ethical concepts with an interdisciplinary team! Passion for
-                promoting social responsibility in the development of neuroTUM's projects.
+                Willingness to discuss ethical concepts with an interdisciplinary team! Passion for promoting social
+                responsibility in the development of neuroTUM's projects.
               </li>
             </ul>
             <br />
@@ -214,12 +197,12 @@ const TEAM_POSITIONS = [
             </p>
             <ul>
               <li>
-                Opportunity to organise and lead workshops, and collaborate with experts and fellow
-                students to make a positive impact through technology.
+                Opportunity to organise and lead workshops, and collaborate with experts and fellow students to make a
+                positive impact through technology.
               </li>
               <li>
-                Shape the ethical direction of neuroTUM's projects and gain hands-on experience in
-                integrating ethics into neuroengineering team projects.
+                Shape the ethical direction of neuroTUM's projects and gain hands-on experience in integrating ethics
+                into neuroengineering team projects.
               </li>
             </ul>
           </>
@@ -229,18 +212,16 @@ const TEAM_POSITIONS = [
         title: "Sponsorship",
         description: (
           <>
-            Working on neurotechnology-related or research projects is not a cheap hobby to have.
-            Our teams need financial and material means to achieve their work reliably. As a student
-            organization, we rely on constant support from research chairs and industry partners.
+            Working on neurotechnology-related or research projects is not a cheap hobby to have. Our teams need
+            financial and material means to achieve their work reliably. As a student organization, we rely on constant
+            support from research chairs and industry partners.
             <br />
             <br />
             <p>
               <strong>Nice to have:</strong>
             </p>
             <ul>
-              <li>
-                Interest and excitement in reaching out to potential sponsors and collaborators.
-              </li>
+              <li>Interest and excitement in reaching out to potential sponsors and collaborators.</li>
               <li>Experience with outreach and partner management.</li>
               <li>Experience with customer relations management (CRM systems).</li>
             </ul>
@@ -250,15 +231,13 @@ const TEAM_POSITIONS = [
             </p>
             <ul>
               <li>
-                Opportunity to get in touch with leading innovative companies and define neuroTUM's
-                strategic development.
+                Opportunity to get in touch with leading innovative companies and define neuroTUM's strategic
+                development.
               </li>
+              <li>Opportunity to be part of the process of creating a respected research organization.</li>
               <li>
-                Opportunity to be part of the process of creating a respected research organization.
-              </li>
-              <li>
-                Be part of a vibrant, dynamic, and supportive student community, collaborating
-                closely with peers passionate about research and responsible innovation.{" "}
+                Be part of a vibrant, dynamic, and supportive student community, collaborating closely with peers
+                passionate about research and responsible innovation.{" "}
               </li>
             </ul>
           </>
@@ -279,9 +258,7 @@ const TeamsPositionsCard: React.FC = () => {
   const [openSections, setOpenSections] = useState<number[]>([]);
 
   const toggleSection = (index: number) => {
-    setOpenSections((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
-    );
+    setOpenSections((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
   };
 
   return (

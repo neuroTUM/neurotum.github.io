@@ -150,10 +150,7 @@ const Teams = () => {
                 >
                   {team.initials} Team
                 </Link>
-                <Link
-                  href={team.works}
-                  style={{ color: "#ccc", textDecoration: "underline" }}
-                >
+                <Link href={team.works} style={{ color: "#ccc", textDecoration: "underline" }}>
                   Projects
                 </Link>
               </div>

@@ -77,13 +77,11 @@ const Partner = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
 
-    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) =>
-      setIsMobile(event.matches);
+    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) => setIsMobile(event.matches);
 
     updateMatch(mediaQuery);
 
-    const handleChange = (event: MediaQueryListEvent) =>
-      setIsMobile(event.matches);
+    const handleChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
 
     if (typeof mediaQuery.addEventListener === "function") {
       mediaQuery.addEventListener("change", handleChange);
@@ -107,16 +105,8 @@ const Partner = () => {
         padding: isMobile ? "56px 0 72px" : "0",
       }}
     >
-      <ImageGrid
-        images={collaboratorImages}
-        title="Our Collaborators"
-        isMobile={isMobile}
-      />
-      <ImageGrid
-        images={sponsorImages}
-        title="Our Sponsors"
-        isMobile={isMobile}
-      />
+      <ImageGrid images={collaboratorImages} title="Our Collaborators" isMobile={isMobile} />
+      <ImageGrid images={sponsorImages} title="Our Sponsors" isMobile={isMobile} />
     </section>
   );
 };

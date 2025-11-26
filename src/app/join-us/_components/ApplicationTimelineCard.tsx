@@ -1,6 +1,6 @@
 "use client";
 
-import Card from "../components/Card";
+import Card from "@/app/_components/Card";
 
 const ApplicationTimelineCard = () => {
   return (
@@ -20,8 +20,8 @@ const ApplicationTimelineCard = () => {
         </li>
       </ul>
       <p style={{ marginTop: "1rem" }}>
-        Please note that onboarding is <strong>mandatory</strong>. If you are unavailable during
-        those dates, acceptance to the club will not be possible.
+        Please note that onboarding is <strong>mandatory</strong>. If you are unavailable during those dates, acceptance
+        to the club will not be possible.
       </p>
     </Card>
   );

@@ -1,14 +1,11 @@
 "use client";
 
-import Card from "../components/Card";
+import Card from "@/app/_components/Card";
 
 const ApplyNowCard = () => {
   return (
     <Card title="Apply Now">
-      <p>
-        Ready to join us? We're excited to meet you and learn about your motivation to be part of
-        NeuroTUM!
-      </p>
+      <p>Ready to join us? We're excited to meet you and learn about your motivation to be part of NeuroTUM!</p>
 
       <div style={{ textAlign: "center" }}>
         <a

@@ -1,41 +1,14 @@
 "use client";
 
-import Footer from "../components/Footer";
 import Link from "next/link";
+
+import styles from "@/app/contact/page.module.css";
 
 export default function ContactPage() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "var(--background)",
-        color: "var(--foreground)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "var(--font-dm-serif)",
-      }}
-    >
-      <section
-        style={{
-          width: "100%",
-          maxWidth: 500,
-          margin: "4rem 0",
-          textAlign: "left",
-          padding: "0 1rem",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: 700,
-            marginBottom: "1rem",
-            letterSpacing: "-0.04em",
-          }}
-        >
-          Get in touch
-        </h1>
+    <div className={styles.container}>
+      <section className={styles.section}>
+        <h1 className={styles.title}>Get in touch</h1>
         <p
           style={{
             fontSize: "1.2rem",
@@ -106,7 +79,6 @@ export default function ContactPage() {
           </li>
         </ul>
       </section>
-      <Footer />
     </div>
   );
 }

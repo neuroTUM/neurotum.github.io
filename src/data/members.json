@@ -1,0 +1,296 @@
+[
+  {
+    "name": "Ekaterina Atanasov",
+    "team": "Electronics",
+    "status": "Member"
+  },
+  {
+    "name": "Vivien Hopf",
+    "team": "Neuromotion",
+    "status": "Member"
+  },
+  {
+    "name": "Niels Thiemann",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "MSc Neuroengineering"
+  },
+  {
+    "name": "Watsa Jukthumrong",
+    "team": "Electronics",
+    "status": "Member"
+  },
+  {
+    "name": "Glykeria Rovatsou",
+    "team": "Operations",
+    "status": "Board Member & Co-Director"
+  },
+  {
+    "name": "Jens von Greiff",
+    "team": "BCI",
+    "status": "Member"
+  },
+  {
+    "name": "Manuel Methasani",
+    "team": "BCI",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Nicolas Mallinckrodt",
+    "team": "Operations",
+    "status": "Member"
+  },
+  {
+    "name": "Iustin Curcean",
+    "team": "BCI",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Levi Frim",
+    "team": "BCI",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Nick Breit",
+    "team": "Operations",
+    "status": "Member"
+  },
+  {
+    "name": "Jenny Tabeling",
+    "team": "Operations",
+    "status": "Member"
+  },
+  {
+    "name": "Ekaterina Semenova",
+    "team": "Neuromotion",
+    "status": "Team Lead"
+  },
+  {
+    "name": "Rania Bannour",
+    "team": "Electronics",
+    "status": "Member"
+  },
+  {
+    "name": "Sadat",
+    "team": "BCI",
+    "status": "Team Lead"
+  },
+  {
+    "name": "Lucas Mateus Martins Araújo e Castro",
+    "team": "BCI",
+    "status": "Member"
+  },
+  {
+    "name": "Marina Tazeva",
+    "team": "Operations",
+    "status": "Member"
+  },
+  {
+    "name": "Anita Reutova",
+    "team": "Operations",
+    "status": "Member"
+  },
+  {
+    "name": "Muhammed Samir Öztürk",
+    "team": "Operations",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Enrico Fazzi",
+    "team": "Electronics",
+    "status": "Team Lead"
+  },
+  {
+    "name": "Paolo Favero",
+    "team": "BCI",
+    "status": "Advisor Member"
+  },
+  {
+    "name": "Ioana Milea",
+    "team": "Electronics",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Nele Wunner",
+    "team": "Operations",
+    "status": "Team Lead"
+  },
+  {
+    "name": "Isabel Tscherniak",
+    "team": "BCI",
+    "status": "Board Member & Co-Director",
+    "studyCourse": "M.Sc. Neuroengineering"
+  },
+  {
+    "name": "Anna Cernina",
+    "team": "Electronics",
+    "status": "Member"
+  },
+  {
+    "name": "Tobias Konieczny",
+    "team": "OpenHardware",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Daniel",
+    "team": "BCI",
+    "status": "Board Member & Co-Director"
+  },
+  {
+    "name": "Delfina",
+    "team": "BCI",
+    "status": "Advisor Member"
+  },
+  {
+    "name": "Elizabeth Emery",
+    "team": "Operations",
+    "status": "Member"
+  },
+  {
+    "name": "Ana McWhinnie Fernandez",
+    "team": "BCI",
+    "status": "Member"
+  },
+  {
+    "name": "Mert Önder",
+    "team": "Neuromotion",
+    "status": "Member"
+  },
+  {
+    "name": "Doğa",
+    "team": "Operations",
+    "status": "Passive Member"
+  },
+  {
+    "name": "Thien Le",
+    "team": "BCI",
+    "status": "Advisor Member",
+    "studyCourse": "phD student at Medical University Vienna"
+  },
+  {
+    "name": "Thien Le",
+    "team": "Neuromotion",
+    "status": "Advisor Member",
+    "studyCourse": "phD student at Medical University Vienna"
+  },
+  {
+    "name": "Fauzi Sholichin",
+    "team": "Operations",
+    "status": "Member",
+    "studyCourse": "M. Eng, AI Engineering of Autonomous Systems"
+  },
+  {
+    "name": "Pietro Marcolongo",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "M.Sc. Bioengineering for Neuroscience"
+  },
+  {
+    "name": "Dora Pruteanu",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "M. Sc. Computer Science"
+  },
+  {
+    "name": "Esther Utasá",
+    "team": "Neuromotion",
+    "status": "Member",
+    "studyCourse": "M. Sc. Neuroengineering"
+  },
+  {
+    "name": "Alexandra Khan",
+    "team": "Operations",
+    "status": "Member",
+    "studyCourse": "B. Sc. Bioinformatics"
+  },
+  {
+    "name": "Cristoph Müthering",
+    "team": "Operations",
+    "status": "Member",
+    "studyCourse": "M. Sc. Biochemistry"
+  },
+  {
+    "name": "Christian Ritter",
+    "team": "Neuromotion",
+    "status": "Member",
+    "studyCourse": "M. Sc. Neuroengineering"
+  },
+  {
+    "name": "Carl Ziesemer",
+    "team": "Neuromotion",
+    "status": "Member",
+    "studyCourse": "B. Sc. Management & Technology"
+  },
+  {
+    "name": "Jorge García Mosquera",
+    "team": "Electronics",
+    "status": "Member",
+    "studyCourse": "M. Sc. Neuroengineering"
+  },
+  {
+    "name": "Sining Li",
+    "team": "Operations",
+    "status": "Member",
+    "studyCourse": "M. A. Cultural & Cognitive Linguistics"
+  },
+  {
+    "name": "Ahmed Ghaleb",
+    "team": "Neuromotion",
+    "status": "Member",
+    "studyCourse": "M. Sc. Electrical Engineering"
+  },
+  {
+    "name": "Jan Vizthum",
+    "team": "Neuromotion",
+    "status": "Member",
+    "studyCourse": "B.Sc., Engineering Science"
+  },
+  {
+    "name": "Katalin Czopf",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "M. Sc. Biomedical Engineering & Medical Physics"
+  },
+  {
+    "name": "Begüm Ayaz",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "B. Sc. Molekular Biotechnology"
+  },
+  {
+    "name": "Gabriel Cabrera",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "B. Sc. Electrical and Computer Engineering"
+  },
+  {
+    "name": "Philipp Wagner",
+    "team": "Neuromotion",
+    "status": "Member",
+    "studyCourse": "M.Sc. Robotics, Cognition, Intelligence"
+  },
+  {
+    "name": "Glenn Krafczyk",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "M.Sc. Mathematics"
+  },
+  {
+    "name": "Solmaz Hüseynli",
+    "team": "Operations",
+    "status": "Member",
+    "studyCourse": "B. Sc. Molecular Biotechnology"
+  },
+  {
+    "name": "Sara Gorriz",
+    "team": "BCI",
+    "status": "Member",
+    "studyCourse": "M.Sc. Neuroengineering"
+  },
+  {
+    "name": "Tuna Öztürk",
+    "team": "Electronics",
+    "status": "Member",
+    "studyCourse": "B. Sc. Electrical engineering & information technology"
+  }
+]
