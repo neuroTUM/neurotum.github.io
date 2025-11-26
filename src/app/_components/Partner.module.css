@@ -1,0 +1,64 @@
+.partnerSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--background);
+  overflow: hidden;
+  padding: 56px 0 72px;
+  min-height: auto;
+  gap: 3rem;
+}
+
+.imageGrid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gridTitle {
+  text-align: center;
+  margin-bottom: 2.25rem;
+  font-size: 24px;
+}
+
+.gridWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+  padding: 0 1.5rem;
+  row-gap: 2.5rem;
+}
+
+.gridImage {
+  height: 72px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+@media (min-width: 769px) {
+  .partnerSection {
+    min-height: 90vh;
+    gap: 60px;
+    padding: 0;
+  }
+
+  .gridTitle {
+    margin-bottom: 3rem;
+    font-size: 28px;
+  }
+
+  .gridWrapper {
+    gap: 3rem;
+    padding: 0 2rem;
+    row-gap: 4rem;
+  }
+
+  .gridImage {
+    height: 120px;
+    max-width: 300px;
+  }
+}

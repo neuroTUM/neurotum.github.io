@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import styles from "./TeamPositionsCard.module.css";
 
 const TEAM_POSITIONS = [
   {
@@ -267,78 +268,26 @@ const TeamsPositionsCard: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true }}
-      style={{
-        background: "#fffaf2",
-        borderRadius: "1.8rem",
-        padding: "2.5rem",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.05), 0 8px 20px rgba(0,0,0,0.07)",
-        maxWidth: 900,
-        width: "100%",
-        margin: "0 auto",
-        border: "1px solid rgba(0,0,0,0.05)",
-      }}
+      className={styles.cardContainer}
     >
-      <h2
-        style={{
-          fontSize: "2rem",
-          fontWeight: 700,
-          fontFamily: "serif",
-          color: "#121212",
-          marginBottom: "2rem",
-        }}
-      >
-        Teams & Positions
-      </h2>
+      <h2 className={styles.cardTitle}>Teams & Positions</h2>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div className={styles.teamsList}>
         {TEAM_POSITIONS.map((team, i) => {
           const isOpen = openSections.includes(i);
           return (
             <div
               key={i}
-              style={{
-                background: isOpen ? "#fefcf8" : "#fdf8f0",
-                borderRadius: "1.2rem",
-                boxShadow: isOpen ? "0 4px 12px rgba(0,0,0,0.08)" : "0 2px 6px rgba(0,0,0,0.04)",
-                border: "1px solid rgba(0,0,0,0.05)",
-                overflow: "hidden",
-                transition: "all 0.25s ease",
-              }}
+              className={`${styles.teamSection} ${isOpen ? styles.teamSectionOpen : styles.teamSectionClosed}`}
             >
               {/* Accordion Header */}
               {/* Accordion Header */}
-              <button
-                onClick={() => toggleSection(i)}
-                style={{
-                  // --- REPLACEMENT FOR 'all: "unset"' ---
-                  background: "transparent",
-                  border: "none",
-                  textAlign: "left",
-                  // --- Your original styles ---
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  padding: "1.2rem 1.6rem",
-                  cursor: "pointer",
-                  fontFamily: "serif",
-                  fontWeight: 700,
-                  fontSize: "1.3rem",
-                  color: "#111",
-                }}
-              >
+              <button onClick={() => toggleSection(i)} className={styles.accordionButton}>
                 <span>{team.name}</span>
                 <motion.div
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  style={{
-                    marginLeft: "auto",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 24,
-                    height: 24,
-                    flexShrink: 0,
-                  }}
+                  className={styles.chevronWrapper}
                 >
                   {/* Ensure the size is also corrected */}
                   <ChevronDown size={20} strokeWidth={2} />
@@ -348,60 +297,13 @@ const TeamsPositionsCard: React.FC = () => {
               {/* Accordion Body */}
               <AnimatePresence initial={false}>
                 {isOpen && (
-                  <motion.div
-                    {...accordionMotion}
-                    style={{
-                      overflow: "hidden",
-                      padding: "0 1.6rem 1.6rem 1.6rem",
-                      color: "#333",
-                    }}
-                  >
-                    <div
-                      style={{
-                        marginBottom: "0.8rem",
-                        lineHeight: "1.6rem",
-                        fontSize: "1rem",
-                      }}
-                    >
-                      {team.description}
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "1rem",
-                        marginTop: "1rem",
-                      }}
-                    >
+                  <motion.div {...accordionMotion} className={styles.accordionBody}>
+                    <div className={styles.teamDescription}>{team.description}</div>
+                    <div className={styles.positionsList}>
                       {team.positions.map((pos, idx) => (
-                        <div
-                          key={idx}
-                          style={{
-                            background: "#fff",
-                            padding: "1rem 1.2rem",
-                            borderRadius: "1rem",
-                            boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
-                            border: "1px solid rgba(0,0,0,0.04)",
-                          }}
-                        >
-                          <strong
-                            style={{
-                              display: "block",
-                              fontSize: "1.05rem",
-                              marginBottom: "0.2rem",
-                            }}
-                          >
-                            {pos.title}
-                          </strong>
-                          <div
-                            style={{
-                              fontSize: "0.95rem",
-                              color: "#444",
-                              lineHeight: "1.4rem",
-                            }}
-                          >
-                            {pos.description}
-                          </div>
+                        <div key={idx} className={styles.positionItem}>
+                          <strong className={styles.positionTitle}>{pos.title}</strong>
+                          <div className={styles.positionDescription}>{pos.description}</div>
                         </div>
                       ))}
                     </div>

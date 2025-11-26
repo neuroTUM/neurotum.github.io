@@ -11,21 +11,21 @@
   align-items: center;
 
   transition:
-    width 0.5s cubic-bezier(0.4,0,0.2,1),
-    border-radius 0.5s cubic-bezier(0.4,0,0.2,1),
-    box-shadow 0.5s cubic-bezier(0.4,0,0.2,1),
-    padding 0.5s cubic-bezier(0.4,0,0.2,1),
-    top 0.5s cubic-bezier(0.4,0,0.2,1),
-    background 0.5s cubic-bezier(0.4,0,0.2,1),
-    border 0.5s cubic-bezier(0.4,0,0.2,1),
-    backdrop-filter 0.5s cubic-bezier(0.4,0,0.2,1);
+    width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbarTop {
   top: 0;
   width: 100vw;
   border-radius: 0 0 0 0;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 2rem;
   border: none;
   backdrop-filter: none;
@@ -43,7 +43,9 @@
 
 .navItem {
   cursor: pointer;
-  transition: color 0.2s, transform 0.2s;
+  transition:
+    color 0.2s,
+    transform 0.2s;
   padding: 0.2em 0.6em;
   border-radius: 8px;
   font-weight: 500;

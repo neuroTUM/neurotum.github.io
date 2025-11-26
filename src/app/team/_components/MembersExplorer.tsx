@@ -13,7 +13,7 @@ const letterAnimation = {
   exit: { opacity: 0, y: -20 },
 };
 
-const ALL_FILTER_LABEL = "All"; 
+const ALL_FILTER_LABEL = "All";
 const TEAM_DESCRIPTIONS: Record<string, string> = TeamDescriptionsData;
 const TEAM_LABELS = Object.keys(TEAM_DESCRIPTIONS);
 
@@ -25,7 +25,7 @@ export interface Member {
   team: Team;
   status: Status;
   studyCourse?: string;
-  imageLink?: string; 
+  imageLink?: string;
 }
 
 const MEMBERS: Member[] = MembersData as Member[];
@@ -42,37 +42,34 @@ const MemberCard: React.FC<Member> = ({ name, team, status, studyCourse }: Membe
 };
 
 interface FilterButtonProps {
-    group: string;
-    teamFilter: string;
-    onClick: (group: string) => void;
+  group: string;
+  teamFilter: string;
+  onClick: (group: string) => void;
 }
 
 const FilterButton: React.FC<FilterButtonProps> = ({ group, teamFilter, onClick }) => {
-    const isActive = teamFilter === group;
-    return (
-        <button
-            key={group}
-            onClick={() => onClick(group)}
-            className={isActive ? styles.filterButtonActive : styles.filterButton}
-        >
-            {group}
-        </button>
-    );
-}
+  const isActive = teamFilter === group;
+  return (
+    <button
+      key={group}
+      onClick={() => onClick(group)}
+      className={isActive ? styles.filterButtonActive : styles.filterButton}
+    >
+      {group}
+    </button>
+  );
+};
 
 const MemberExplorer = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
-  const selectedParam = searchParams.get("selected");
-  
-  const currentFilter = (selectedParam && TEAM_LABELS.includes(selectedParam)) 
-    ? selectedParam 
-    : ALL_FILTER_LABEL;
 
-  const filteredMembers = currentFilter === ALL_FILTER_LABEL 
-    ? MEMBERS 
-    : MEMBERS.filter((member) => member.team === currentFilter);
+  const selectedParam = searchParams.get("selected");
+
+  const currentFilter = selectedParam && TEAM_LABELS.includes(selectedParam) ? selectedParam : ALL_FILTER_LABEL;
+
+  const filteredMembers =
+    currentFilter === ALL_FILTER_LABEL ? MEMBERS : MEMBERS.filter((member) => member.team === currentFilter);
 
   const handleFilterClick = (group: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -87,7 +84,7 @@ const MemberExplorer = () => {
   };
 
   const displayTitle = currentFilter === ALL_FILTER_LABEL ? "NeuroTUM" : currentFilter;
-  const teamDescription = TEAM_DESCRIPTIONS[currentFilter] || TEAM_DESCRIPTIONS[ALL_FILTER_LABEL]; 
+  const teamDescription = TEAM_DESCRIPTIONS[currentFilter] || TEAM_DESCRIPTIONS[ALL_FILTER_LABEL];
 
   return (
     <section className={styles.memberExplorerSection}>
@@ -108,19 +105,12 @@ const MemberExplorer = () => {
             ))}
           </motion.h1>
         </AnimatePresence>
-        
-        <p className={styles.descriptionText}>
-          {teamDescription}
-        </p>
-        
+
+        <p className={styles.descriptionText}>{teamDescription}</p>
+
         <div className={styles.filterRow}>
           {TEAM_LABELS.map((group) => (
-            <FilterButton 
-                key={group} 
-                group={group} 
-                teamFilter={currentFilter} 
-                onClick={handleFilterClick} 
-            />
+            <FilterButton key={group} group={group} teamFilter={currentFilter} onClick={handleFilterClick} />
           ))}
         </div>
 

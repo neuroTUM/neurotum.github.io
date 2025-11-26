@@ -1,0 +1,15 @@
+.buttonWrapper {
+  text-align: center;
+}
+
+.applyButton {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 3rem;
+  font-weight: 700;
+  font-family: serif;
+  margin-top: 1.5rem;
+  text-decoration: none;
+}

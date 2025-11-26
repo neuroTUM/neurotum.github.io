@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import styles from "./Hero.module.css";
 
 type StripeConfig = {
   direction: 1 | -1;
@@ -36,26 +37,14 @@ const STRIPES: StripeConfig[] = [
 ];
 
 const Hero: React.FC = () => (
-  <section
-    style={{
-      height: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      overflow: "hidden",
-    }}
-  >
+  <section className={styles.heroSection}>
     {STRIPES.map(({ direction, backgroundColor, textColor, hoverBackground, hoverText }, index) => (
       <motion.div
         key={`stripe-${index}`}
+        className={styles.stripe}
         style={{
-          flex: 1,
           backgroundColor,
           color: textColor,
-          display: "flex",
-          alignItems: "center",
-          position: "relative",
-          overflow: "hidden",
-          cursor: "pointer",
           borderTop: index === 0 ? "none" : "1px solid rgba(0, 0, 0, 0.08)",
           borderBottom: index === STRIPES.length - 1 ? "none" : "1px solid rgba(0, 0, 0, 0.08)",
         }}
@@ -77,17 +66,7 @@ const Hero: React.FC = () => (
             ease: "linear",
             repeat: Infinity,
           }}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "clamp(2rem, 12vw, 10rem)",
-            whiteSpace: "nowrap",
-            fontSize: "clamp(5rem, 30vh, 24rem)",
-            lineHeight: 0.9,
-            textTransform: "uppercase",
-            letterSpacing: "-0.06em",
-            padding: "0 6vw",
-          }}
+          className={styles.textContainer}
         >
           {Array.from({ length: 8 }).map((_, textIndex) => (
             <span key={`stripe-${index}-text-${textIndex}`}>neuroTUM</span>

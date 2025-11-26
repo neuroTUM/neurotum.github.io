@@ -1,11 +1,12 @@
 "use client";
 
 import Card from "@/app/_components/Card";
+import styles from "./ApplicationTimelineCard.module.css";
 
 const ApplicationTimelineCard = () => {
   return (
     <Card title="Application Timeline">
-      <ul style={{ listStyle: "none", padding: 0, lineHeight: "1.8rem" }}>
+      <ul className={styles.timelineList}>
         <li>
           <strong>Applications open:</strong> 06.10.2025 - 24.10.2025
         </li>
@@ -19,7 +20,7 @@ const ApplicationTimelineCard = () => {
           <strong>Onboarding:</strong> 03.11 - 04.11
         </li>
       </ul>
-      <p style={{ marginTop: "1rem" }}>
+      <p className={styles.note}>
         Please note that onboarding is <strong>mandatory</strong>. If you are unavailable during those dates, acceptance
         to the club will not be possible.
       </p>

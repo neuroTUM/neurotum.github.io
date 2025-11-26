@@ -1,0 +1,28 @@
+.card {
+  background: #fffaf2;
+  border-radius: 1.8rem;
+  padding: 2.5rem;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 8px 20px rgba(0, 0, 0, 0.07);
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: serif;
+  color: #121212;
+}
+
+.content {
+  font-family: serif;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  color: #333;
+}

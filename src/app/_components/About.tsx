@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import styles from "./About.module.css";
 
 type SideCardProps = {
   title: string;
@@ -15,47 +16,13 @@ const SideCard: React.FC<SideCardProps> = ({ title, body, side, offsetY }) => {
 
   return (
     <div
+      className={`${styles.sideCard} ${isLeft ? styles.sideCardLeft : styles.sideCardRight}`}
       style={{
-        position: "absolute",
-        left: isLeft ? "0%" : undefined,
-        right: !isLeft ? "2%" : undefined,
-        top: isLeft ? "55%" : "15%",
-        width: 340,
-        background: "var(--color-secondary)",
-        zIndex: 3,
-        borderRadius: 16,
-        boxShadow: "0 16px 64px rgba(0,0,0,0.06)",
-        textAlign: "center",
         transform: isLeft ? `translateY(calc(-50% + ${offsetY * 0.6}px))` : `translateY(${offsetY * 0.6}px)`,
-        willChange: "transform",
-        display: "flex",
-        flexDirection: "column",
-        padding: 24,
-        color: "#0b0f1a",
       }}
     >
-      <h3
-        style={{
-          margin: 0,
-          fontSize: 22,
-          lineHeight: 1.2,
-          letterSpacing: -0.2,
-          color: "#0b0f1a",
-        }}
-      >
-        {title}
-      </h3>
-      <p
-        style={{
-          marginTop: 12,
-          fontSize: 14,
-          lineHeight: 1.6,
-          color: "#223",
-          opacity: 0.9,
-        }}
-      >
-        {body}
-      </p>
+      <h3 className={styles.sideCardTitle}>{title}</h3>
+      <p className={styles.sideCardBody}>{body}</p>
     </div>
   );
 };
@@ -112,46 +79,15 @@ const DesktopAbout: React.FC<{ content: CardContent[] }> = ({ content }) => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        position: "relative",
-        height: "80vh",
-        width: "100%",
-        maxWidth: 1200,
-        margin: "0 auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "var(--background)",
-        overflow: "hidden",
-      }}
-    >
+    <section ref={sectionRef} className={styles.desktopAboutSection}>
       {/* Center Rectangle replaced by team photo (background, slower) */}
       <div
+        className={styles.imageContainer}
         style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: 600,
-          height: 820, // increased height
-          zIndex: 2,
-          borderRadius: 24,
-          boxShadow: "0 32px 96px rgba(0,0,0,0.08)",
           transform: `translate(-50%, calc(-50% + ${offsetY * 0.25}px))`,
-          willChange: "transform",
-          overflow: "hidden",
-          background: "#000",
         }}
       >
-        <Image
-          src="/team_photos/team_sose25.jpg"
-          alt="neuroTUM team photo"
-          fill
-          style={{
-            objectFit: "cover",
-          }}
-        />
+        <Image src="/team_photos/team_sose25.jpg" alt="neuroTUM team photo" fill className={styles.teamImage} />
       </div>
       {/* Left and right content cards */}
       {content.map((card) => (
@@ -162,55 +98,12 @@ const DesktopAbout: React.FC<{ content: CardContent[] }> = ({ content }) => {
 };
 
 const MobileAbout: React.FC<{ content: CardContent[] }> = ({ content }) => (
-  <section
-    style={{
-      width: "100%",
-      background: "var(--background)",
-      padding: "56px 20px 64px",
-    }}
-  >
-    <div
-      style={{
-        maxWidth: 540,
-        margin: "0 auto",
-        display: "flex",
-        flexDirection: "column",
-        gap: "1.5rem",
-      }}
-    >
+  <section className={styles.mobileAboutSection}>
+    <div className={styles.mobileAboutWrapper}>
       {content.map(({ title, body }) => (
-        <div
-          key={title}
-          style={{
-            background: "var(--color-secondary)",
-            borderRadius: 16,
-            boxShadow: "0 12px 40px rgba(0,0,0,0.08)",
-            padding: "24px",
-            color: "#0b0f1a",
-            textAlign: "left",
-          }}
-        >
-          <h3
-            style={{
-              margin: 0,
-              fontSize: 20,
-              lineHeight: 1.3,
-              letterSpacing: -0.2,
-            }}
-          >
-            {title}
-          </h3>
-          <p
-            style={{
-              marginTop: 12,
-              fontSize: 15,
-              lineHeight: 1.6,
-              color: "#223",
-              opacity: 0.92,
-            }}
-          >
-            {body}
-          </p>
+        <div key={title} className={styles.mobileCard}>
+          <h3 className={styles.mobileCardTitle}>{title}</h3>
+          <p className={styles.mobileCardBody}>{body}</p>
         </div>
       ))}
     </div>

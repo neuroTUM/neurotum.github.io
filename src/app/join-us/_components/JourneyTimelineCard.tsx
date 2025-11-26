@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import styles from "./JourneyTimelineCard.module.css";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -14,58 +15,20 @@ const TimelineItem: React.FC<{
   items: string[];
   isLast?: boolean;
 }> = ({ title, items, isLast }) => (
-  <div style={{ position: "relative", display: "flex" }}>
+  <div className={styles.timelineItem}>
     {/* Timeline connector */}
-    <div
-      style={{
-        position: "relative",
-        width: "2rem",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <div className={styles.timelineConnector}>
       {/* Line */}
-      {!isLast && (
-        <div
-          style={{
-            position: "absolute",
-            top: "1.2rem",
-            bottom: "-2rem",
-            width: "2px",
-            background: "rgba(0,0,0,0.1)",
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-        />
-      )}
+      {!isLast && <div className={styles.timelineLine} />}
       {/* Dot */}
-      <div
-        style={{
-          width: "0.9rem",
-          height: "0.9rem",
-          background: "#111",
-          borderRadius: "50%",
-          marginTop: "0.3rem",
-          boxShadow: "0 0 0 5px #fffaf2",
-        }}
-      />
+      <div className={styles.timelineDot} />
     </div>
 
-    <div style={{ flex: 1, paddingLeft: "1rem" }}>
-      <h3
-        style={{
-          fontSize: "1.3rem",
-          fontWeight: 700,
-          color: "#111",
-          marginBottom: "0.4rem",
-          fontFamily: "serif",
-        }}
-      >
-        {title}
-      </h3>
-      <ul style={{ margin: 0, paddingLeft: "1.2rem", lineHeight: "1.8rem" }}>
+    <div className={styles.timelineContent}>
+      <h3 className={styles.timelineItemTitle}>{title}</h3>
+      <ul className={styles.timelineItemList}>
         {items.map((item, i) => (
-          <li key={i} style={{ marginBottom: "0.4rem" }}>
+          <li key={i} className={styles.timelineListItem}>
             {item}
           </li>
         ))}
@@ -75,32 +38,10 @@ const TimelineItem: React.FC<{
 );
 
 const JourneyTimelineCard: React.FC = () => (
-  <motion.div
-    {...fadeInUp}
-    style={{
-      background: "#fffaf2",
-      borderRadius: "1.8rem",
-      padding: "2.5rem",
-      boxShadow: "0 2px 4px rgba(0,0,0,0.05), 0 8px 20px rgba(0,0,0,0.07)",
-      maxWidth: 900,
-      width: "100%",
-      margin: "0 auto",
-      border: "1px solid rgba(0,0,0,0.05)",
-    }}
-  >
-    <h2
-      style={{
-        fontSize: "2rem",
-        fontWeight: 700,
-        fontFamily: "serif",
-        color: "#121212",
-        marginBottom: "2rem",
-      }}
-    >
-      Your Journey as a NeuroTUM Member
-    </h2>
+  <motion.div {...fadeInUp} className={styles.cardContainer}>
+    <h2 className={styles.cardTitle}>Your Journey as a NeuroTUM Member</h2>
 
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div className={styles.timelineContainer}>
       <TimelineItem
         title="Semester 1"
         items={[
