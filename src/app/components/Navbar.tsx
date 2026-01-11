@@ -17,7 +17,6 @@ const NAV_ITEMS: NavItem[] = [
   { name: "Home", href: "/", isLogo: true },
   { name: "Research", href: "/research" },
   { name: "News", href: "/news"},
-  { name: "Events", href: "/events" },
   { name: "Team", href: "/team" },
   { name: "Partners", href: "/partners" },
   { name: "Contact", href: "/contact" },

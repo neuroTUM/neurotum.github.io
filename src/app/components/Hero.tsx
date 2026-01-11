@@ -1,11 +1,9 @@
-// src/app/components/Hero.tsx
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-const ASCII_DATA = `                                                                                 
+const ASCII_DATA = `                                                                    
                                          %#=:0:-=*-:::::--+#0%%1%                                   
                                  %*-::---:--+-=-:-----==::::-:::::-=0%                              
                              #*++:::0=+=::::=*--:::-++::::1++::1:---:-*%                            
@@ -51,7 +49,7 @@ const ASCII_DATA = `                                        
 
 const Hero: React.FC = () => {
   const [missionText, setMissionText] = useState("");
-  const [showButtons, setShowButtons] = useState({ btn1: false, btn2: false });
+  const [showSubText, setShowSubText] = useState(false);
   const fullText = " | Advancing neuroengineering at TUM";
 
   useEffect(() => {
@@ -62,11 +60,10 @@ const Hero: React.FC = () => {
         currentIndex++;
       } else {
         clearInterval(typingInterval);
-        // Trigger buttons animation after typing finishes
-        setTimeout(() => setShowButtons((prev) => ({ ...prev, btn1: true })), 200);
-        setTimeout(() => setShowButtons((prev) => ({ ...prev, btn2: true })), 500);
+        // Trigger mission text visibility after typing finishes
+        setTimeout(() => setShowSubText(true), 200);
       }
-    }, 50); // Adjust typing speed here (ms)
+    }, 50);
 
     return () => clearInterval(typingInterval);
   }, []);
@@ -74,7 +71,7 @@ const Hero: React.FC = () => {
   return (
     <section
       style={{
-        height: "100%", // Changed to 100% to fit the snap container
+        height: "100%",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -83,16 +80,13 @@ const Hero: React.FC = () => {
         overflow: "hidden",
         backgroundColor: "var(--background)",
         position: "relative",
-        // Removed paddingBottom to allow true centering
       }}
     >
-      {/* Title Text & Mission Statement Wrapper */}
       <div
         style={{
           position: "relative",
           zIndex: 10,
           textAlign: "left",
-          // Removed negative transform to bring elements down
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
@@ -115,11 +109,11 @@ const Hero: React.FC = () => {
           <p
             style={{
               fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
-              color: "#105fdfff", // Brighter blue
+              color: "#105fdfff",
               opacity: 0.9,
               marginTop: "3rem",
               fontWeight: 600,
-              minHeight: "1.5em", // Reserve space to prevent layout shift
+              minHeight: "1.5em",
               cursor: "pointer",
               transition: "opacity 0.2s",
             }}
@@ -130,67 +124,29 @@ const Hero: React.FC = () => {
           </p>
         </Link>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "1.5rem", alignItems: "flex-start" }}>
-          <Link href="/impact" style={{ textDecoration: "none" }}>
-            <button
-              style={{
-                padding: 0,
-                fontSize: "1.5rem",
-                fontWeight: 600,
-                color: "var(--foreground)",
-                backgroundColor: "transparent",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-                // Animation styles
-                opacity: showButtons.btn1 ? 1 : 0,
-                transform: showButtons.btn1 ? "translateY(0)" : "translateY(10px)",
-                transition: "opacity 0.5s ease, transform 0.5s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = "0.6";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.opacity = "1";
-              }}
-            >
-              Our Impact
-            </button>
-          </Link>
-          <Link href="/join" style={{ textDecoration: "none" }}>
-            <button
-              style={{
-                padding: 0,
-                fontSize: "1.5rem",
-                fontWeight: 600,
-                color: "var(--foreground)",
-                backgroundColor: "transparent",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-                // Animation styles
-                opacity: showButtons.btn2 ? 1 : 0,
-                transform: showButtons.btn2 ? "translateY(0)" : "translateY(10px)",
-                transition: "opacity 0.5s ease, transform 0.5s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = "0.6";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.opacity = "1";
-              }}
-            >
-              Become A Member
-            </button>
-          </Link>
-        </div>
+        {/* Updated mission statement appearing all at once */}
+        <p
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: 600,
+            color: "var(--foreground)",
+            marginTop: "1.5rem",
+            /* Restricted width to avoid overlaying ASCII art */
+            maxWidth: "450px", 
+            lineHeight: 1.4,
+            opacity: showSubText ? 1 : 0,
+            transform: showSubText ? "translateY(0)" : "translateY(10px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
+          Led by students, we work at the intersection of Neuroscience, Electrical Engineering and Robotics.
+        </p>
       </div>
 
-      {/* ASCII Brain (Background Layer) */}
       <div
         style={{
           position: "absolute",
-          top: "50%", // Reset to center
+          top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           zIndex: 0,
@@ -215,7 +171,6 @@ const Hero: React.FC = () => {
             fontSize: "clamp(6px, 1.2vw, 14px)",
             lineHeight: "clamp(7px, 1.3vw, 15px)",
             textAlign: "center",
-            
           }}
         >
           {ASCII_DATA}

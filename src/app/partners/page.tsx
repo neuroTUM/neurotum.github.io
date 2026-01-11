@@ -2,75 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Footer from "../components/Footer";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const GAP = 60;
 const MOBILE_BREAKPOINT = 768;
 
-const collaboratorImages = [
-  "/collaborator_images/fortiss.png",
-  "/collaborator_images/makerspace.png",
-  "/collaborator_images/mbraintrain.png",
-  "/collaborator_images/TUM_associate_professorship_of_neuroelectronics.png",
-  "/collaborator_images/TUM_chair_of_ai_processor_design.png",
-  "/collaborator_images/TUM_institute_of_cognitive_systems.png",
-  "/collaborator_images/TUM_venture_labs.png",
+// Combined list of all partners for the detailed view
+const allPartners = [
+  { src: "/collaborator_images/fortiss.png", name: "fortiss" },
+  { src: "/collaborator_images/makerspace.png", name: "MakerSpace" },
+  { src: "/collaborator_images/mbraintrain.png", name: "mbt" },
+  { src: "/collaborator_images/TUM_associate_professorship_of_neuroelectronics.png", name: "TUM Neuroelectronics" },
+  { src: "/collaborator_images/TUM_chair_of_ai_processor_design.png", name: "TUM AI Processor Design" },
+  { src: "/collaborator_images/TUM_institute_of_cognitive_systems.png", name: "TUM ICS" },
+  { src: "/collaborator_images/TUM_venture_labs.png", name: "TUM Venture Labs" },
+  { src: "/sponsor_images/industrial_innovators.svg", name: "Industrial Innovators" },
+  { src: "/sponsor_images/TUM_bund_der_freunde.svg", name: "TUM Bund der Freunde" },
+  { src: "/sponsor_images/mouser-electronics.png", name: "Mouser Electronics" },
 ];
-
-const sponsorImages = [
-  "/sponsor_images/industrial_innovators.svg",
-  "/sponsor_images/TUM_bund_der_freunde.svg",
-  "/sponsor_images/mouser-electronics.png",
-];
-
-interface ImageGridProps {
-  images: string[];
-  title: string;
-  isMobile: boolean;
-}
-
-const ImageGrid = ({ images, title, isMobile }: ImageGridProps) => (
-  <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-    <h2
-      style={{
-        textAlign: "center",
-        marginBottom: isMobile ? "2.25rem" : "3rem",
-        fontSize: isMobile ? 24 : 28,
-        color: "var(--foreground)",
-      }}
-    >
-      {title}
-    </h2>
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: isMobile ? "1.75rem" : "3rem",
-        padding: isMobile ? "0 1.5rem" : "0 2rem",
-        rowGap: isMobile ? "2.5rem" : "4rem",
-      }}
-    >
-      {images.map((image, index) => (
-        <Image
-          key={index}
-          src={`${basePath}${image}`}
-          alt={`${title} ${index + 1}`}
-          height={isMobile ? 72 : 120}
-          width={isMobile ? 180 : 300}
-          style={{
-            height: isMobile ? "72px" : "120px",
-            width: "auto",
-            maxWidth: isMobile ? "200px" : "300px",
-            objectFit: "contain",
-            transition: "filter 0.3s",
-          }}
-        />
-      ))}
-    </div>
-  </div>
-);
 
 export default function PartnersPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -88,35 +37,131 @@ export default function PartnersPage() {
     return () => mediaQuery.removeListener(handleChange);
   }, []);
 
+  const standardColor = "var(--foreground)";
+
   return (
     <main
       style={{
         minHeight: "100vh",
-        /* No extra padding needed here as body already has it, 
-           but good to ensure main content flow */
         background: "var(--background)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <section
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          gap: isMobile ? "3rem" : `${GAP}px`,
-          padding: isMobile ? "56px 0 72px" : "60px 0",
-        }}
-      >
-        <ImageGrid
-          images={collaboratorImages}
-          title="Our Collaborators"
-          isMobile={isMobile}
-        />
-        <ImageGrid
-          images={sponsorImages}
-          title="Our Sponsors"
-          isMobile={isMobile}
-        />
-      </section>
+      {/* Standard Header Section matching other pages */}
+      <div style={{
+        maxWidth: "1300px", 
+        margin: "0 auto", 
+        width: "100%",
+        padding: "calc(var(--header-height) + 4rem) 2rem 0 2rem"
+      }}>
+        <header style={{ marginBottom: "2rem" }}>
+          <h1 style={{ 
+            fontSize: "clamp(3rem, 8vw, 5rem)", 
+            fontWeight: 500, 
+            letterSpacing: "-0.04em", 
+            marginBottom: "0.5rem",
+            color: standardColor
+          }}>
+            Our collaborations
+          </h1>
+        </header>
+
+        {/* Centered Lorem Ipsum Text Field */}
+        <div style={{ 
+          textAlign: "center", 
+          margin: "4rem auto", 
+          maxWidth: "800px" 
+        }}>
+          <p style={{ 
+            fontSize: "1.1rem", 
+            lineHeight: 1.6, 
+            opacity: 0.6,
+            color: standardColor
+          }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          </p>
+        </div>
+
+        {/* Subtitle: "current partners" */}
+        <h2 style={{ 
+          textAlign: "left",
+          fontSize: "clamp(2rem, 6vw, 3.5rem)", 
+          fontWeight: 500, 
+          letterSpacing: "-0.04em", 
+          marginTop: "6rem",
+          marginBottom: "4rem",
+          color: standardColor
+        }}>
+          current partners
+        </h2>
+
+        {/* List of Partners: Image left (centered in box), Text right */}
+        <div style={{ 
+          display: "flex", 
+          flexDirection: "column", 
+          gap: "6rem",
+          marginBottom: "8rem"
+        }}>
+          {allPartners.map((partner, index) => (
+            <div 
+              key={index}
+              style={{ 
+                display: "flex", 
+                flexDirection: isMobile ? "column" : "row",
+                alignItems: isMobile ? "center" : "center", // Vertically center text with logo
+                gap: "4rem"
+              }}
+            >
+              {/* Partner Image Container - Now using justifyContent: "center" for natural alignment */}
+              <div style={{ 
+                flexShrink: 0, 
+                width: isMobile ? "100%" : "300px",
+                height: "120px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center" // Ensures optical center alignment vertically above each other
+              }}>
+                <Image
+                  src={`${basePath}${partner.src}`}
+                  alt={partner.name}
+                  height={120}
+                  width={300}
+                  style={{
+                    height: "100%",
+                    width: "auto",
+                    objectFit: "contain",
+                    maxWidth: "100%"
+                  }}
+                />
+              </div>
+
+              {/* Partner Text Field */}
+              <div style={{ flex: 1 }}>
+                <h3 style={{ 
+                  fontSize: "1.5rem", 
+                  fontWeight: 600, 
+                  marginBottom: "1rem", 
+                  color: standardColor 
+                }}>
+                  {partner.name}
+                </h3>
+                <p style={{ 
+                  fontSize: "1rem", 
+                  lineHeight: 1.6, 
+                  opacity: 0.7,
+                  color: standardColor 
+                }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <Footer />
     </main>
   );
 }
