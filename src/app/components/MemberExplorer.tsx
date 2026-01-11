@@ -1,247 +1,222 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MEMBERS } from "./MEMBERS";
 
-const letterAnimation = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-};
-
-const TEAM_DESCRIPTIONS: Record<string, string> = {
-  All: "All members of NeuroTUM across all teams.",
-  Electronics:
-    "The Electronics team designs, builds, and tests hardware for our neurotechnology projects, focusing on circuit design, PCB layout, and embedded systems.",
-  Neuromotion:
-    "The Neuromotion team explores the intersection of neuroscience and movement, working on projects related to motor control, rehabilitation, and brain-machine interfaces.",
-  BCI: "The BCI (Brain-Computer Interface) team develops systems that enable direct communication between the brain and external devices, pushing the boundaries of neurotechnology.",
-  Operations:
-    "The Operations team ensures the smooth running of the organization, handling logistics, event planning, and internal coordination.",
-};
-
-const TEAM_LABELS = Object.keys(TEAM_DESCRIPTIONS);
-
-type Team = keyof typeof TEAM_DESCRIPTIONS;
-type Status =
-  | "Member"
-  | "Team Lead"
-  | "Board Member & Co-Director"
-  | "Passive Member"
-  | "Advisor Member";
-type Filter = "All" | Team;
+export type TeamKey = "All" | "BCI" | "Electronics" | "Neuromotion" | "Operations";
 
 export interface Member {
   name: string;
-  team: Team;
-  status: Status;
+  team: Exclude<TeamKey, "All">;
+  status: string;
   studyCourse?: string;
   imageLink?: string;
 }
 
-const MemberCard: React.FC<Member> = ({ name, team, status, studyCourse }: Member) => {
-  return (
-    <>
-      <div style={{ fontSize: "1.3rem", fontWeight: 700 }}>{name}</div>
-      <div style={{ marginTop: 4 }}>{team}</div>
-      <div style={{ marginTop: 4, fontSize: "0.95rem", color: "#555" }}>{status}</div>
-      {studyCourse && (
-        <div style={{ marginTop: 4, fontSize: "0.9rem", color: "#777" }}>{studyCourse}</div>
-      )}
-    </>
-  );
+const TEAM_DESCRIPTIONS: Record<TeamKey, string> = {
+  All: "Pioneering the future of neurotechnology through interdisciplinary collaboration.",
+  BCI: "We are developing a brain-computer interface (BCI). By collecting EEG signals, processing them, and classifying them, we could offer quadriplegic people the possibility of controlling virtual environments with their thoughts.",
+  Electronics: "We are building a custom Electroencephalogram (EEG) system, including active electrodes. This device is a key component of a brain-computer interface (BCI), which allows the collection of neuronal data.",
+  Neuromotion: "We are bridging neuroscience and movement, exploring rehabilitation and assistive applications using Brain-Computer Interfaces.",
+  Operations: "We are the organizational backbone managing our growth, ethics, and partnerships.",
 };
+
+const TEAM_LABELS = Object.keys(TEAM_DESCRIPTIONS) as TeamKey[];
 
 const MemberExplorer = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedParam = searchParams.get("selected");
 
-  const [teamFilter, setTeamFilter] = useState<Filter>(() =>
-    selectedParam && TEAM_LABELS.includes(selectedParam) ? selectedParam : "All",
+  const [teamFilter, setTeamFilter] = useState<TeamKey>(() =>
+    selectedParam && TEAM_LABELS.includes(selectedParam as TeamKey) 
+      ? (selectedParam as TeamKey) 
+      : "All",
   );
 
   useEffect(() => {
-    if (selectedParam && !TEAM_LABELS.includes(selectedParam)) {
+    if (selectedParam && !TEAM_LABELS.includes(selectedParam as TeamKey)) {
       const params = new URLSearchParams(searchParams.toString());
-
       params.delete("selected");
-
-      router.replace(`?${params.toString()}`);
+      // Fixed: Added { scroll: false } to prevent jumping to top
+      router.replace(`?${params.toString()}`, { scroll: false });
     }
-
-    setTeamFilter(selectedParam || "All");
+    setTeamFilter((selectedParam as TeamKey) || "All");
   }, [selectedParam, router, searchParams]);
 
-  const filteredMembers =
-    teamFilter === "All" ? MEMBERS : MEMBERS.filter((member) => member.team === teamFilter);
-
-  const handleFilterClick = (group: string) => {
+  const handleFilterClick = (group: TeamKey) => {
     const params = new URLSearchParams(searchParams.toString());
-
     if (group === "All") {
       params.delete("selected");
     } else {
       params.set("selected", group);
     }
-
-    router.push(`?${params.toString()}`);
-
+    // Fixed: Added { scroll: false } to prevent jumping to top
+    router.push(`?${params.toString()}`, { scroll: false });
     setTeamFilter(group);
   };
 
+  const containerStyle: React.CSSProperties = {
+    paddingTop: "0", 
+    paddingBottom: "12rem", 
+    maxWidth: "1300px", 
+    margin: "0 auto",
+    paddingLeft: "2rem",
+    paddingRight: "2rem",
+  };
+
+  const descriptionStyle: React.CSSProperties = {
+    fontSize: "1.1rem",
+    opacity: 0.6,
+    maxWidth: "800px",
+    marginBottom: "2.5rem",
+    lineHeight: 1.5,
+  };
+
+  const filterBarStyle: React.CSSProperties = {
+    display: "flex", 
+    gap: "1.5rem", 
+    marginBottom: "4rem", 
+    flexWrap: "wrap",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
+    paddingBottom: "1.5rem"
+  };
+
   return (
-    <section style={{ padding: "2rem 0", minHeight: "100vh" }}>
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 1rem",
+    <div style={containerStyle}>
+      <p style={descriptionStyle}>{TEAM_DESCRIPTIONS["All"]}</p>
+
+      <div style={filterBarStyle}>
+        {TEAM_LABELS.map((group) => (
+          <button
+            key={group}
+            onClick={() => handleFilterClick(group)}
+            style={{
+              background: "none",
+              border: "none",
+              fontSize: "1rem",
+              fontWeight: teamFilter === group ? 600 : 400,
+              color: teamFilter === group ? "var(--foreground)" : "rgba(0,0,0,0.5)",
+              cursor: "pointer",
+              padding: "0.5rem 0",
+              position: "relative",
+              transition: "color 0.2s"
+            }}
+          >
+            {group}
+            {teamFilter === group && (
+              <motion.div 
+                layoutId="activeFilter"
+                style={{ 
+                  position: "absolute", 
+                  bottom: -24, 
+                  left: 0, 
+                  right: 0, 
+                  height: "2px", 
+                  background: "var(--foreground)" 
+                }} 
+              />
+            )}
+          </button>
+        ))}
+      </div>
+
+      <ul style={{ 
+        display: "grid", 
+        gridTemplateColumns: "repeat(auto-fill, minmax(70px, 1fr))", 
+        gap: "3rem 1.5rem",
+        listStyle: "none", 
+        padding: 0,
+        justifyItems: "left" 
+      }}>
+        {MEMBERS.map((member, idx) => {
+          const isVisible = teamFilter === "All" || member.team === teamFilter;
+          return (isVisible &&
+            <MemberItem 
+              key={`${member.name}-${idx}`} 
+              member={member} 
+              isVisible={isVisible}
+            />
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+const MemberItem = ({ member, isVisible }: { member: Member, isVisible: boolean }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.li
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        cursor: "pointer",
+        width: "60px",
+      }}
+    >
+      <figure 
+        style={{ 
+          width: "50px", 
+          height: "50px", 
+          borderRadius: "50%", 
+          backgroundColor: "#f4f4f6",
+          transition: "transform 0.2s ease",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "1px solid rgba(0,0,0,0.05)",
+          transform: isHovered ? "scale(1.15)" : "scale(1)",
         }}
       >
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.h1
-            key={teamFilter}
-            style={{
-              fontSize: "clamp(2.5rem, 8vw, 8rem)",
-              fontWeight: 700,
-              margin: 0,
-              lineHeight: 1,
-              fontFamily: "serif",
-              wordBreak: "break-word",
-              position: "relative",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.05em",
-            }}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ staggerChildren: 0.03 }}
-          >
-            {(teamFilter === "All" ? "NeuroTUM" : teamFilter).split("").map((char, i) => (
-              <motion.span
-                key={char + i}
-                variants={letterAnimation}
-                style={{ display: "inline-block" }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.h1>
-        </AnimatePresence>
-        {/* Description or count row */}
-        <p
+         <span style={{ fontSize: "0.9rem", fontWeight: 700, opacity: 0.3, userSelect: "none" }}>
+          {member.name.charAt(0)}
+         </span>
+      </figure>
+
+      {isHovered && (
+        <motion.div
+          initial={{ opacity: 0, y: 10, x: "-50%" }}
+          animate={{ opacity: 1, y: 0, x: "-50%" }}
           style={{
-            fontSize: "1rem",
-            maxWidth: 1200,
-            fontFamily: "serif",
-            fontWeight: 500,
-            marginBottom: "1.5rem",
+            position: "absolute",
+            bottom: "65px",
+            left: "50%",
+            backgroundColor: "#150e3a",
+            color: "white",
+            padding: "4px 12px",
+            borderRadius: "4px",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+            zIndex: 100,
+            pointerEvents: "none",
           }}
         >
-          {TEAM_DESCRIPTIONS[teamFilter]}
-        </p>
-        {/* Group filter row */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1rem",
-            margin: "2rem 0 2rem 0",
-            flexWrap: "wrap",
-          }}
-        >
-          {TEAM_LABELS.map((group) => (
-            <button
-              key={group}
-              onClick={() => handleFilterClick(group)}
-              style={{
-                padding: "0.5rem 2rem",
-                borderRadius: "1.5rem",
-                border: teamFilter === group ? "none" : "2px solid #111",
-                background: teamFilter === group ? "#111" : "transparent",
-                color: teamFilter === group ? "#fff" : "#111",
-                fontWeight: 700,
-                fontSize: "1.4rem",
-                cursor: "pointer",
-                fontFamily: "serif",
-                transition: "background 0.2s, color 0.2s",
-                minWidth: 120,
-                minHeight: 48,
-                boxSizing: "border-box",
-                outline: "none",
-                boxShadow: teamFilter === group ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
-              }}
-            >
-              {group}
-            </button>
-          ))}
-        </div>
-        <div
-          className="member-explorer-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gridTemplateRows: "auto",
-            gap: "2rem",
-            minHeight: 500,
-            justifyItems: "center",
-          }}
-        >
-          <AnimatePresence initial={false}>
-            {filteredMembers.map((member, idx) => (
-              <motion.div
-                key={member.name + idx}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                style={{
-                  background: "#dbccb1",
-                  height: 350,
-                  borderRadius: 4,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  fontFamily: "serif",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                  padding: 16,
-                  textAlign: "center",
-                  width: "100%",
-                  maxWidth: 350,
-                }}
-              >
-                <MemberCard {...member} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-      </div>
-      <style>{`
-        @media (max-width: 900px) {
-          .member-explorer-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            grid-template-rows: auto !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .member-explorer-grid {
-            grid-template-columns: 1fr !important;
-            grid-template-rows: none !important;
-            gap: 1rem !important;
-          }
-          .member-explorer-heading {
-            font-size: 2.5rem !important;
-          }
-        }
-      `}</style>
-    </section>
+          {member.name}
+          <div style={{
+            position: "absolute",
+            bottom: "-4px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 0, height: 0,
+            borderLeft: "4px solid transparent",
+            borderRight: "4px solid transparent",
+            borderTop: "4px solid #150e3a",
+          }} />
+        </motion.div>
+      )}
+    </motion.li>
   );
 };
 

@@ -1,172 +1,146 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const TEAMS = [
   {
-    initials: "BCI",
     name: "BCI",
-    teamLink: "/team?selected=BCI",
-    bio: "/team?selected=BCI",
-    works: "/team?selected=BCI",
+    fullName: "Brain-Computer Interface",
+    description: "Developing systems that enable direct communication between the brain and external devices, pushing the boundaries of neurotechnology.",
+    link: "/team?selected=BCI",
   },
   {
-    initials: "ELE",
     name: "Electronics",
-    teamLink: "/team?selected=Electronics",
-    bio: "/team?selected=Electronics",
-    works: "/team?selected=Electronics",
+    fullName: "Electronics & Hardware",
+    description: "Designing, building, and testing hardware for our neurotechnology projects, focusing on circuit design, PCB layout, and embedded systems.",
+    link: "/team?selected=Electronics",
   },
   {
-    initials: "NEU",
     name: "Neuromotion",
-    teamLink: "/team?selected=Neuromotion",
-    bio: "/team?selected=Neuromotion",
-    works: "/team?selected=Neuromotion",
+    fullName: "Neuromotion",
+    description: "Exploring the intersection of neuroscience and movement, working on projects related to motor control, rehabilitation, and brain-machine interfaces.",
+    link: "/team?selected=Neuromotion",
   },
   {
-    initials: "OPS",
-    name: "Ops",
-    teamLink: "/team?selected=Operations",
-    bio: "/team?selected=Operations",
-    works: "/team?selected=Operations",
+    name: "Operations",
+    fullName: "Operations",
+    description: "Ensuring the smooth running of the organization, handling logistics, event planning, and internal coordination.",
+    link: "/team?selected=Operations",
   },
 ];
 
-const Teams = () => {
-  const [activeIndex, setActiveIndex] = useState(1); // Default to A.P.
-  const activeMember = TEAMS[activeIndex];
-  const lastName = activeMember.name.split(". ").pop() || "";
-  const bigLetter = lastName.charAt(0);
-
+const Teams: React.FC = () => {
   return (
     <section
       style={{
         width: "100%",
-        background: "#111",
-        color: "#fff",
-        position: "relative",
-        overflow: "hidden",
-        padding: "3vw 0",
+        padding: "6rem 2rem",
+        background: "var(--background)",
+        color: "var(--foreground)",
       }}
     >
-      {/* Large Initial as Background */}
-      <span
-        aria-hidden
-        style={{
-          fontSize: "clamp(10rem, 28vw, 32rem)",
-          fontWeight: 900,
-          color: "#fff",
-          opacity: 0.12,
-          position: "absolute",
-          left: "60%",
-          top: "50%",
-          transform: "translate(-40%, -50%)",
-          userSelect: "none",
-          pointerEvents: "none",
-          lineHeight: 1,
-          zIndex: 1,
-          letterSpacing: "-0.04em",
-          textShadow: "0 2px 32px #000",
-          fontFamily: "inherit",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {bigLetter}
-      </span>
-      {/* Team Rows */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          width: "100%",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 2vw",
-        }}
-      >
-        {TEAMS.map((team, idx) => (
-          <div
-            key={team.name}
-            onMouseEnter={() => setActiveIndex(idx)}
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        {/* Section Header */}
+        <div style={{ marginBottom: "4rem", textAlign: "left" }}>
+          <h2
             style={{
-              cursor: "pointer",
-              marginBottom: "3vw",
-              width: "100%",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              marginBottom: "1rem",
+              fontWeight: 400,
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                flexWrap: "wrap",
-              }}
+            Our Departments
+          </h2>
+          <div
+            style={{
+              width: "100%",
+              height: "1px",
+              background: "var(--foreground)",
+              opacity: 0.3,
+            }}
+          />
+        </div>
+
+        {/* Grid Layout */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "2rem",
+          }}
+        >
+          {TEAMS.map((team, index) => (
+            <Link 
+              href={team.link} 
+              key={team.name} 
+              style={{ textDecoration: "none", color: "inherit" }}
             >
-              <Link
-                href={team.teamLink}
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 style={{
-                  flex: 1,
-                  minWidth: 0,
-                  textDecoration: "none",
-                  color: "inherit",
-                  cursor: "pointer",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "clamp(2.5rem, 6vw, 7rem)",
-                    fontWeight: idx === activeIndex ? 700 : 600,
-                    color: idx === activeIndex ? "#fff" : "#888",
-                    lineHeight: 1.1,
-                    letterSpacing: "-0.04em",
-                    transition: "color 0.2s",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {team.name}
-                </div>
-              </Link>
-              <div
-                style={{
+                  height: "100%",
+                  padding: "2.5rem",
+                  border: "1px solid var(--foreground)", // Thin line aesthetic
+                  borderRadius: "12px", // Slight rounding similar to modern cards
                   display: "flex",
-                  gap: "2vw",
-                  fontSize: "1rem",
-                  marginLeft: "2vw",
-                  flexShrink: 0,
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  cursor: "pointer",
+                  background: "transparent",
                 }}
               >
-                <Link
-                  href={team.bio}
-                  style={{
-                    color: "#ccc",
-                    textDecoration: "underline",
-                    marginRight: "1vw",
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "1.8rem",
+                      marginBottom: "0.5rem",
+                      fontWeight: 400,
+                      fontFamily: "var(--font-dm-serif)",
+                    }}
+                  >
+                    {team.name}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.9rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      opacity: 0.6,
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    {team.fullName}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "1.1rem",
+                      lineHeight: 1.6,
+                      opacity: 0.9,
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    {team.description}
+                  </p>
+                </div>
+                
+                <div 
+                  style={{ 
+                    display: "flex", 
+                    alignItems: "center", 
+                    gap: "0.5rem",
+                    fontWeight: 500,
+                    fontSize: "1rem"
                   }}
                 >
-                  {team.initials} Team
-                </Link>
-                <Link
-                  href={team.works}
-                  style={{ color: "#ccc", textDecoration: "underline" }}
-                >
-                  Projects
-                </Link>
-              </div>
-            </div>
-            <hr
-              style={{
-                border: "none",
-                borderTop: "1px solid #444",
-                margin: "1vw 0 0 0",
-              }}
-            />
-          </div>
-        ))}
+                  Learn more <span>→</span>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

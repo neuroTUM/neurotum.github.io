@@ -1,76 +1,166 @@
+// src/app/components/Navbar.tsx
+
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-const navItems: Record<string, string> = {
-  Home: "/",
-  Team: "/team",
-  Contact: "/contact",
-  Apply: "/join-us",
+type NavItem = {
+  name: string;
+  href: string;
+  isLogo?: boolean;
 };
 
-const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
+const NAV_ITEMS: NavItem[] = [
+  { name: "Home", href: "/", isLogo: true },
+  { name: "Research", href: "/research" },
+  { name: "News", href: "/news"},
+  { name: "Team", href: "/team" },
+  { name: "Partners", href: "/partners" },
+  { name: "Contact", href: "/contact" },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const Navbar: React.FC = () => {
+  const pathname = usePathname();
 
   const navbarStyle: React.CSSProperties = {
     position: "fixed",
-    top: scrolled ? 24 : 0,
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: scrolled ? "min(90vw, 420px)" : "100vw",
-    borderRadius: scrolled ? 999 : "0 0 0 0",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: "var(--header-height)",
     background: "var(--background)",
-    boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.16)" : "0 2px 16px rgba(0,0,0,0.10)",
-    padding: scrolled ? "0.7rem 2.8rem" : "0.5rem 2rem",
-    opacity: 1,
-    border: scrolled ? "1.5px solid #eaeaea" : "none",
-    backdropFilter: scrolled ? "blur(6px)" : "none",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
+    padding: "0 2rem",
     zIndex: 1000,
-    transition:
-      "width 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "border-radius 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "box-shadow 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "padding 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "top 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "background 0.5s cubic-bezier(0.4,0,0.2,1)",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "space-between",
+  };
+
+  const leftGroupStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: "2rem",
+    height: "100%",
+  };
+
+  const rightGroupStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: "1rem",
   };
 
   const navItemStyle: React.CSSProperties = {
     cursor: "pointer",
-    transition: "color 0.2s, transform 0.2s",
-    padding: "0.2em 0.6em",
-    borderRadius: 8,
+    transition: "opacity 0.2s",
     fontWeight: 500,
     fontSize: "1.1rem",
-    color: "#222",
-    margin: "0 1rem",
+    color: "var(--foreground)",
+    display: "flex",
+    alignItems: "center",
+    textDecoration: "none",
+    height: "100%",
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    cursor: "pointer",
+    fontWeight: 500,
+    fontSize: "1rem",
+    padding: "0.5rem 1.2rem",
+    borderRadius: "999px",
+    border: "1px solid var(--foreground)",
+    background: "var(--foreground)",
+    color: "var(--background)",
+    transition: "all 0.2s ease",
+    textDecoration: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
+  // Handler to scroll the main container to top if on home page
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const mainElement = document.querySelector("main");
+      if (mainElement) {
+        mainElement.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
   };
 
   return (
     <nav style={navbarStyle}>
-      {Object.entries(navItems).map(([name, ref]) => (
-        <Link key={name} href={ref}>
-          <span
-            style={navItemStyle}
-            onMouseOver={(e) => (e.currentTarget.style.color = "#0070f3")}
-            onMouseOut={(e) => (e.currentTarget.style.color = "#222")}
+      <div style={leftGroupStyle}>
+        {NAV_ITEMS.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            onClick={item.isLogo ? handleLogoClick : undefined}
+            style={{
+              textDecoration: "none",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+            }}
           >
-            {name}
+            <span
+              style={navItemStyle}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = "0.6")}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
+            >
+              {item.isLogo ? (
+                <Image
+                  src="/logo.png"
+                  alt="neuroTUM"
+                  // Increased size from 32 to 48
+                  width={48}
+                  height={48}
+                  style={{ objectFit: "contain" }}
+                />
+              ) : (
+                item.name
+              )}
+            </span>
+          </Link>
+        ))}
+      </div>
+
+      <div style={rightGroupStyle}>
+        <Link href="/join-us" style={{ textDecoration: "none" }}>
+          <span
+            style={ctaButtonStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "var(--foreground)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--foreground)";
+              e.currentTarget.style.color = "var(--background)";
+            }}
+          >
+            Become a member
           </span>
         </Link>
-      ))}
+        <Link href="/contact" style={{ textDecoration: "none" }}>
+          <span
+            style={ctaButtonStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "var(--foreground)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--foreground)";
+              e.currentTarget.style.color = "var(--background)";
+            }}
+          >
+            Become a sponsor
+          </span>
+        </Link>
+      </div>
     </nav>
   );
 };
