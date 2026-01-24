@@ -45,10 +45,6 @@ const Footer = () => (
       </div>
 
       <hr className={styles.separator} />
-
-      <div className={styles.logoWrapper}>
-        <Image src="/NeuroTUM.svg" alt="NeuroTUM logo" width={1200} height={300} className={styles.logoImage} />
-      </div>
     </div>
   </footer>
 );

@@ -6,6 +6,7 @@ import styles from "@/components/navbar/Navbar.module.css";
 
 const navItems: Record<string, string> = {
   Home: "/",
+  Research: "/research",
   Team: "/team",
   Contact: "/contact",
   Apply: "/join-us",

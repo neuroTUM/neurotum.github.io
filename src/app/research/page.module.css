@@ -1,0 +1,150 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 60px; /* Top padding to account for fixed navbar if any, or just spacing */
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  text-align: left;
+  font-family: var(--font-dm-serif);
+}
+
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.projectCard {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.projectCard.reversed {
+  grid-template-columns: 1fr 1.5fr;
+}
+
+.projectCard.reversed .imageSection {
+  order: 2;
+}
+.projectCard.reversed .contentSection {
+  order: 1;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .projectCard,
+  .projectCard.reversed {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    direction: ltr; /* Reset direction */
+  }
+
+  .projectCard.reversed .imageSection,
+  .projectCard.reversed .contentSection {
+    order: initial;
+  }
+}
+
+/* Image Section Grid */
+.imageSection {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  aspect-ratio: 4/3; /* Enforce a general shape */
+  /* Default 1 image */
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* 2 Images */
+.imageSection[data-count="2"] {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* 3 Images: 2 top, 1 bottom spanning full width? Or request said "2 top, 1 middle grid style" */
+/* Interpreting "2 on top one on the middle grid style" as 2 columns, top row has 2 items, bottom row has 1 item spanning 2 columns */
+.imageSection[data-count="3"] {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.imageSection[data-count="3"] .imageWrapper:nth-child(3) {
+  grid-column: span 2;
+}
+
+/* 4 Images: 2x2 grid */
+.imageSection[data-count="4"] {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.imageWrapper img {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.imageWrapper:hover img {
+  transform: scale(1.05);
+}
+
+/* Content Section */
+.contentSection {
+  direction: ltr; /* Ensure text is LTR even if parent is RTL */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.projectHeading {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444; /* Slightly lighter than black */
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag {
+  background-color: var(--color-secondary);
+  color: var(--foreground);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-family: sans-serif; /* Maybe use a sans font for tags if serif is dominant */
+}
+
+.ctaButton {
+  align-self: flex-start;
+  padding: 0.75rem 2rem;
+  background-color: var(--foreground);
+  color: var(--background);
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: sans-serif;
+  transition: opacity 0.2s;
+}
+
+.ctaButton:hover {
+  opacity: 0.8;
+}
