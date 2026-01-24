@@ -1,0 +1,9 @@
+.timelineList {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8rem;
+}
+
+.note {
+  margin-top: 1rem;
+}

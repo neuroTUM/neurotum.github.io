@@ -1,18 +1,15 @@
 "use client";
 
 import { Suspense } from "react";
-import Footer from "../components/Footer";
-import { MemberExplorer } from "../components/MemberExplorer";
+import MemberExplorer from "@/app/team/_components/MembersExplorer";
+import styles from "@/app/team/page.module.css";
 
 export default function TeamPage() {
   return (
-    <div style={{
-      marginTop: "1rem"
-    }}>
+    <div className={styles.container}>
       <Suspense>
         <MemberExplorer />
       </Suspense>
-      <Footer />
     </div>
   );
 }

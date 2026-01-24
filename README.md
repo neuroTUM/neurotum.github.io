@@ -1,7 +1,6 @@
 # Official Website for neuroTUM.
 
-Still in progres...
-
+Visit the Website at [neurotum.com](https://neurotum.com)
 
 ## Local Development
 

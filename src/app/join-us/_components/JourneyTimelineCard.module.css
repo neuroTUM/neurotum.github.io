@@ -1,0 +1,80 @@
+.cardContainer {
+  background: #fffaf2;
+  border-radius: 1.8rem;
+  padding: 2.5rem;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 8px 20px rgba(0, 0, 0, 0.07);
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cardTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: serif;
+  color: #121212;
+  margin-bottom: 2rem;
+}
+
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timelineItem {
+  position: relative;
+  display: flex;
+}
+
+.timelineConnector {
+  position: relative;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 1.2rem;
+  bottom: -2rem;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timelineDot {
+  width: 0.9rem;
+  height: 0.9rem;
+  background: #111;
+  border-radius: 50%;
+  margin-top: 0.3rem;
+  box-shadow: 0 0 0 5px #fffaf2;
+}
+
+.timelineContent {
+  flex: 1;
+  padding-left: 1rem;
+}
+
+.timelineItemTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.4rem;
+  font-family: serif;
+}
+
+.timelineItemList {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.8rem;
+}
+
+.timelineListItem {
+  margin-bottom: 0.4rem;
+}

@@ -2,12 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import TeamsPositionsCard from "./TeamPositionsCard";
-import JourneyTimelineCard from "./JourneyTimelineCard";
-import ApplyNowCard from "./ApplyNowCard";
-import MissionCard from "./MissionCard";
-import ApplicationTimelineCard from "./ApplicationTimelineCard";
-import Footer from "../components/Footer";
+import TeamsPositionsCard from "@/app/join-us/_components/TeamPositionsCard";
+import JourneyTimelineCard from "@/app/join-us/_components/JourneyTimelineCard";
+import ApplyNowCard from "@/app/join-us/_components/ApplyNowCard";
+import MissionCard from "@/app/join-us/_components/MissionCard";
+import ApplicationTimelineCard from "@/app/join-us/_components/ApplicationTimelineCard";
 
 const JoinUsPage: React.FC = () => {
   return (
@@ -67,7 +66,6 @@ const JoinUsPage: React.FC = () => {
         }
       `}</style>
       </section>
-      <Footer />
     </>
   );
 };

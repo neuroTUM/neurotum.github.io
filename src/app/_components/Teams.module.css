@@ -1,0 +1,100 @@
+.teamsSection {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 3vw 0;
+}
+
+.backgroundInitial {
+  font-size: clamp(10rem, 28vw, 32rem);
+  font-weight: 900;
+  color: #fff;
+  opacity: 0.12;
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  transform: translate(-40%, -50%);
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 1;
+  letter-spacing: "-0.04em";
+  text-shadow: 0 2px 32px #000;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.teamsWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+.teamRow {
+  cursor: pointer;
+  margin-bottom: 3vw;
+  width: 100%;
+}
+
+.teamRowInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.teamNameLink {
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.teamName {
+  font-size: clamp(2.5rem, 6vw, 7rem);
+  font-weight: 600;
+  color: #888;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  transition: color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.teamNameActive {
+  font-weight: 700;
+  color: #fff;
+}
+
+.teamLinks {
+  display: flex;
+  gap: 2vw;
+  font-size: 1rem;
+  margin-left: 2vw;
+  flex-shrink: 0;
+}
+
+.teamLink {
+  color: #ccc;
+  text-decoration: underline;
+  margin-right: 1vw;
+}
+
+.teamLinkProjects {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 1vw 0 0 0;
+}
