@@ -12,7 +12,7 @@ const ApplyNowCard = () => {
 
       <div style={{ textAlign: "center" }}>
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSdAF9CC9JgtjZ789jBfvXx0_W4cUQfwemb-50y43wsh8Xb5fw/viewform"
+          href=""
           target="_blank"
           rel="noopener noreferrer"
           style={{
