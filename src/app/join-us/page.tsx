@@ -41,8 +41,8 @@ const JoinUsPage: React.FC = () => {
 
         <MissionCard />
         <ApplicationTimelineCard />
-        <JourneyTimelineCard />
         <TeamsPositionsCard />
+        <JourneyTimelineCard />
         <ApplyNowCard />
 
         <style>{`

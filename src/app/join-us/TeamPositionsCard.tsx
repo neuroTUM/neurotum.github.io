@@ -6,265 +6,129 @@ import { useState } from "react";
 
 const TEAM_POSITIONS = [
   {
-    name: "Electronics",
+    name: "Pipeline Design",
     description: (
       <>
-        The goal of this team is the design and build of a custom Electroencephalogram (EEG) system,
-        including active electrodes. This device is a key component of a brain-computer interface
-        (BCI), which allows the collection of neuronal data. As commercial systems are prohibitively
-        expensive despite comparatively low material cost, we have set out to build our own. Within
-        this team, members will get to dive into the world of circuit & PCB design for both analogue
-        and digital systems, soldering, and embedded programming for microcontrollers. Take a look
-        at our social media to see what we've been up to!
+        Develop innovative signal processing and machine learning pipelines to interpret EEG data effectively.
+        <br />
+        <br />
+        The Pipeline Design team focuses on building and improving the computational foundations of our brain-computer interface (BCI) research. Members work on designing and implementing digital filters, feature extraction methods, and novel signal processing techniques to enhance EEG signal quality. The team also develops and optimizes machine learning and deep learning models to achieve robust and accurate classification of neural activity, directly contributing to real-world BCI applications such as robotic control or neurofeedback tasks.
         <br />
         <br />
         <p>Nice to have:</p>
         <ul>
-          <li>
-            <p>
-              Some experience with electronics, PCB design, and programming - however these are not
-              hard requirements.
-            </p>
-          </li>
-          <li>
-            <p>Excitement, motivation, and an open mind - these are paramount though :)</p>
-          </li>
+          <li>Strong programming skills in Python</li>
+          <li>Teamwork and familiarity with collaborative workflows (Git, CI/CD, Kanban boards)</li>
+          <li>Familiarity with signal processing</li>
+          <li>Understanding of machine learning/deep learning concepts</li>
+          <li>Knowledge or interest of neuroscience or neuropsychology</li>
         </ul>
       </>
     ),
     positions: [],
   },
   {
-    name: "BCI (Brain-Computer Interface)",
+    name: "Electronics",
     description: (
       <>
-        Within this group, we are developing a brain-computer interface (BCI). By collecting EEG
-        signals, processing them, and classifying them, we could offer quadriplegic people the
-        possibility of controlling virtual environments (e.g. mouse cursor on a screen) with only
-        their brains. We envision this to be translated into the real world into a project such as a
-        mind-controlled wheelchair or robotic arm. This team consists of different sub-teams that
-        work together to put the different pieces of the BCI together. The first milestone of this
-        team was the participation in the ETH Cybathlon 2024 - BCI race. We are now continuing our
-        work to improve the system and planning the organization of possible sub-projects to work on
-        in the BCI team for the winter sememster 25/26.
+        Our goal is the design and build of a custom Electroencephalogram (EEG) system, including active electrodes.
         <br />
         <br />
-        what are we looking for:
+        This device is a key component of a brain-computer interface (BCI), which allows the non-invasive collection of neuronal data. As commercial systems are prohibitively expensive despite comparatively low material cost, we have set out to build our own. In this team, we dive into the world of circuit & PCB design for both analogue and digital systems, soldering, and embedded programming for microcontrollers. Take a look at our social media to see what we've been up to!
+        We meet every Saturday to design, solder, debug, and test our designs.
         <br />
+        <br />
+        <p>Nice to have:</p>
         <ul>
-          <li>Excitement about the fields of assistive technologies and neurotechnology.</li>
-          <li>
-            motivation and interest to learn about the other aspects of the BCI system, experimental
-            design and integration of ethical concerns into the project
-          </li>
-          <li>have worked in a team on a (technical) project and/or are interested in team work</li>
-        </ul>
-        <br />
-        what we offer in our onboarding:
-        <br />
-        <ul>
-          <li>
-            introduction to brain-computer interfaces, more specifically focused on EEG-based mobile
-            BCIs
-          </li>
-          <li>
-            tutorials on the different components of our BCI pipeline (in the form of Python
-            notebooks and workshops)
-          </li>
-          <li>
-            introduction to how to conduct an experimental session (including data collection,
-            training and running the online pipeline)
-          </li>
-        </ul>
-        <br />
-        as a member of the BCI time you will:
-        <br />
-        <ul>
-          <li>
-            help conduct experiments to do data collection, train the pilot and test new
-            implementations
-          </li>
-          <li>attend weekly meetings and work sessions</li>
-          <li>
-            have 10/15 hours of time each week to contribute to one of the subprojects of the BCI
-            team (we can try and find ways for you to combine the project work you are doing in the
-            team with classes, project courses and mandatory internships for you to get credits)
-          </li>
+          <li>Some experience with electronics, PCB design, and programming. However, these are not hard requirements.</li>
+          <li>What <em>is</em> required is excitement, motivation, and an open mind 🙂</li>
         </ul>
       </>
     ),
-    positions: [
-      {
-        title: "Experimental Design",
-        description:
-          "Help design and conduct EEG experiments that aim to enable a person to robustly control a set of controls that can be mapped to, for example, play a computer game.",
-      },
-      {
-        title: "Benchmarking and robustness of BCI systems",
-        description: "Research and experiment on methods to benchmark and test our BCI system.",
-      },
-      {
-        title: "Signal processing",
-        description:
-          "Work on designing better digital filters and other (new) signal processing methods.",
-      },
-      {
-        title: "Machine/Deep Learning",
-        description:
-          "Working on developing and optimizing machine and deep learning models to classify signals from EEG data. Possible ideas include further optimizing S4, investigating models for transfer/meta-learning, foundation model for classifying motor imagery EEG data, autoencoder/generative ML model, privacy-preserving ML.",
-      },
-      {
-        title: "IT-Security of mobile BCI devices",
-        description:
-          "Research on neural data privacy and security of EEG-based mobile BCI systems.",
-      },
-      {
-        title: "Software engineering and infrastructures",
-        description:
-          "Developing applications to help facilitate and improve our BCI system as well as designing and implementeing methodologies to validate the functionalities of the BCI.",
-      },
-    ],
+    positions: [],
   },
   {
-    name: "Neuromotion",
-    description:
-      "The Neuromotion team bridges neuroscience and movement, exploring rehabilitation and assistive applications using Brain-Computer Interfaces.",
-    positions: [
-      {
-        title: "Computer Vision Developer",
-        description:
-          "You will work on object detection and scene understanding so the robotic arm can recognize and interact with everyday items reliably.",
-      },
-      {
-        title: "3D Design & End-Effector",
-        description:
-          "You will design and prototype adaptive end-effectors that enable the robotic arm to perform practical tasks such as grasping utensils or opening doors.",
-      },
-      {
-        title: "BCI Systems",
-        description:
-          "You will develop and optimize real-time brain-computer interface pipelines, ensuring fast, accurate, and user-friendly control of the robotic arm.",
-      },
-    ],
+    name: "Robotics",
+    description: (
+      <>
+        We build robotic systems controlled by brain signals to help people with tetraplegia manipulate objects in their environment again. Current project: playing chess with moves selected by decoded brain signals
+        <br />
+        <br />
+        We receive decoded brain commands from the BCI pipeline and turn them into real robot actions. That means using cameras to understand the environment, planning how the arm should move, designing grip strategies to reliably handle objects, and modeling custom parts when needed. Sometimes we go closer to the hardware, working with motors, sensors, and wiring. The biggest challenge is making all of this work together fast and reliably enough for a online brain signal pipeline. Most of your time will be spent researching approaches, building quick prototypes, testing on real hardware, and iterating until it works. The end goal right now: a user selects a chess move, and a robotic arm executes it.
+        <br />
+        <br />
+        <p>Nice to have:</p>
+        <ul>
+          <li>Familiarity with Python or C++</li>
+          <li>Some exposure to ROS 2, computer vision, or motion planning</li>
+          <li>Interest in robotics and assistive technology</li>
+          <li>Willingness to pick up new topics quickly</li>
+        </ul>
+      </>
+    ),
+    positions: [],
   },
   {
-    name: "Operations",
-    description: `
-      The Communications & Operations team is the backbone of neuroTUM's internal and external affairs. 
-      On the external side, we aim to make science accessible to all, showcasing the club's work on social media and organizing events and seminars where people can network with experts in neurotechnology, 
-      as well as get a better understanding of our projects and various advancements in the field. We promote scientific communication through newsletters, blog posts and short informational or work session videos. 
-      Internally, we strive to enable our project teams to focus solely on their project work by handling legal, administrative and operational tasks in cooperation with the club's leadership, 
-      as well as by acquiring sponsors and collaborators, ensuring that our club has all the necessary resources to grow and bloom. 
-    `,
-    positions: [
-      {
-        title: "Communication (Social Media, Graphic Design, Scientific Communication)",
-        description: (
-          <>
-              <p>
-                <strong>We are looking for:</strong>
-              </p>
-              <ul>
-                <li>People excited about networking and talking to companies.</li>
-                <li>Creative minds for posters, merch and template designs.</li>
-                <li>Interest in science communication towards a general audience.</li>
-                <li>
-                  General motivation and interest in the field of neuroscience and neuroengineering.
-                </li>
-              </ul>
-          </>
-        ),
-      },
-      {
-        title: "Ethics",
-        description: (
-          <>
-            The Ethics and Responsibility Officer ensures that ethics is not just a theoretical
-            concern but a fundamental part of neuroTUM's engineering and research processes. By
-            embedding structured ethical engagement, decision-making tools, and user-centred design
-            principles, the team will help establish neuroTUM as a model for responsible student-led
-            innovation in neurotechnology. The role involves organising ethical workshops for the
-            community body (in G&D, neuroethics, AI ethics etc.) curating resources for ethical
-            education of our team, and embedding ethical tools and engagement into neuroTUM's
-            culture and processes.
-            <br />
-            <br />
-            <p>
-              <strong>Nice to have:</strong>
-            </p>
-            <ul>
-              <li>
-                Strong interest in the intersection of ethics, neurotechnology, and responsible
-                innovation Possible background in ethical topics, philosophy, psychology, HCI,
-                responsible design, or other related fields.
-              </li>
-              <li>
-                Familiarity with value-sensitive design and responsible innovation frameworks
-                Previous experience / contacts for organising workshops or seminars on ethical
-                topics (gender & diversity, neuroethics, AI ethics, etc.).
-              </li>
-              <li>
-                Willingness to discuss ethical concepts with an interdisciplinary team! Passion for
-                promoting social responsibility in the development of neuroTUM's projects.
-              </li>
-            </ul>
-            <br />
-            <p>
-              <strong>What we offer:</strong>
-            </p>
-            <ul>
-              <li>
-                Opportunity to organise and lead workshops, and collaborate with experts and fellow
-                students to make a positive impact through technology.
-              </li>
-              <li>
-                Shape the ethical direction of neuroTUM's projects and gain hands-on experience in
-                integrating ethics into neuroengineering team projects.
-              </li>
-            </ul>
-          </>
-        ),
-      },
-      {
-        title: "Sponsorship",
-        description: (
-          <>
-            Working on neurotechnology-related or research projects is not a cheap hobby to have.
-            Our teams need financial and material means to achieve their work reliably. As a student
-            organization, we rely on constant support from research chairs and industry partners.
-            <br />
-            <br />
-            <p>
-              <strong>Nice to have:</strong>
-            </p>
-            <ul>
-              <li>
-                Interest and excitement in reaching out to potential sponsors and collaborators.
-              </li>
-              <li>Experience with outreach and partner management.</li>
-              <li>Experience with customer relations management (CRM systems).</li>
-            </ul>
-            <br />
-            <p>
-              <strong>What we offer:</strong>
-            </p>
-            <ul>
-              <li>
-                Opportunity to get in touch with leading innovative companies and define neuroTUM's
-                strategic development.
-              </li>
-              <li>
-                Opportunity to be part of the process of creating a respected research organization.
-              </li>
-              <li>
-                Be part of a vibrant, dynamic, and supportive student community, collaborating
-                closely with peers passionate about research and responsible innovation.{" "}
-              </li>
-            </ul>
-          </>
-        ),
-      },
-    ],
+    name: "Games Engineering",
+    description: (
+      <>
+        Design and develop engaging games that can be controlled through brain-computer interfaces.
+        <br />
+        <br />
+        The Games Engineering team creates interactive training environments that help users learn and improve their control of brain-computer interfaces (BCIs). Members design and develop video games that respond to neural input, implement infrastructure to ensure compatibility across different BCI controllers, and enable multiplayer functionality. The team also supports the preparation and maintenance of games for events such as the BCI Graz competition, where BCI users compete in real time. Collaborating closely with the Pipeline Design and Experimental Design teams, Games Engineering plays a key role in connecting technical innovation with user experience.
+        <br />
+        <br />
+        <p>Nice to have:</p>
+        <ul>
+          <li>Experience in video game development (preferably in Pygame, but also Unity, Unreal, or Godot)</li>
+          <li>Teamwork and familiarity with collaborative workflows (Git, CI/CD, Kanban boards)</li>
+          <li>Understanding of game design and user engagement principles</li>
+          <li>Strong programming skills in Python</li>
+          <li>Interest in multiplayer game development, and interest in neuroscience or neuropsychology</li>
+        </ul>
+      </>
+    ),
+    positions: [],
+  },
+  {
+    name: "Experimental Design",
+    description: (
+      <>
+        Design and conduct EEG experiments to test and improve brain-computer interface control systems.
+        <br />
+        <br />
+        The Experimental Design team is responsible for planning, running, and evaluating EEG-based experiments that investigate how humans can control external systems, such as computer games or a robotic arm, through neural signals. The team combines methodological rigor with creative problem-solving to ensure experiments are well-controlled, ethically sound, and aligned with the broader goals of our research. Members collaborate closely with our pipeline team to design tasks that produce meaningful, interpretable results.
+        <br />
+        <br />
+        <p>Nice to have:</p>
+        <ul>
+          <li>Interest or knowledge in cognitive neuroscience and experimental methods</li>
+          <li>Teamwork and communication abilities</li>
+        </ul>
+      </>
+    ),
+    positions: [],
+  },
+  {
+    name: "Communications",
+    description: (
+      <>
+        We manage neurotum's social media presence, as well as event planning.
+        <br />
+        <br />
+        We collaborate closely with other teams as well as working on our own content ideas. Currently, we are working on updating the website and writing blog posts about what's happening in the initiative. Each semester we make new merch and organize events in the world of neurotech, which helps people meet potential collaborators for the work that neurotum does.
+        <br />
+        <br />
+        <p>Nice to have:</p>
+        <ul>
+          <li>Know how to use Canva</li>
+          <li>Knowledge of web design</li>
+          <li>Enjoyment of writing</li>
+          <li>Interest in neurotechnology</li>
+        </ul>
+      </>
+    ),
+    positions: [],
   },
 ];
 

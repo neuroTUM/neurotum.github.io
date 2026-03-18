@@ -7,16 +7,16 @@ const ApplicationTimelineCard = () => {
     <Card title="Application Timeline">
       <ul style={{ listStyle: "none", padding: 0, lineHeight: "1.8rem" }}>
         <li>
-          <strong>Applications open:</strong> 06.10.2025 - 24.10.2025
+          <strong>Applications open:</strong> 20.03.2026 - 06.04.2026
         </li>
         <li>
-          <strong>Interviews:</strong> 29.10.2025 - 31-10.2025
+          <strong>Interviews:</strong> 10.04.2026 - 12.04.2026
         </li>
         <li>
-          <strong>Final decisions:</strong> 01.11.2025
+          <strong>Final decisions:</strong> 16.04.2026
         </li>
         <li>
-          <strong>Onboarding:</strong> 03.11 - 04.11
+          <strong>Onboarding:</strong> 18.04 - 19.04
         </li>
       </ul>
       <p style={{ marginTop: "1rem" }}>
