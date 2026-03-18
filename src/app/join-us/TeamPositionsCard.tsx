@@ -252,46 +252,6 @@ const TeamsPositionsCard: React.FC = () => {
                     >
                       {team.description}
                     </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "1rem",
-                        marginTop: "1rem",
-                      }}
-                    >
-                      {team.positions.map((pos, idx) => (
-                        <div
-                          key={idx}
-                          style={{
-                            background: "#fff",
-                            padding: "1rem 1.2rem",
-                            borderRadius: "1rem",
-                            boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
-                            border: "1px solid rgba(0,0,0,0.04)",
-                          }}
-                        >
-                          <strong
-                            style={{
-                              display: "block",
-                              fontSize: "1.05rem",
-                              marginBottom: "0.2rem",
-                            }}
-                          >
-                            {pos.title}
-                          </strong>
-                          <div
-                            style={{
-                              fontSize: "0.95rem",
-                              color: "#444",
-                              lineHeight: "1.4rem",
-                            }}
-                          >
-                            {pos.description}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
