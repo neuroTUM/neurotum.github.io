@@ -12,7 +12,7 @@ const ApplyNowCard = () => {
 
       <div style={{ textAlign: "center" }}>
         <a
-          href=""
+          href="https://tally.so/r/VL89JM"
           target="_blank"
           rel="noopener noreferrer"
           style={{
