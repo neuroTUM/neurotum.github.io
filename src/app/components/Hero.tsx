@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
             transition: "opacity 0.5s ease, transform 0.5s ease",
           }}
         >
-          Led by students, we work at the intersection of Neuroscience, Electrical Engineering and Robotics.
+          
         </p>
       </div>
 

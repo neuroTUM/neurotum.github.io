@@ -8,16 +8,14 @@ const MOBILE_BREAKPOINT = 768;
 
 const allImages = [
   "/sponsor_images/mouser-electronics.png",
-  "/collaborator_images/TUM_chair_of_ai_processor_design.png",
   "/collaborator_images/fortiss.png",
   "/collaborator_images/TUM_venture_labs.png",
   "/collaborator_images/makerspace.png",
-  "/collaborator_images/TUM_institute_of_cognitive_systems.png",
   "/collaborator_images/mbraintrain.png",
-  "/collaborator_images/TUM_associate_professorship_of_neuroelectronics.png",
+  "/collaborator_images/logo-tum.png",
   "/sponsor_images/industrial_innovators.svg",
   "/sponsor_images/TUM_bund_der_freunde.svg",
-  
+  "/collaborator_images/NEURA_LOGO_62f546ac.jpg", 
 ];
 
 const Partner: React.FC = () => {

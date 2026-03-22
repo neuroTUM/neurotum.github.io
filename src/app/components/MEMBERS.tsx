@@ -161,10 +161,10 @@ export const MEMBERS: Member[] = [
   },
   {
     name: "Tobias Konieczny",
-    team: "OpenHardware",
+    team: "OpenHardware", 
     status: "Passive Member",
     studyCourse: undefined,
-  },
+  }, 
   {
     name: "Daniel",
     team: "BCI",

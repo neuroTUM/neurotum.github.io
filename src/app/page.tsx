@@ -26,7 +26,7 @@ export default function Home() {
         <Hero />
       </div>
 
-      {/* Snap Section 2: 1st Content Slide (Bild Kopie Left | Text Right) */}
+      {/* Snap Section 2: Intersection Card */}
       <div
         style={{
           height: "100%",
@@ -48,43 +48,55 @@ export default function Home() {
             }} 
           />
         </div>
-        <div style={{ flex: 1, padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div style={{ 
+          flex: 1, 
+          // Increased left padding to 10rem to move text more to the right
+          padding: "2rem 2rem 2rem 10rem", 
+          display: "flex", 
+          flexDirection: "column", 
+          justifyContent: "center", 
+          paddingTop: 0 
+        }}>
           <h2
             style={{
               textAlign: "left",
-              fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+              fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)",
               fontWeight: 600,
               color: standardColor,
-              lineHeight: 1.2,
+              lineHeight: 1.3,
               margin: 0,
+              maxWidth: "600px"
+            }}
+          >
+            At NeuroTUM we take a multidisciplinary approach to neuroengineering.
+          </h2>
+
+          {/* Empty paragraph for space between sentences */}
+          <p style={{ margin: "2rem 0" }}>&nbsp;</p>
+
+          <h2
+            style={{
+              textAlign: "left",
+              fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)",
+              fontWeight: 600,
+              color: standardColor,
+              lineHeight: 1.3,
+              margin: 0,
+              maxWidth: "600px"
             }}
           >
             We work at the intersection of{" "}
             <span style={{ color: brightBlue }}>Neuroscience</span>,{" "}
             <span style={{ color: brightBlue }}>Electrical Engineering</span>{" "}
             and <span style={{ color: brightBlue }}>Robotics</span>.
-            <br />
-            <br />
-            Do you want to learn more about our{" "}
-            <Link
-              href="/research"
-              style={{
-                color: brightBlue,
-                textDecoration: "underline",
-                cursor: "pointer",
-              }}
-            >
-              Research
-            </Link>
-            ?
           </h2>
         </div>
       </div>
 
-      {/* Spacer 1: Matches Hero-Slide distance */}
+      {/* Spacer 1 */}
       <div style={{ height: "4rem", background: "var(--background)" }} />
 
-      {/* Snap Section 3: 2nd Content Slide (Text Left | photo3.jpg Right) */}
+      {/* Snap Section 3: Questions Card */}
       <div
         style={{
           height: "100%",
@@ -95,12 +107,19 @@ export default function Home() {
         }}
       >
         <div style={{ flex: 1, padding: "4rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 500, letterSpacing: "-0.03em", color: standardColor }}>
-            Lorem ipsum
+          <h2 style={{ 
+            fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)", 
+            fontWeight: 600, 
+            lineHeight: 1.3, 
+            letterSpacing: "-0.02em", 
+            color: standardColor 
+          }}>
+            Do you want to help <span style={{ color: brightBlue }}>tetraplegic patients</span> control <span style={{ color: brightBlue }}>robotic arms</span> with their brain? 
+            <br /><br />
+            Or develop <span style={{ color: brightBlue }}>games</span> that are controlled by <span style={{ color: brightBlue }}>neural signals</span>? 
+            <br /><br />
+            Or be part of a team that builds the next generation of <span style={{ color: brightBlue }}>EEG devices</span>?
           </h2>
-          <p style={{ marginTop: "2rem", fontSize: "1.2rem", color: standardColor, opacity: 0.7, maxWidth: "500px", lineHeight: 1.6 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
         </div>
         <div style={{ flex: 1, background: "var(--background)" }}>
           <img
@@ -116,10 +135,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Spacer 2: Adjusted to maintain total white space consistency */}
-      <div style={{ height: "12rem", background: "var(--background)" }} />
+      {/* Spacer 2 */}
+      <div style={{ height: "8rem", background: "var(--background)" }} />
 
-      {/* Snap Section 4: 3rd Content Slide (3 Images Top | Text Bottom) */}
+      {/* Snap Section 4: Multidisciplinary Card */}
       <div
         style={{
           height: "100%",
@@ -130,21 +149,21 @@ export default function Home() {
           background: "var(--background)",
         }}
       >
-        <div style={{ display: "flex", height: "70%", background: "var(--background)" }}>
+        <div style={{ display: "flex", height: "65%", background: "var(--background)" }}>
+          <img 
+            src="/main_page_imgs/Bild 15.03.26 um 17.56.jpeg"
+            alt="robotic arm"
+            style={{flex: 1, width: "100%", height: "100%", objectFit: "cover", objectPosition: "left top"}}
+          />
           <img
-            src="/main_page_imgs/photo3.jpg"
+            src="/main_page_imgs/IMG_9165.jpeg"
             alt="Lab View"
-            style={{ flex: 1, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left top" }}
+            style={{ flex: 1, width: "100%", height: "100%", objectFit: "cover", objectPosition: "left top" }}
           />
           <img
             src="/main_page_imgs/photo6.jpg"
             alt="Team Working"
-            style={{ flex: 1, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left top" }}
-          />
-          <img
-            src="/main_page_imgs/Bild%20Kopie.jpeg"
-            alt="Hardware Detail"
-            style={{ flex: 1, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left top" }}
+            style={{ flex: 1, width: "100%", height: "100%", objectFit: "cover", objectPosition: "left top" }}
           />
         </div>
         <div
@@ -153,21 +172,33 @@ export default function Home() {
             padding: "2rem 4rem",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center", // Centered horizontally and vertically
+            justifyContent: "center", 
           }}
         >
-          <p 
+          <h2 
             style={{ 
-              fontSize: "1.2rem", 
-              lineHeight: "1.6", 
+              fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)",
+              fontWeight: 600,
+              lineHeight: "1.3", 
               color: standardColor, 
-              opacity: 0.8, 
-              maxWidth: "800px", 
-              textAlign: "center" // Centered text lines
+              maxWidth: "1000px", 
+              textAlign: "center" 
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </p>
+            We take part in international <span style={{ color: brightBlue }}>competitions</span>, organize <span style={{ color: brightBlue }}>hackathons</span> and <span style={{ color: brightBlue }}>build</span> exciting projects in the lab. 
+            <br /><br />
+            Find out what we're{" "}
+            <Link
+              href="/news"
+              style={{
+                color: brightBlue,
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+            >
+              up to
+            </Link>.
+          </h2>
         </div>
       </div>
 

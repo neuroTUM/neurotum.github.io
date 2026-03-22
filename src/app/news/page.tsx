@@ -15,41 +15,42 @@ type NewsItem = {
 const NEWS_DATA: NewsItem[] = [
   {
     id: "1",
-    category: "Research",
-    title: "Advancing Frontiers: Our Latest Breakthrough in Neural Decoding",
-    date: "January 10, 2026",
-    image: "/main_page_imgs/1766083507951.jpeg",
-    href: "/news/research-breakthrough",
+    category: "Summer semester 2026",
+    title: "Applications are open!",
+    date: "March 22, 2026",
+    image: "/news_page_imgs/applications_open.jpg", 
+    href: "/news/applications-are-open",
+  },
+  {
+    id: "0",
+    category: "Announcements",
+    title: "Cortical Peaks Challenge 2026",
+    date: "January 6, 2026",
+    image: "/news_page_imgs/1766418879312.jpeg",
+    href: "/news/cortical-peaks-challenge-2026",
   },
   {
     id: "2",
-    category: "Team",
-    title: "NeuroTUM welcomes 20 new researchers to the 2026 cohort",
-    date: "January 5, 2026",
-    image: "/main_page_imgs/1763454548169.jpeg",
-    href: "/news/new-cohort",
+    category: "Events",
+    title: "NeuroTUM hosts the newest edition of Munich Neuromorphic Hackathon",
+    date: "November 25, 2025",
+    image: "/news_page_imgs/hackathon_main.jpg", 
+    href: "/news/neuromorphic-hackathon-2025",
   },
   {
     id: "3",
     category: "Partnerships",
-    title: "New collaboration with industry leaders in neurotechnology",
-    date: "December 15, 2025",
-    image: "/main_page_imgs/1760196497038.jpeg",
-    href: "/news/partnership-announcement",
-  },
-  {
-    id: "4",
-    category: "Events",
-    title: "Recap: The 2025 NeuroTech Conference in Munich",
-    date: "November 30, 2025",
-    image: "https://images.unsplash.com/photo-1540575861501-7ad0582373f2?auto=format&fit=crop&q=80&w=800",
-    href: "/news/conference-recap",
+    title: "Winning 10,000€ at Neura Robotics Challenge 2025!",
+    date: "October 15, 2025",
+    image: "/news_page_imgs/1760196497038.jpeg",
+    href: "/news/neura-robotics-challenge",
   },
 ];
 
 const NewsPage: React.FC = () => {
   const containerStyle: React.CSSProperties = {
-    paddingTop: "calc(var(--header-height) + 4rem)",
+    // Matched to Team page div padding
+    paddingTop: "2rem", 
     paddingBottom: "8rem",
     maxWidth: "1300px",
     margin: "0 auto",
@@ -58,10 +59,11 @@ const NewsPage: React.FC = () => {
   };
 
   const headerStyle: React.CSSProperties = {
-    fontSize: "clamp(2.5rem, 8vw, 4.5rem)", 
+    // Matched to Team page H1 styles
+    fontSize: "clamp(3rem, 8vw, 5rem)", 
     fontWeight: 500,
     letterSpacing: "-0.04em",
-    marginBottom: "4rem",
+    margin: "0 0 3rem 0",
     color: "var(--foreground)",
   };
 
@@ -103,7 +105,6 @@ const FeaturedCard: React.FC<{ article: NewsItem }> = ({ article }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background changed to white */}
       <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", backgroundColor: "#ffffff" }}>
         <img 
           src={article.image} 
@@ -111,9 +112,9 @@ const FeaturedCard: React.FC<{ article: NewsItem }> = ({ article }) => {
           style={{ 
             width: "100%", 
             height: "100%", 
-            objectFit: "contain", // Never cut to fit
+            objectFit: "contain",
             transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)", 
-            transform: "scale(1)" // Zoom effect removed
+            transform: "scale(1)" 
           }} 
         />
       </div>
@@ -131,7 +132,6 @@ const NewsCard: React.FC<{ article: NewsItem }> = ({ article }) => {
   return (
     <Link href={article.href} style={{ textDecoration: "none", color: "inherit" }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        {/* Background changed to white */}
         <div style={{ position: "relative", width: "100%", aspectRatio: "16/10", marginBottom: "1.5rem", overflow: "hidden", backgroundColor: "#ffffff" }}>
           <img 
             src={article.image} 
@@ -139,10 +139,10 @@ const NewsCard: React.FC<{ article: NewsItem }> = ({ article }) => {
             style={{ 
               width: "100%", 
               height: "100%", 
-              objectFit: "contain", // Never cut to fit
-              objectPosition: "left", // Bound to left corner
+              objectFit: "contain", 
+              objectPosition: "left",
               transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)", 
-              transform: "scale(1)" // Zoom effect removed
+              transform: "scale(1)" 
             }} 
           />
         </div>

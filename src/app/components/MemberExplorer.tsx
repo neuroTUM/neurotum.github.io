@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MEMBERS } from "./MEMBERS";
@@ -40,11 +40,21 @@ const MemberExplorer = () => {
     if (selectedParam && !TEAM_LABELS.includes(selectedParam as TeamKey)) {
       const params = new URLSearchParams(searchParams.toString());
       params.delete("selected");
-      // Fixed: Added { scroll: false } to prevent jumping to top
       router.replace(`?${params.toString()}`, { scroll: false });
     }
     setTeamFilter((selectedParam as TeamKey) || "All");
   }, [selectedParam, router, searchParams]);
+
+  // Deduplicate members when "All" is selected, otherwise filter by team
+  const displayMembers = useMemo(() => {
+    if (teamFilter === "All") {
+      // Use a Map to keep only one entry per name
+      return Array.from(
+        new Map(MEMBERS.map((m) => [m.name, m])).values()
+      );
+    }
+    return MEMBERS.filter((m) => m.team === teamFilter);
+  }, [teamFilter]);
 
   const handleFilterClick = (group: TeamKey) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -53,7 +63,6 @@ const MemberExplorer = () => {
     } else {
       params.set("selected", group);
     }
-    // Fixed: Added { scroll: false } to prevent jumping to top
     router.push(`?${params.toString()}`, { scroll: false });
     setTeamFilter(group);
   };
@@ -131,16 +140,13 @@ const MemberExplorer = () => {
         padding: 0,
         justifyItems: "left" 
       }}>
-        {MEMBERS.map((member, idx) => {
-          const isVisible = teamFilter === "All" || member.team === teamFilter;
-          return (isVisible &&
-            <MemberItem 
-              key={`${member.name}-${idx}`} 
-              member={member} 
-              isVisible={isVisible}
-            />
-          );
-        })}
+        {displayMembers.map((member, idx) => (
+          <MemberItem 
+            key={`${member.name}-${idx}`} 
+            member={member} 
+            isVisible={true}
+          />
+        ))}
       </ul>
     </div>
   );

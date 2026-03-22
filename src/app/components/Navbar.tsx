@@ -15,10 +15,10 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { name: "Home", href: "/", isLogo: true },
-  { name: "Research", href: "/research" },
+  //{ name: "Research", href: "/research" },
   { name: "News", href: "/news"},
   { name: "Team", href: "/team" },
-  { name: "Partners", href: "/partners" },
+  //{ name: "Partners", href: "/partners" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -142,7 +142,7 @@ const Navbar: React.FC = () => {
               e.currentTarget.style.color = "var(--background)";
             }}
           >
-            Become a member
+            Apply now
           </span>
         </Link>
         <Link href="/contact" style={{ textDecoration: "none" }}>

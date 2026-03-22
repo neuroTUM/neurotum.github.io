@@ -1,7 +1,9 @@
-// Removed "use client" to enable SSR and fix loading lag
+"use client";
+
 import React from "react";
 import JoinCard from "../components/JoinCard";
 import Footer from "../components/Footer";
+import ExpandableTeam from "../components/ExpandableTeam";
 
 const JoinUsPage = () => {
   return (
@@ -33,14 +35,87 @@ const JoinUsPage = () => {
           {/* Timeline */}
           <JoinCard title="Application Timeline">
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <p><strong>Applications open:</strong> 06.10.2025 - 24.10.2025</p>
-              <p><strong>Interviews:</strong> 29.10.2025 - 31.10.2025</p>
-              <p><strong>Final decisions:</strong> 01.11.2025</p>
-              <p><strong>Onboarding:</strong> 03.11 - 04.11</p>
+              <p><strong>Applications open:</strong> 20.03.2026 - 06.04.2026</p>
+              <p><strong>Interviews:</strong> 10.04.2026 - 12.04.2026</p>
+              <p><strong>Final decisions:</strong> 16.04.2026</p>
+              <p><strong>Onboarding:</strong> 18.04 - 19.04</p>
               <p style={{ marginTop: "1rem", color: "#d93025", fontWeight: 600 }}>
                 Please note that onboarding is mandatory. If you are unavailable during those dates, acceptance to the club will not be possible.
               </p>
             </div>
+          </JoinCard>
+
+          {/* Teams & Positions - Now above Journey */}
+          <JoinCard title="Teams & Positions">
+            <ExpandableTeam 
+              title="Pipeline Design"
+              description="Develop innovative signal processing and machine learning pipelines to interpret EEG data effectively."
+              fullText="The Pipeline Design team focuses on building and improving the computational foundations of our brain-computer interface (BCI) research. Members work on designing and implementing digital filters, feature extraction methods, and novel signal processing techniques to enhance EEG signal quality. The team also develops and optimizes machine learning and deep learning models to achieve robust and accurate classification of neural activity, directly contributing to real-world BCI applications such as robotic control or neurofeedback tasks."
+              niceToHave={[
+                "Strong programming skills in Python",
+                "Teamwork and familiarity with collaborative workflows (Git, CI/CD, Kanban boards)",
+                "Familiarity with signal processing",
+                "Understanding of machine learning/deep learning concepts",
+                "Knowledge or interest of neuroscience or neuropsychology"
+              ]}
+            />
+
+            <ExpandableTeam 
+              title="Electronics"
+              description="Our goal is the design and build of a custom Electroencephalogram (EEG) system, including active electrodes."
+              fullText="This device is a key component of a brain-computer interface (BCI), which allows the non-invasive collection of neuronal data. As commercial systems are prohibitively expensive despite comparatively low material cost, we have set out to build our own. In this team, we dive into the world of circuit & PCB design for both analogue and digital systems, soldering, and embedded programming for microcontrollers. We meet every Saturday to design, solder, debug, and test our designs."
+              niceToHave={[
+                "Some experience with electronics, PCB design, and programming.",
+                "Excitement, motivation, and an open mind 🙂"
+              ]}
+            />
+
+            <ExpandableTeam 
+              title="Robotics"
+              description="We build robotic systems controlled by brain signals to help people with tetraplegia manipulate objects in their environment again."
+              fullText="We receive decoded brain commands from the BCI pipeline and turn them into real robot actions. That means using cameras to understand the environment, planning how the arm should move, designing grip strategies to reliably handle objects, and modeling custom parts when needed. The biggest challenge is making all of this work together fast and reliably enough for an online brain signal pipeline. The end goal right now: a user selects a chess move, and a robotic arm executes it."
+              niceToHave={[
+                "Familiarity with Python or C++",
+                "Some exposure to ROS 2, computer vision, or motion planning",
+                "Interest in robotics and assistive technology",
+                "Willingness to pick up new topics quickly"
+              ]}
+            />
+
+            <ExpandableTeam 
+              title="Games Engineering"
+              description="Design and develop engaging games that can be controlled through brain-computer interfaces."
+              fullText="The Games Engineering team creates interactive training environments that help users learn and improve their control of brain-computer interfaces (BCIs). Members design and develop video games that respond to neural input, implement infrastructure to ensure compatibility across different BCI controllers, and enable multiplayer functionality. The team also supports the preparation and maintenance of games for events such as the BCI Graz competition, where BCI users compete in real time."
+              niceToHave={[
+                "Experience in video game development (preferably in Pygame, but also Unity, Unreal, or Godot)",
+                "Teamwork and familiarity with collaborative workflows (Git, CI/CD, Kanban boards)",
+                "Understanding of game design and user engagement principles",
+                "Strong programming skills in Python",
+                "Interest in multiplayer game development, and interest in neuroscience or neuropsychology"
+              ]}
+            />
+
+            <ExpandableTeam 
+              title="Experimental Design"
+              description="Design and conduct EEG experiments to test and improve brain-computer interface control systems."
+              fullText="The Experimental Design team is responsible for planning, running, and evaluating EEG-based experiments that investigate how humans can control external systems, such as computer games or a robotic arm, through neural signals. The team combines methodological rigor with creative problem-solving to ensure experiments are well-controlled, ethically sound, and aligned with the broader goals of our research."
+              niceToHave={[
+                "Interest or knowledge in cognitive neuroscience and experimental methods",
+                "Teamwork and communication abilities"
+              ]}
+            />
+
+            <ExpandableTeam 
+              title="Communications"
+              description="We manage neuroTUM's social media presence, as well as event planning."
+              fullText="We collaborate closely with other teams as well as working on our own content ideas. Currently, we are working on updating the website and writing blog posts about what's happening in the initiative. Each semester we make new merch and organize events in the world of neurotech, which helps people meet potential collaborators for the work that neuroTUM does."
+              niceToHave={[
+                "Know how to use Canva",
+                "Knowledge of web design",
+                "Enjoyment of writing",
+                "Interest in neurotechnology"
+              ]}
+            />
           </JoinCard>
 
           {/* Journey */}
@@ -79,35 +154,6 @@ const JoinUsPage = () => {
             </div>
           </JoinCard>
 
-          {/* Teams & Positions */}
-          <JoinCard title="Teams & Positions">
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-              <div>
-                <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem", borderBottom: "1px solid #eee", paddingBottom: "0.5rem" }}>Electronics, BCI & Neuromotion</h3>
-                <p>Our engineering teams are the core of our technical research and development.</p>
-              </div>
-
-              <div>
-                <h3 style={{ fontSize: "1.3rem", marginBottom: "1rem", borderBottom: "1px solid #eee", paddingBottom: "0.5rem" }}>Operations</h3>
-                <p style={{ marginBottom: "1rem" }}>The Communications & Operations team is the backbone of neuroTUM&apos;s internal and external affairs. Internally, we strive to enable our project teams to focus solely on their project work by handling legal, administrative and operational tasks in cooperation with the club&apos;s leadership, as well as by acquiring sponsors and collaborators.</p>
-                
-                <h4 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>Communication</h4>
-                <strong>We are looking for:</strong>
-                <ul style={{ paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
-                  <li>People excited about networking and talking to companies.</li>
-                  <li>Creative minds for posters, merch and template designs.</li>
-                </ul>
-
-                <h4 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>Ethics</h4>
-                <p style={{ marginBottom: "1rem" }}>The Ethics and Responsibility Officer ensures that ethics is not just a theoretical concern but a fundamental part of neuroTUM&apos;s engineering and research processes.</p>
-                <strong>Nice to have:</strong>
-                <ul style={{ paddingLeft: "1.2rem", marginBottom: "1rem" }}>
-                  <li>Strong interest in the intersection of ethics and neurotechnology.</li>
-                </ul>
-              </div>
-            </div>
-          </JoinCard>
-
           {/* Apply Now */}
           <div style={{ 
             textAlign: "center", 
@@ -121,7 +167,7 @@ const JoinUsPage = () => {
               Ready to join us? We&apos;re excited to meet you!
             </p>
             <a 
-              href="https://docs.google.com/forms/..." 
+              href="https://tally.so/r/VL89JM" 
               target="_blank" 
               style={{
                 display: "inline-block",
