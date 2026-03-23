@@ -124,7 +124,7 @@ const ResearchPage = () => {
         {/* Grid */}
         <div style={{ 
           display: "grid", 
-          gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))", 
+          gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 350px), 1fr))",
           gap: "4rem 2.5rem" 
         }}>
           {filteredProjects.map(project => (
@@ -145,9 +145,9 @@ const FeaturedProject = ({ project }: { project: ResearchProject }) => {
       href={project.href} 
       onMouseEnter={() => setHover(true)} 
       onMouseLeave={() => setHover(false)}
-      style={{ textDecoration: "none", color: "inherit", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "4rem", alignItems: "center" }}
+      style={{ textDecoration: "none", color: "inherit", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", alignItems: "center" }}
     >
-      <div style={{ overflow: "hidden", aspectRatio: "16/9", backgroundColor: "#f0f0f0" }}>
+      <div style={{ overflow: "hidden", aspectRatio: "16/9", backgroundColor: "var(--color-secondary)" }}>
         <img 
           src={project.image} 
           style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.8s ease", transform: hover ? "scale(1.03)" : "scale(1)" }} 
@@ -155,7 +155,7 @@ const FeaturedProject = ({ project }: { project: ResearchProject }) => {
         />
       </div>
       <div>
-        <span style={{ fontSize: "0.85rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#105fdfff" }}>Featured Project</span>
+        <span style={{ fontSize: "0.85rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-blue)" }}>Featured Project</span>
         <h2 style={{ fontSize: "2.5rem", margin: "1rem 0", fontWeight: 500, lineHeight: 1.1 }}>{project.title}</h2>
         <p style={{ opacity: 0.7, marginBottom: "2rem", lineHeight: 1.6 }}>{project.description}</p>
         <span style={{ fontWeight: 600 }}>Explore Project →</span>
@@ -173,7 +173,7 @@ const ResearchCard = ({ project }: { project: ResearchProject }) => {
       onMouseLeave={() => setHover(false)}
       style={{ textDecoration: "none", color: "inherit" }}
     >
-      <div style={{ marginBottom: "1.5rem", overflow: "hidden", aspectRatio: "4/3", backgroundColor: "#f0f0f0" }}>
+      <div style={{ marginBottom: "1.5rem", overflow: "hidden", aspectRatio: "4/3", backgroundColor: "var(--color-secondary)" }}>
         <img 
           src={project.image} 
           style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.8s ease", transform: hover ? "scale(1.05)" : "scale(1)" }} 

@@ -69,7 +69,7 @@ const NewsPage: React.FC = () => {
 
   const gridStyle: React.CSSProperties = {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
     gap: "4rem 2rem",
   };
 
@@ -91,7 +91,7 @@ const FeaturedCard: React.FC<{ article: NewsItem }> = ({ article }) => {
   const [isHovered, setIsHovered] = useState(false);
   const featuredStyle: React.CSSProperties = {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
     gap: "3rem",
     marginBottom: "2rem",
     cursor: "pointer",
@@ -105,7 +105,7 @@ const FeaturedCard: React.FC<{ article: NewsItem }> = ({ article }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", backgroundColor: "#ffffff" }}>
+      <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", backgroundColor: "var(--background)" }}>
         <img 
           src={article.image} 
           alt={article.title} 
@@ -132,7 +132,7 @@ const NewsCard: React.FC<{ article: NewsItem }> = ({ article }) => {
   return (
     <Link href={article.href} style={{ textDecoration: "none", color: "inherit" }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={{ position: "relative", width: "100%", aspectRatio: "16/10", marginBottom: "1.5rem", overflow: "hidden", backgroundColor: "#ffffff" }}>
+        <div style={{ position: "relative", width: "100%", aspectRatio: "16/10", marginBottom: "1.5rem", overflow: "hidden", backgroundColor: "var(--background)" }}>
           <img 
             src={article.image} 
             alt={article.title} 

@@ -42,7 +42,7 @@ const ContactPage: React.FC = () => {
           href="mailto:team@neurotum.com"
           style={{
             fontSize: "clamp(1.2rem, 2vw, 1.8rem)",
-            color: "#150e3a", // The website's blue
+            color: "var(--foreground)",
             fontWeight: 600,
             textDecoration: "underline",
             textUnderlineOffset: "4px",

@@ -15,7 +15,7 @@ const ExpandableTeam: React.FC<ExpandableTeamProps> = ({ title, description, ful
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div style={{ borderBottom: "1px solid #eee", paddingBottom: "1.5rem", marginBottom: "1.5rem" }}>
+    <div style={{ borderBottom: "1px solid var(--color-border)", paddingBottom: "1.5rem", marginBottom: "1.5rem" }}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         style={{
@@ -30,7 +30,7 @@ const ExpandableTeam: React.FC<ExpandableTeamProps> = ({ title, description, ful
           padding: "0.5rem 0",
         }}
       >
-        <h3 style={{ fontSize: "1.4rem", fontWeight: 600, color: "#150e3a" }}>{title}</h3>
+        <h3 style={{ fontSize: "1.4rem", fontWeight: 600, color: "var(--foreground)" }}>{title}</h3>
         <span style={{ fontSize: "1.5rem", transition: "transform 0.3s", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}>
           +
         </span>
@@ -46,7 +46,7 @@ const ExpandableTeam: React.FC<ExpandableTeamProps> = ({ title, description, ful
             style={{ overflow: "hidden" }}
           >
             <div style={{ paddingTop: "1rem" }}>
-              <p style={{ fontWeight: 600, marginBottom: "1rem", color: "#105fdfff" }}>{description}</p>
+              <p style={{ fontWeight: 600, marginBottom: "1rem", color: "var(--color-blue)" }}>{description}</p>
               <p style={{ lineHeight: 1.6, opacity: 0.8, marginBottom: "1.5rem" }}>{fullText}</p>
               
               {/* Only renders if niceToHave is actually provided */}

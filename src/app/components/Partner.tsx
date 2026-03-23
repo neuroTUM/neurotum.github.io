@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const MOBILE_BREAKPOINT = 768;
 
 const allImages = [
   "/sponsor_images/mouser-electronics.png",
@@ -15,24 +13,10 @@ const allImages = [
   "/collaborator_images/logo-tum.png",
   "/sponsor_images/industrial_innovators.svg",
   "/sponsor_images/TUM_bund_der_freunde.svg",
-  "/collaborator_images/NEURA_LOGO_62f546ac.jpg", 
+  "/collaborator_images/NEURA_LOGO_62f546ac.jpg",
 ];
 
 const Partner: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
-    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) => setIsMobile(event.matches);
-    updateMatch(mediaQuery);
-    const handleChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
-    mediaQuery.addListener(handleChange);
-    return () => mediaQuery.removeListener(handleChange);
-  }, []);
 
   return (
     <section
@@ -78,7 +62,7 @@ const Partner: React.FC = () => {
             }}
           >
             <Image
-              src={`${basePath}${image}`}
+              src={image}
               alt={`Partner ${index}`}
               height={60}
               width={200}

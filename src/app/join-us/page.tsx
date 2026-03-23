@@ -11,7 +11,7 @@ const JoinUsPage = () => {
       <main style={{
         maxWidth: "1300px", 
         margin: "0 auto", 
-        padding: "calc(var(--header-height) + 4rem) 2rem 8rem 2rem",
+        padding: "calc(var(--header-height) + 2rem) clamp(1rem, 4vw, 2rem) 4rem",
         display: "flex",
         flexDirection: "column",
       }}>
@@ -39,7 +39,7 @@ const JoinUsPage = () => {
               <p><strong>Interviews:</strong> 10.04.2026 - 12.04.2026</p>
               <p><strong>Final decisions:</strong> 16.04.2026</p>
               <p><strong>Onboarding:</strong> 18.04 - 19.04</p>
-              <p style={{ marginTop: "1rem", color: "#d93025", fontWeight: 600 }}>
+              <p style={{ marginTop: "1rem", color: "var(--color-error)", fontWeight: 600 }}>
                 Please note that onboarding is mandatory. If you are unavailable during those dates, acceptance to the club will not be possible.
               </p>
             </div>
@@ -122,7 +122,7 @@ const JoinUsPage = () => {
           <JoinCard title="Your Journey as a NeuroTUM Member">
             <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
               <div>
-                <h3 style={{ fontSize: "1.2rem", color: "#150e3a", marginBottom: "0.5rem" }}>Semester 1</h3>
+                <h3 style={{ fontSize: "1.2rem", color: "var(--foreground)", marginBottom: "0.5rem" }}>Semester 1</h3>
                 <ul style={{ paddingLeft: "1.2rem" }}>
                   <li>Apply, interview, and join the club</li>
                   <li>Participate in onboarding weekend</li>
@@ -131,21 +131,21 @@ const JoinUsPage = () => {
                 </ul>
               </div>
               <div>
-                <h3 style={{ fontSize: "1.2rem", color: "#150e3a", marginBottom: "0.5rem" }}>Semester 2</h3>
+                <h3 style={{ fontSize: "1.2rem", color: "var(--foreground)", marginBottom: "0.5rem" }}>Semester 2</h3>
                 <ul style={{ paddingLeft: "1.2rem" }}>
                   <li>Continue project work in your team</li>
                   <li>Take a lead position in your application area</li>
                 </ul>
               </div>
               <div>
-                <h3 style={{ fontSize: "1.2rem", color: "#150e3a", marginBottom: "0.5rem" }}>Semester 3+</h3>
+                <h3 style={{ fontSize: "1.2rem", color: "var(--foreground)", marginBottom: "0.5rem" }}>Semester 3+</h3>
                 <ul style={{ paddingLeft: "1.2rem" }}>
                   <li>Run for director after completing a leadership semester</li>
                   <li>Contribute to advanced initiatives and research</li>
                 </ul>
               </div>
               <div>
-                <h3 style={{ fontSize: "1.2rem", color: "#150e3a", marginBottom: "0.5rem" }}>Alumni</h3>
+                <h3 style={{ fontSize: "1.2rem", color: "var(--foreground)", marginBottom: "0.5rem" }}>Alumni</h3>
                 <ul style={{ paddingLeft: "1.2rem" }}>
                   <li>Join alumni events</li>
                   <li>Mentor new members and stay connected</li>
@@ -158,9 +158,9 @@ const JoinUsPage = () => {
           <div style={{ 
             textAlign: "center", 
             padding: "5rem 2rem", 
-            background: "#150e3a", 
-            borderRadius: "2rem", 
-            color: "#fff" 
+            background: "var(--foreground)",
+            borderRadius: "2rem",
+            color: "var(--background)"
           }}>
             <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Apply Now</h2>
             <p style={{ fontSize: "1.2rem", opacity: 0.9, marginBottom: "2.5rem" }}>
@@ -172,8 +172,8 @@ const JoinUsPage = () => {
               style={{
                 display: "inline-block",
                 padding: "1.2rem 3rem",
-                background: "#fff",
-                color: "#150e3a",
+                background: "var(--background)",
+                color: "var(--foreground)",
                 borderRadius: "999px",
                 fontWeight: 700,
                 textDecoration: "none"

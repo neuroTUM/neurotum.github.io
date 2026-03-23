@@ -11,12 +11,12 @@ const Footer = () => {
     <footer
       style={{
         width: "100%",
-        background: "#150e3a",
-        color: "#ffffff",
+        background: "var(--foreground)",
+        color: "var(--background)",
         padding: isMobile ? "3rem 1rem" : "4rem 0",
         position: "relative",
         marginTop: "auto",
-        boxShadow: "0 100vh 0 100vh #150e3a",
+        boxShadow: "0 100vh 0 100vh var(--foreground)",
       }}
     >
       <div style={{
@@ -67,7 +67,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div style={{ width: "100%", height: "1px", background: "#ffffff", opacity: 0.2 }} />
+        <div style={{ width: "100%", height: "1px", background: "var(--background)", opacity: 0.2 }} />
 
         <div style={{
           display: "flex",

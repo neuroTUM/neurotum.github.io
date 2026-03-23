@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Footer from "../../components/Footer";
 
 export default function CorticalPeaksChallengePage() {
   const standardColor = "var(--foreground)";
-  const brightBlue = "#105fdfff";
+  const brightBlue = "var(--color-blue)";
   
   return (
     <main style={{ background: "var(--background)", minHeight: "100vh" }}>
@@ -14,12 +15,29 @@ export default function CorticalPeaksChallengePage() {
         margin: "0 auto",
         padding: "calc(var(--header-height) + 4rem) 2rem 8rem 2rem"
       }}>
+        <Link
+          href="/news"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            fontSize: "0.95rem",
+            fontWeight: 500,
+            color: "var(--foreground)",
+            textDecoration: "none",
+            opacity: 0.6,
+            marginBottom: "2rem",
+          }}
+        >
+          ← Back to News
+        </Link>
+
         {/* Category & Date */}
-        <div style={{ 
-          fontSize: "0.9rem", 
-          fontWeight: 600, 
-          textTransform: "uppercase", 
-          letterSpacing: "0.1em", 
+        <div style={{
+          fontSize: "0.9rem",
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
           color: brightBlue,
           marginBottom: "1rem"
         }}>
@@ -47,7 +65,7 @@ export default function CorticalPeaksChallengePage() {
           width: "100%", 
           aspectRatio: "16/9", 
           overflow: "hidden", 
-          backgroundColor: "#f4f4f6",
+          backgroundColor: "var(--color-secondary)",
           marginBottom: "4rem" 
         }}>
           <img 

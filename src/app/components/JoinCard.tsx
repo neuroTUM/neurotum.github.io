@@ -10,7 +10,7 @@ const JoinCard: React.FC<{ title: string; children: React.ReactNode }> = ({ titl
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3, ease: "easeOut" }}
     style={{
-      background: "#fff",
+      background: "var(--background)",
       borderRadius: "1.5rem",
       padding: "2.5rem",
       border: "1px solid rgba(0,0,0,0.08)",

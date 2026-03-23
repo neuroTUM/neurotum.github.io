@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Footer from "../components/Footer";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const MOBILE_BREAKPOINT = 768;
 
 // Combined list of all partners for the detailed view
@@ -124,7 +123,7 @@ export default function PartnersPage() {
                 justifyContent: "center" // Ensures optical center alignment vertically above each other
               }}>
                 <Image
-                  src={`${basePath}${partner.src}`}
+                  src={partner.src}
                   alt={partner.name}
                   height={120}
                   width={300}

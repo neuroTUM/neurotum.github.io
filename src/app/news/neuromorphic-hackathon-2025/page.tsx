@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Footer from "../../components/Footer";
 
 // Example image array - Replace filenames with the actual ones in your public/news_page_imgs/
@@ -21,13 +22,30 @@ export default function HackathonRecapPage() {
         margin: "0 auto",
         padding: "calc(var(--header-height) + 4rem) 2rem 8rem 2rem"
       }}>
+        <Link
+          href="/news"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            fontSize: "0.95rem",
+            fontWeight: 500,
+            color: "var(--foreground)",
+            textDecoration: "none",
+            opacity: 0.6,
+            marginBottom: "2rem",
+          }}
+        >
+          ← Back to News
+        </Link>
+
         {/* Category & Date */}
-        <div style={{ 
-          fontSize: "0.9rem", 
-          fontWeight: 600, 
-          textTransform: "uppercase", 
-          letterSpacing: "0.1em", 
-          color: "#105fdfff",
+        <div style={{
+          fontSize: "0.9rem",
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+          color: "var(--color-blue)",
           marginBottom: "1rem"
         }}>
           Events
@@ -52,12 +70,12 @@ export default function HackathonRecapPage() {
         {/* Main Image Grid */}
         <div style={{ 
           display: "grid", 
-          gridTemplateColumns: "repeat(2, 1fr)", 
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
           gap: "1rem", 
           marginBottom: "4rem" 
         }}>
           {GALLERY_IMAGES.map((src, index) => (
-            <div key={index} style={{ aspectRatio: "4/3", overflow: "hidden", backgroundColor: "#f4f4f6" }}>
+            <div key={index} style={{ aspectRatio: "4/3", overflow: "hidden", backgroundColor: "var(--color-secondary)" }}>
               <img 
                 src={src} 
                 alt={`Hackathon moment ${index + 1}`} 

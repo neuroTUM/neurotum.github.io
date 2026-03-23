@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Footer from "../../components/Footer";
 
 export default function NeuraRoboticsChallengePage() {
   const standardColor = "var(--foreground)";
-  const brightBlue = "#105fdfff";
+  const brightBlue = "var(--color-blue)";
   
   return (
     <main style={{ background: "var(--background)", minHeight: "100vh" }}>
@@ -14,11 +15,28 @@ export default function NeuraRoboticsChallengePage() {
         margin: "0 auto",
         padding: "calc(var(--header-height) + 4rem) 2rem 8rem 2rem"
       }}>
-        <div style={{ 
-          fontSize: "0.9rem", 
-          fontWeight: 600, 
-          textTransform: "uppercase", 
-          letterSpacing: "0.1em", 
+        <Link
+          href="/news"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            fontSize: "0.95rem",
+            fontWeight: 500,
+            color: "var(--foreground)",
+            textDecoration: "none",
+            opacity: 0.6,
+            marginBottom: "2rem",
+          }}
+        >
+          ← Back to News
+        </Link>
+
+        <div style={{
+          fontSize: "0.9rem",
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
           color: brightBlue,
           marginBottom: "1rem"
         }}>
@@ -52,7 +70,7 @@ export default function NeuraRoboticsChallengePage() {
           overflow: "hidden", 
           borderRadius: "1rem", 
           flexShrink: 0,
-          backgroundColor: "#f4f4f6",
+          backgroundColor: "var(--color-secondary)",
           marginBottom: "4rem" // Maintains the 4rem space from previous turns
         }}>
           <img 
@@ -76,7 +94,7 @@ export default function NeuraRoboticsChallengePage() {
 
           <h2 style={{ fontSize: "1.8rem", marginTop: "3rem", marginBottom: "1.5rem", fontWeight: 500 }}>The Project: A Brain-Controlled Robotic Arm</h2>
           <p style={{ marginBottom: "2rem" }}>
-            Our submission centered on integrating our custom Brain-Computer Interface (BCI) with NEURA Robotics' state-of-the-art <strong>MAIRA</strong>. The goal was to demonstrate how neural signals can be translated into complex, precise robotic movements in real-time.
+            Our submission centered on integrating our custom Brain-Computer Interface (BCI) with NEURA Robotics&apos; state-of-the-art <strong>MAIRA</strong>. The goal was to demonstrate how neural signals can be translated into complex, precise robotic movements in real-time.
           </p>
           <p style={{ marginBottom: "2rem" }}>
             To make this happen, we developed a system that allows a user to play <strong>Tic-Tac-Toe</strong> against an opponent using their brain signals. By decoding specific brain patterns, our software sent commands to the MAIRA arm, which then physically moved the game pieces on the board.
@@ -97,7 +115,7 @@ export default function NeuraRoboticsChallengePage() {
           aspectRatio: "16/9", 
           overflow: "hidden", 
           borderRadius: "1rem",
-          backgroundColor: "#f4f4f6"
+          backgroundColor: "var(--color-secondary)"
         }}>
           <img 
             src="/news_page_imgs/neura_challenge_main.jpg" 

@@ -1,11 +1,9 @@
 "use client";
 
-import React from "react"; // Removed Suspense import as it's currently unused
+import React from "react";
 import Footer from "../components/Footer";
 import ExpandableTeam from "../components/ExpandableTeam";
 import { MEMBERS } from "../components/MEMBERS";
-// Keep the import so the component is ready if you want to reactivate it
-// import { MemberExplorer } from "../components/MemberExplorer"; 
 
 export default function TeamPage() {
   const FACTS = [
@@ -26,14 +24,14 @@ export default function TeamPage() {
           <div style={{
               display: "flex",
               flexDirection: "row",
-              gap: "4rem",
+              gap: "clamp(2rem, 4vw, 4rem)",
               alignItems: "flex-start",
-              marginBottom: "8rem",
+              marginBottom: "clamp(4rem, 6vw, 8rem)",
               flexWrap: "wrap"
           }}>
             
             {/* Left Column: Title and Statistics */}
-            <div style={{ flex: 1, minWidth: "300px" }}>
+            <div style={{ flex: 1, minWidth: "min(100%, 300px)" }}>
               <h1 style={{ 
                 fontSize: "clamp(3rem, 8vw, 5rem)", 
                 fontWeight: 500, 
@@ -70,9 +68,9 @@ export default function TeamPage() {
             </div>
 
             {/* Right Column: Featured Team Image */}
-            <div style={{ 
-              flex: 1.2, 
-              minWidth: "350px", 
+            <div style={{
+              flex: 1.2,
+              minWidth: "min(100%, 350px)",
               borderRadius: "12px", 
               overflow: "hidden",
               maxHeight: "calc(100vh - var(--header-height) - 4rem)"
@@ -126,19 +124,9 @@ export default function TeamPage() {
             />
           </div>
 
-          {/* DEACTIVATED SECTION - Commented out to hide from view */}
-          {/* <div style={{ width: "100%", height: "1px", background: "rgba(0,0,0,0.1)", marginBottom: "4rem" }} />
-          <h2 style={{ fontSize: "2rem", marginBottom: "3rem", fontWeight: 500 }}>Our Members</h2>
-          */}
         </header>
       </div>
 
-      {/* DEACTIVATED MEMBER LISTING */}
-      {/* <Suspense fallback={<div style={{ padding: "5rem", textAlign: "center" }}>Loading Team...</div>}>
-        <MemberExplorer />
-      </Suspense> 
-      */}
-      
       <Footer />
     </main>
   );
