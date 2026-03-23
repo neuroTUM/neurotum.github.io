@@ -92,35 +92,35 @@ export default function TeamPage() {
           <div style={{ marginBottom: "6rem", maxWidth: "900px", margin: "0 auto 6rem auto" }}>
             <h2 style={{ fontSize: "2rem", marginBottom: "2.5rem", fontWeight: 500 }}>Our Departments</h2>
             
-            <ExpandableTeam 
+            <ExpandableTeam
               title="Pipeline Design"
-              description="Develop innovative signal processing and machine learning pipelines."
-              fullText="The Pipeline Design team focuses on building and improving the computational foundations of our BCI research. Members work on digital filters, feature extraction, and novel signal processing techniques to interpret EEG data effectively."
+              description="Develop innovative signal processing and machine learning pipelines to interpret EEG data effectively."
+              fullText="The Pipeline Design team focuses on building and improving the computational foundations of our brain-computer interface (BCI) research. Members work on designing and implementing digital filters, feature extraction methods, and novel signal processing techniques to enhance EEG signal quality. The team also develops and optimizes machine learning and deep learning models to achieve robust and accurate classification of neural activity, directly contributing to real-world BCI applications such as robotic control or neurofeedback tasks."
             />
-            <ExpandableTeam 
+            <ExpandableTeam
               title="Electronics"
-              description="Design and build custom EEG hardware systems."
-              fullText="We dive into circuit & PCB design, soldering, and embedded programming for microcontrollers. Our goal is the design and build of a custom Electroencephalogram (EEG) system, including active electrodes."
+              description="Our goal is the design and build of a custom Electroencephalogram (EEG) system, including active electrodes."
+              fullText="This device is a key component of a brain-computer interface (BCI), which allows the non-invasive collection of neuronal data. As commercial systems are prohibitively expensive despite comparatively low material cost, we have set out to build our own. In this team, we dive into the world of circuit & PCB design for both analogue and digital systems, soldering, and embedded programming for microcontrollers. We meet every Saturday to design, solder, debug, and test our designs."
             />
-            <ExpandableTeam 
+            <ExpandableTeam
               title="Robotics"
-              description="Build brain-controlled robotic systems for assistive technology."
-              fullText="We receive decoded brain commands from the BCI pipeline and turn them into real robot actions using ROS 2 and computer vision to help people with tetraplegia manipulate objects in their environment."
+              description="We build robotic systems controlled by brain signals to help people with tetraplegia manipulate objects in their environment again."
+              fullText="We receive decoded brain commands from the BCI pipeline and turn them into real robot actions. That means using cameras to understand the environment, planning how the arm should move, designing grip strategies to reliably handle objects, and modeling custom parts when needed. The biggest challenge is making all of this work together fast and reliably enough for an online brain signal pipeline. The end goal right now: a user selects a chess move, and a robotic arm executes it."
             />
-            <ExpandableTeam 
+            <ExpandableTeam
               title="Games Engineering"
-              description="Develop engaging BCI-controlled training environments."
-              fullText="The Games Engineering team creates interactive training environments that help users learn and improve their control of BCIs. Members design and develop video games that respond to neural input."
+              description="Design and develop engaging games that can be controlled through brain-computer interfaces."
+              fullText="The Games Engineering team creates interactive training environments that help users learn and improve their control of brain-computer interfaces (BCIs). Members design and develop video games that respond to neural input, implement infrastructure to ensure compatibility across different BCI controllers, and enable multiplayer functionality. The team also supports the preparation and maintenance of games for events such as the BCI Graz competition, where BCI users compete in real time."
             />
-            <ExpandableTeam 
+            <ExpandableTeam
               title="Experimental Design"
-              description="Conduct EEG experiments to test and improve systems."
-              fullText="This team is responsible for planning, running, and evaluating EEG-based experiments that investigate how humans can control external systems through neural signals with methodological rigor."
+              description="Design and conduct EEG experiments to test and improve brain-computer interface control systems."
+              fullText="The Experimental Design team is responsible for planning, running, and evaluating EEG-based experiments that investigate how humans can control external systems, such as computer games or a robotic arm, through neural signals. The team combines methodological rigor with creative problem-solving to ensure experiments are well-controlled, ethically sound, and aligned with the broader goals of our research."
             />
-            <ExpandableTeam 
+            <ExpandableTeam
               title="Communications"
-              description="Managing social media, events, and organizational growth."
-              fullText="We manage neuroTUM's social media presence and event planning, collaborating closely with other teams to update the website and organize events that help people meet potential collaborators."
+              description="We manage neuroTUM's social media presence, as well as event planning."
+              fullText="We collaborate closely with other teams as well as working on our own content ideas. Currently, we are working on updating the website and writing blog posts about what's happening in the initiative. Each semester we make new merch and organize events in the world of neurotech, which helps people meet potential collaborators for the work that neuroTUM does."
             />
           </div>
 

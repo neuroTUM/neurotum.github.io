@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Hero from "./components/Hero";
 import Partner from "./components/Partner";
@@ -8,9 +8,16 @@ import Footer from "./components/Footer";
 
 const MOBILE_BREAKPOINT = 768;
 
+const GALLERY_IMAGES = [
+  { src: "/main_page_imgs/Bild 15.03.26 um 17.56.jpeg", alt: "robotic arm" },
+  { src: "/main_page_imgs/IMG_9165.jpeg", alt: "Lab View" },
+  { src: "/main_page_imgs/photo6.jpg", alt: "Team Working" },
+];
+
 export default function Home() {
   const brightBlue = "var(--color-blue)";
   const [isMobile, setIsMobile] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
@@ -18,6 +25,20 @@ export default function Home() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  const goNext = useCallback(() => {
+    setGalleryIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    setGalleryIndex((prev) => (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+  }, []);
+
+  // Auto-advance every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(goNext, 4000);
+    return () => clearInterval(timer);
+  }, [goNext]);
 
   return (
     <main
@@ -67,16 +88,17 @@ export default function Home() {
         <div
           style={{
             flex: 1,
-            padding: isMobile ? "2rem 1.5rem" : "2rem 2rem 2rem 10rem",
+            padding: isMobile ? "1.5rem 1.5rem" : "2rem 2rem 2rem 10rem",
             paddingTop: isMobile ? undefined : 0,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems: isMobile ? "center" : "flex-start",
           }}
         >
           <h2
             style={{
-              textAlign: "left",
+              textAlign: isMobile ? "center" : "left",
               fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)",
               fontWeight: 600,
               color: "var(--foreground)",
@@ -88,11 +110,11 @@ export default function Home() {
             At NeuroTUM we take a multidisciplinary approach to neuroengineering.
           </h2>
 
-          <p style={{ margin: "2rem 0" }}>&nbsp;</p>
+          <p style={{ margin: isMobile ? "0.75rem 0" : "2rem 0" }}>&nbsp;</p>
 
           <h2
             style={{
-              textAlign: "left",
+              textAlign: isMobile ? "center" : "left",
               fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)",
               fontWeight: 600,
               color: "var(--foreground)",
@@ -126,10 +148,11 @@ export default function Home() {
         <div
           style={{
             flex: 1,
-            padding: isMobile ? "2rem 1.5rem" : "4rem",
+            padding: isMobile ? "1.5rem 1.5rem" : "4rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems: isMobile ? "center" : "flex-start",
           }}
         >
           <h2
@@ -139,6 +162,7 @@ export default function Home() {
               lineHeight: 1.3,
               letterSpacing: "-0.02em",
               color: "var(--foreground)",
+              textAlign: isMobile ? "center" : "left",
             }}
           >
             Do you want to help{" "}
@@ -184,44 +208,110 @@ export default function Home() {
       >
         <div
           style={{
-            display: "flex",
-            height: isMobile ? "200px" : "65%",
+            position: "relative",
+            height: isMobile ? "250px" : "450px",
+            width: isMobile ? "90%" : "min(800px, 60%)",
+            margin: "0 auto",
+            overflow: "hidden",
+            borderRadius: "12px",
             background: "var(--background)",
           }}
         >
-          <img
-            src="/main_page_imgs/Bild 15.03.26 um 17.56.jpeg"
-            alt="robotic arm"
+          {GALLERY_IMAGES.map((img, i) => (
+            <img
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                objectPosition: "center",
+                opacity: i === galleryIndex ? 1 : 0,
+                transition: "opacity 0.8s ease",
+              }}
+            />
+          ))}
+          {/* Navigation arrows */}
+          <button
+            onClick={goPrev}
             style={{
-              flex: 1,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "left top",
+              position: "absolute",
+              left: "1rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "rgba(0,0,0,0.4)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "50%",
+              width: "40px",
+              height: "40px",
+              fontSize: "1.2rem",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 2,
             }}
-          />
-          <img
-            src="/main_page_imgs/IMG_9165.jpeg"
-            alt="Lab View"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            onClick={goNext}
             style={{
-              flex: 1,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "left top",
+              position: "absolute",
+              right: "1rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "rgba(0,0,0,0.4)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "50%",
+              width: "40px",
+              height: "40px",
+              fontSize: "1.2rem",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 2,
             }}
-          />
-          <img
-            src="/main_page_imgs/photo6.jpg"
-            alt="Team Working"
-            style={{
-              flex: 1,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "left top",
-            }}
-          />
+            aria-label="Next image"
+          >
+            ›
+          </button>
+          {/* Dots indicator */}
+          <div style={{
+            position: "absolute",
+            bottom: "1rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            gap: "0.5rem",
+            zIndex: 2,
+          }}>
+            {GALLERY_IMAGES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setGalleryIndex(i)}
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  border: "none",
+                  background: i === galleryIndex ? "#fff" : "rgba(255,255,255,0.5)",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "background 0.3s",
+                }}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
         <div
           style={{

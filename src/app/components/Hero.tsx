@@ -162,7 +162,7 @@ const Hero: React.FC = () => {
             padding: 0,
             margin: 0,
             display: "block",
-            fontSize: "clamp(6px, 1.2vw, 16px)",
+            fontSize: "clamp(7px, 1.2vw, 16px)",
             lineHeight: "clamp(7px, 1.3vw, 15px)",
             textAlign: "left",
           }}
