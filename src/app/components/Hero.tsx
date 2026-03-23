@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
         backgroundColor: "var(--background)",
         position: "relative",
         /* mobile padding: top/bottom gap between hero and neighboring sections */
-        padding: isMobile ? "3rem 0" : 0,
+        padding: isMobile ? "7rem 0" : 0,
       }}
     >
       <div
@@ -162,9 +162,9 @@ const Hero: React.FC = () => {
             padding: 0,
             margin: 0,
             display: "block",
-            fontSize: "clamp(6px, 1.2vw, 14px)",
+            fontSize: "clamp(6px, 1.2vw, 16px)",
             lineHeight: "clamp(7px, 1.3vw, 15px)",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           {ASCII_DATA}

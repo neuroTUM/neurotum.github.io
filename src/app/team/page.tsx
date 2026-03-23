@@ -89,7 +89,7 @@ export default function TeamPage() {
           </div>
 
           {/* Expandable Department Definitions */}
-          <div style={{ marginBottom: "6rem", maxWidth: "900px" }}>
+          <div style={{ marginBottom: "6rem", maxWidth: "900px", margin: "0 auto 6rem auto" }}>
             <h2 style={{ fontSize: "2rem", marginBottom: "2.5rem", fontWeight: 500 }}>Our Departments</h2>
             
             <ExpandableTeam 

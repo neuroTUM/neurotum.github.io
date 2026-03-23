@@ -26,7 +26,7 @@ const JoinUsPage = () => {
           </h1>
         </header>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "4rem", maxWidth: "900px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "4rem", maxWidth: "900px", margin: "0 auto" }}>
           {/* Mission */}
           <JoinCard title="Mission">
             At NeuroTUM, our mission is to explore and develop innovative neurotechnology that bridges neuroscience and engineering. We foster a collaborative environment for students to learn, innovate, and shape the future of brain-computer interfaces and neural systems.
