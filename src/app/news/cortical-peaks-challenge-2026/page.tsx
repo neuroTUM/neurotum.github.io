@@ -69,7 +69,7 @@ export default function CorticalPeaksChallengePage() {
           marginBottom: "4rem" 
         }}>
           <img 
-            src="/news_page_imgs/1766418879312.jpeg" // Replace with your actual filename in public/news_imgs/
+            src="/news_page_imgs/CorticalPeaksChallenge.jpeg" // Replace with your actual filename in public/news_imgs/
             alt="Cortical Peaks Challenge 2026" 
             style={{ width: "100%", height: "100%", objectFit: "cover" }} 
           />

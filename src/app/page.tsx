@@ -9,9 +9,9 @@ import Footer from "./components/Footer";
 const MOBILE_BREAKPOINT = 768;
 
 const GALLERY_IMAGES = [
-  { src: "/main_page_imgs/Bild 15.03.26 um 17.56.jpeg", alt: "robotic arm" },
-  { src: "/main_page_imgs/IMG_9165.jpeg", alt: "Lab View" },
-  { src: "/main_page_imgs/photo6.jpg", alt: "Team Working" },
+  { src: "/main_page_imgs/Robot drawing circles.jpeg", alt: "robotic arm" },
+  { src: "/main_page_imgs/SSVEP EEG experiment.jpeg", alt: "Lab View" },
+  { src: "/main_page_imgs/PrizeCheck.jpg", alt: "Team Working" },
 ];
 
 export default function Home() {
@@ -75,7 +75,7 @@ export default function Home() {
       >
         <div style={{ flex: 1, background: "var(--background)" }}>
           <img
-            src="/main_page_imgs/Bild%20Kopie.jpeg"
+            src="/main_page_imgs/Cybathlon Team Foto.jpeg"
             alt="Research Image"
             style={{
               width: "100%",
@@ -180,7 +180,7 @@ export default function Home() {
         </div>
         <div style={{ flex: 1, background: "var(--background)" }}>
           <img
-            src="/main_page_imgs/photo3.jpg"
+            src="/main_page_imgs/Electronics soldering.jpg"
             alt="Innovation"
             style={{
               width: "100%",

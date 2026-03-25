@@ -26,7 +26,7 @@ const NEWS_DATA: NewsItem[] = [
     category: "Announcements",
     title: "Cortical Peaks Challenge 2026",
     date: "January 6, 2026",
-    image: "/news_page_imgs/1766418879312.jpeg",
+    image: "/news_page_imgs/CorticalPeaksChallenge.jpeg",
     href: "/news/cortical-peaks-challenge-2026",
   },
   {
@@ -42,7 +42,7 @@ const NEWS_DATA: NewsItem[] = [
     category: "Partnerships",
     title: "Winning 10,000€ at Neura Robotics Challenge 2025!",
     date: "October 15, 2025",
-    image: "/news_page_imgs/1760196497038.jpeg",
+    image: "/news_page_imgs/NeuraBoothImage.jpeg",
     href: "/news/neura-robotics-challenge",
   },
 ];

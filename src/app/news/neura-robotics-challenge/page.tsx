@@ -74,7 +74,7 @@ export default function NeuraRoboticsChallengePage() {
           marginBottom: "4rem" // Maintains the 4rem space from previous turns
         }}>
           <img 
-            src="/news_page_imgs/1760196497038.jpeg" // Keeping the original image file
+            src="/news_page_imgs/NeuraBoothImage.jpeg" // Keeping the original image file
             alt="Challenge Thumbnail - Hero View" 
             style={{ width: "100%", height: "100%", objectFit: "cover" }} 
           />
@@ -118,7 +118,7 @@ export default function NeuraRoboticsChallengePage() {
           backgroundColor: "var(--color-secondary)"
         }}>
           <img 
-            src="/news_page_imgs/neura_challenge_main.jpg" 
+            src="/news_page_imgs/neura_challenge_finalists.jpg" 
             alt="neuroTUM at NEURA Robotics Challenge - Bottom View" 
             style={{ width: "100%", height: "100%", objectFit: "cover" }} 
           />
