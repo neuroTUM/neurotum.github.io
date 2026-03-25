@@ -1,6 +1,14 @@
 "use client";
 
-import { Member } from "./MemberExplorer";
+export type TeamKey = "All" | "BCI" | "Electronics" | "Neuromotion" | "Operations" | "OpenHardware";
+
+export interface Member {
+  name: string;
+  team: Exclude<TeamKey, "All">;
+  status: string;
+  studyCourse?: string;
+  imageLink?: string;
+}
 
 export const MEMBERS: Member[] = [
   {
@@ -161,10 +169,10 @@ export const MEMBERS: Member[] = [
   },
   {
     name: "Tobias Konieczny",
-    team: "OpenHardware",
+    team: "OpenHardware", 
     status: "Passive Member",
     studyCourse: undefined,
-  },
+  }, 
   {
     name: "Daniel",
     team: "BCI",

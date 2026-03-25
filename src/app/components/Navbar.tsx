@@ -1,77 +1,295 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-const navItems: Record<string, string> = {
-  Home: "/",
-  Team: "/team",
-  Contact: "/contact",
-  Apply: "/join-us",
+type NavItem = {
+  name: string;
+  href: string;
+  isLogo?: boolean;
 };
 
+const NAV_ITEMS: NavItem[] = [
+  { name: "Home", href: "/", isLogo: true },
+  { name: "News", href: "/news" },
+  { name: "Team", href: "/team" },
+  { name: "Contact", href: "/contact" },
+];
+
+const MOBILE_BREAKPOINT = 768;
+
 const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const check = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
-  const navbarStyle: React.CSSProperties = {
-    position: "fixed",
-    top: scrolled ? 24 : 0,
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: scrolled ? "min(90vw, 420px)" : "100vw",
-    borderRadius: scrolled ? 999 : "0 0 0 0",
-    background: "var(--background)",
-    boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.16)" : "0 2px 16px rgba(0,0,0,0.10)",
-    padding: scrolled ? "0.7rem 2.8rem" : "0.5rem 2rem",
-    opacity: 1,
-    border: scrolled ? "1.5px solid #eaeaea" : "none",
-    backdropFilter: scrolled ? "blur(6px)" : "none",
-    zIndex: 1000,
-    transition:
-      "width 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "border-radius 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "box-shadow 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "padding 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "top 0.5s cubic-bezier(0.4,0,0.2,1), " +
-      "background 0.5s cubic-bezier(0.4,0,0.2,1)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
-  const navItemStyle: React.CSSProperties = {
-    cursor: "pointer",
-    transition: "color 0.2s, transform 0.2s",
-    padding: "0.2em 0.6em",
-    borderRadius: 8,
-    fontWeight: 500,
-    fontSize: "1.1rem",
-    color: "#222",
-    margin: "0 1rem",
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const mainElement = document.querySelector("main");
+      if (mainElement) {
+        mainElement.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
   };
 
   return (
-    <nav style={navbarStyle}>
-      {Object.entries(navItems).map(([name, ref]) => (
-        <Link key={name} href={ref}>
-          <span
-            style={navItemStyle}
-            onMouseOver={(e) => (e.currentTarget.style.color = "#0070f3")}
-            onMouseOut={(e) => (e.currentTarget.style.color = "#222")}
+    <>
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "var(--header-height)",
+          background: "var(--background)",
+          borderBottom: "1px solid rgba(0,0,0,0.1)",
+          padding: "0 2rem",
+          zIndex: 1000,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Left: Logo + nav links (desktop) */}
+        <div style={{ display: "flex", alignItems: "center", gap: "2rem", height: "100%" }}>
+          {/* Logo — always visible */}
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            style={{ textDecoration: "none", height: "100%", display: "flex", alignItems: "center" }}
           >
-            {name}
-          </span>
-        </Link>
-      ))}
-    </nav>
+            <Image
+              src="/logo.png"
+              alt="neuroTUM"
+              width={48}
+              height={48}
+              style={{ objectFit: "contain" }}
+            />
+          </Link>
+
+          {/* Desktop nav links */}
+          {!isMobile &&
+            NAV_ITEMS.filter((item) => !item.isLogo).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                style={{
+                  textDecoration: "none",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <span
+                  style={{
+                    cursor: "pointer",
+                    transition: "opacity 0.2s",
+                    fontWeight: 500,
+                    fontSize: "1.1rem",
+                    color: "var(--foreground)",
+                    display: "flex",
+                    alignItems: "center",
+                    height: "100%",
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.opacity = "0.6")}
+                  onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {item.name}
+                </span>
+              </Link>
+            ))}
+        </div>
+
+        {/* Right: CTA buttons (desktop) or hamburger (mobile) */}
+        {isMobile ? (
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "0.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+            }}
+          >
+            <span
+              style={{
+                display: "block",
+                width: "24px",
+                height: "2px",
+                background: "var(--foreground)",
+                transition: "transform 0.3s, opacity 0.3s",
+                transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
+              }}
+            />
+            <span
+              style={{
+                display: "block",
+                width: "24px",
+                height: "2px",
+                background: "var(--foreground)",
+                transition: "opacity 0.3s",
+                opacity: menuOpen ? 0 : 1,
+              }}
+            />
+            <span
+              style={{
+                display: "block",
+                width: "24px",
+                height: "2px",
+                background: "var(--foreground)",
+                transition: "transform 0.3s, opacity 0.3s",
+                transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
+              }}
+            />
+          </button>
+        ) : (
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <Link href="/join-us" style={{ textDecoration: "none" }}>
+              <span
+                style={{
+                  cursor: "pointer",
+                  fontWeight: 500,
+                  fontSize: "1rem",
+                  padding: "0.5rem 1.2rem",
+                  borderRadius: "999px",
+                  border: "1px solid var(--foreground)",
+                  background: "var(--foreground)",
+                  color: "var(--background)",
+                  transition: "all 0.2s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "var(--foreground)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--foreground)";
+                  e.currentTarget.style.color = "var(--background)";
+                }}
+              >
+                Apply now
+              </span>
+            </Link>
+            <Link href="/contact" style={{ textDecoration: "none" }}>
+              <span
+                style={{
+                  cursor: "pointer",
+                  fontWeight: 500,
+                  fontSize: "1rem",
+                  padding: "0.5rem 1.2rem",
+                  borderRadius: "999px",
+                  border: "1px solid var(--foreground)",
+                  background: "var(--foreground)",
+                  color: "var(--background)",
+                  transition: "all 0.2s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "var(--foreground)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--foreground)";
+                  e.currentTarget.style.color = "var(--background)";
+                }}
+              >
+                Become a sponsor
+              </span>
+            </Link>
+          </div>
+        )}
+      </nav>
+
+      {/* Mobile menu overlay */}
+      {isMobile && menuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: "var(--header-height)",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "var(--background)",
+            zIndex: 999,
+            display: "flex",
+            flexDirection: "column",
+            padding: "2rem",
+            gap: "1rem",
+          }}
+        >
+          {NAV_ITEMS.filter((item) => !item.isLogo).map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              style={{
+                textDecoration: "none",
+                fontSize: "1.5rem",
+                fontWeight: 500,
+                color: "var(--foreground)",
+                padding: "1rem 0",
+                borderBottom: "1px solid var(--color-border)",
+              }}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Link
+            href="/join-us"
+            style={{
+              textDecoration: "none",
+              fontSize: "1.2rem",
+              fontWeight: 600,
+              color: "var(--background)",
+              background: "var(--foreground)",
+              padding: "1rem 2rem",
+              borderRadius: "999px",
+              textAlign: "center",
+              marginTop: "1rem",
+            }}
+          >
+            Apply now
+          </Link>
+          <Link
+            href="/contact"
+            style={{
+              textDecoration: "none",
+              fontSize: "1.2rem",
+              fontWeight: 600,
+              color: "var(--foreground)",
+              border: "1px solid var(--foreground)",
+              padding: "1rem 2rem",
+              borderRadius: "999px",
+              textAlign: "center",
+            }}
+          >
+            Become a sponsor
+          </Link>
+        </div>
+      )}
+    </>
   );
 };
 

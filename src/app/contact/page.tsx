@@ -1,112 +1,63 @@
 "use client";
 
+import React from "react";
 import Footer from "../components/Footer";
 import Link from "next/link";
 
-export default function ContactPage() {
+const ContactPage: React.FC = () => {
   return (
-    <div
+    <main
       style={{
-        minHeight: "100vh",
-        background: "var(--background)",
-        color: "var(--foreground)",
+        minHeight: "calc(100vh - var(--header-height))",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "var(--font-dm-serif)",
+        background: "var(--background)",
       }}
     >
+      {/* Top Half: Message and Email */}
       <section
         style={{
-          width: "100%",
-          maxWidth: 500,
-          margin: "4rem 0",
-          textAlign: "left",
-          padding: "0 1rem",
+          flex: 1,
+          minHeight: "50vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          padding: "0 2rem",
         }}
       >
         <h1
           style={{
-            fontSize: "2.5rem",
-            fontWeight: 700,
-            marginBottom: "1rem",
+            fontSize: "clamp(2rem, 6vw, 4rem)",
+            fontWeight: 500,
+            color: "var(--foreground)",
+            marginBottom: "1.5rem",
             letterSpacing: "-0.04em",
           }}
         >
-          Get in touch
+          We want to hear from you.
         </h1>
-        <p
+        <Link
+          href="mailto:team@neurotum.com"
           style={{
-            fontSize: "1.2rem",
-            marginBottom: "2rem",
+            fontSize: "clamp(1.2rem, 2vw, 1.8rem)",
             color: "var(--foreground)",
+            fontWeight: 600,
+            textDecoration: "underline",
+            textUnderlineOffset: "4px",
           }}
         >
-          We look forward to hearing from you!
-        </p>
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: 0,
-            fontSize: "1.2rem",
-            lineHeight: 2,
-          }}
-        >
-          <li>
-            <strong>Email:</strong>{" "}
-            <Link
-              href="mailto:team@neurotum.com"
-              style={{
-                color: "#0a0a3c",
-                fontWeight: 700,
-                textDecoration: "none",
-              }}
-            >
-              team@neurotum.com
-            </Link>
-          </li>
-          <li>
-            <strong>Phone:</strong>{" "}
-            <Link
-              href="tel:+4917634396551"
-              style={{
-                color: "#0a0a3c",
-                fontWeight: 700,
-                textDecoration: "none",
-              }}
-            >
-              +49 176 34396551
-            </Link>
-          </li>
-          <li>
-            <strong>LinkedIn:</strong>{" "}
-            <Link
-              href="https://www.linkedin.com/company/neurotum/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#0a0a3c",
-                fontWeight: 700,
-                textDecoration: "underline",
-              }}
-            >
-              neurotum
-            </Link>
-          </li>
-          <li style={{ marginTop: "1.5rem" }}>
-            <strong>Address:</strong>
-            <br />
-            Technische Universität München
-            <br />
-            Boltzmannstraße 11
-            <br />
-            85748 Garching bei München
-          </li>
-        </ul>
+          team@neurotum.com
+        </Link>
       </section>
-      <Footer />
-    </div>
+
+      {/* Lower Half: Footer */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <Footer />
+      </div>
+    </main>
   );
-}
+};
+
+export default ContactPage;

@@ -1,122 +1,82 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const GAP = 60;
-const MOBILE_BREAKPOINT = 768;
 
-const collaboratorImages = [
+const allImages = [
+  "/sponsor_images/mouser-electronics.png",
   "/collaborator_images/fortiss.png",
+  "/collaborator_images/TUM_venture_labs.png",
   "/collaborator_images/makerspace.png",
   "/collaborator_images/mbraintrain.png",
-  "/collaborator_images/TUM_associate_professorship_of_neuroelectronics.png",
-  "/collaborator_images/TUM_chair_of_ai_processor_design.png",
-  "/collaborator_images/TUM_institute_of_cognitive_systems.png",
-  "/collaborator_images/TUM_venture_labs.png",
-];
-
-const sponsorImages = [
+  "/collaborator_images/logo-tum.png",
   "/sponsor_images/industrial_innovators.svg",
   "/sponsor_images/TUM_bund_der_freunde.svg",
-  "/sponsor_images/mouser-electronics.png",
+  "/collaborator_images/NEURA_LOGO_62f546ac.jpg",
 ];
 
-interface ImageGridProps {
-  images: string[];
-  title: string;
-  isMobile: boolean;
-}
-
-const ImageGrid = ({ images, title, isMobile }: ImageGridProps) => (
-  <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-    <h2
-      style={{
-        textAlign: "center",
-        marginBottom: isMobile ? "2.25rem" : "3rem",
-        fontSize: isMobile ? 24 : 28,
-      }}
-    >
-      {title}
-    </h2>
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: isMobile ? "1.75rem" : "3rem",
-        padding: isMobile ? "0 1.5rem" : "0 2rem",
-        rowGap: isMobile ? "2.5rem" : "4rem",
-      }}
-    >
-      {images.map((image, index) => (
-        <Image
-          key={index}
-          src={`${basePath}${image}`}
-          alt={`${title} ${index + 1}`}
-          height={isMobile ? 72 : 120}
-          width={isMobile ? 180 : 300}
-          style={{
-            height: isMobile ? "72px" : "120px",
-            width: "auto",
-            maxWidth: isMobile ? "200px" : "300px",
-            objectFit: "contain",
-            transition: "filter 0.3s",
-          }}
-        />
-      ))}
-    </div>
-  </div>
-);
-
-const Partner = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
-
-    const updateMatch = (event: MediaQueryList | MediaQueryListEvent) =>
-      setIsMobile(event.matches);
-
-    updateMatch(mediaQuery);
-
-    const handleChange = (event: MediaQueryListEvent) =>
-      setIsMobile(event.matches);
-
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
-
-    mediaQuery.addListener(handleChange);
-    return () => mediaQuery.removeListener(handleChange);
-  }, []);
+const Partner: React.FC = () => {
 
   return (
     <section
       style={{
-        minHeight: isMobile ? "auto" : "90vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        gap: isMobile ? "3rem" : `${GAP}px`,
-        background: "var(--background)",
-        overflow: "hidden",
-        padding: isMobile ? "56px 0 72px" : "0",
+        width: "100%",
+        padding: "4rem 0",
+        backgroundColor: "var(--background)",
+        overflow: "hidden", // Essential for hiding the scrollbar
       }}
     >
-      <ImageGrid
-        images={collaboratorImages}
-        title="Our Collaborators"
-        isMobile={isMobile}
-      />
-      <ImageGrid
-        images={sponsorImages}
-        title="Our Sponsors"
-        isMobile={isMobile}
-      />
+      {/* CSS Animation for Infinite Scroll */}
+      <style>
+        {`
+          @keyframes scroll {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-25%, 0, 0); } /* Move 1/4 (one set) */
+          }
+          .partner-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+            will-change: transform; /* Hardware acceleration */
+            backface-visibility: hidden; /* Reduces flickering */
+            perspective: 1000px;
+          }
+          .partner-track:hover {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+
+      <div className="partner-track">
+        {/* Duplicate 4 times to ensure coverage on wide screens and smooth looping */}
+        {[...allImages, ...allImages, ...allImages, ...allImages].map((image, index) => (
+          <div
+            key={index}
+            style={{
+              flex: "0 0 auto",
+              padding: "0 3rem", // Space between logos
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              src={image}
+              alt={`Partner ${index}`}
+              height={60}
+              width={200}
+              loading="eager" // Load immediately to prevent pop-in
+              style={{
+                height: "60px", // Fixed height for consistency
+                width: "auto",
+                maxWidth: "180px",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

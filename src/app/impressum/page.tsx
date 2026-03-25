@@ -80,7 +80,7 @@ export default function ImpressumPage() {
           wir diese Inhalte umgehend entfernen. Der Betreiber behält es sich ausdrücklich vor,
           einzelne Webseiten, Web-Dienste oder das gesamte Angebot ohne gesonderte Ankündigung zu
           verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig
-          einzustellen."
+          einzustellen.&rdquo;
         </TextBlock>
         <h2
           style={{
