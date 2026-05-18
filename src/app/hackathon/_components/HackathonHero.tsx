@@ -1,150 +1,205 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useDeviceSize } from "../../hooks/useDeviceSize";
 import { edition } from "../_content/edition";
 
+/**
+ * Substrings in the hero subtitle that should be auto-linked when they appear.
+ * Keeps the editable text in edition.ts as a plain string, while letting us
+ * promote specific partner names to clickable links without touching data.
+ */
+const PARTNER_LINKS: Record<string, string> = {
+  OpenHardware: "https://open-hardware-initiative.com/",
+  fortiss: "https://www.fortiss.org/en/",
+};
+
+const linkifyPartners = (text: string): React.ReactNode[] => {
+  const keys = Object.keys(PARTNER_LINKS);
+  if (keys.length === 0) return [text];
+  // Build a regex that captures each known partner name as its own group so
+  // the split keeps the matched substrings inline with the surrounding text.
+  const pattern = new RegExp(`(${keys.join("|")})`, "g");
+  return text.split(pattern).map((part, i) => {
+    const href = PARTNER_LINKS[part];
+    if (!href) return <React.Fragment key={i}>{part}</React.Fragment>;
+    return (
+      <a
+        key={i}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: "inherit",
+          textDecoration: "none",
+          borderBottom: "1px solid var(--accent-coral)",
+          paddingBottom: "1px",
+          transition: "color 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = "var(--accent-coral)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = "inherit";
+        }}
+      >
+        {part}
+      </a>
+    );
+  });
+};
+
 const HackathonHero: React.FC = () => {
   const { isMobile } = useDeviceSize();
-  const { hero, dates, application, partners } = edition;
+  const { hero, dates, application } = edition;
 
   return (
     <section
       style={{
         width: "100%",
-        padding: isMobile ? "4rem 1.5rem 5rem" : "6rem 2rem 7rem",
-        background: "var(--background)",
+        minHeight: "calc(100dvh - var(--header-height))",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: isMobile ? "4rem 1.5rem 3rem" : "5rem 2rem 4rem",
         position: "relative",
-        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: isMobile ? "flex-start" : "center",
+          textAlign: isMobile ? "left" : "center",
+        }}
+      >
         {/* Eyebrow */}
         <div
           style={{
-            fontSize: "0.85rem",
+            fontSize: "0.8rem",
             fontWeight: 600,
             textTransform: "uppercase",
-            letterSpacing: "0.14em",
-            color: "var(--color-blue)",
-            marginBottom: "1.5rem",
+            letterSpacing: "0.28em",
+            color: "var(--accent-coral)",
+            marginBottom: "2rem",
+            fontFamily: "var(--font-body), sans-serif",
           }}
         >
           {hero.eyebrow} · {edition.year}
         </div>
 
-        {/* Title */}
+        {/* Two-line display title */}
         <h1
           style={{
-            fontSize: "clamp(2.75rem, 9vw, 6.5rem)",
-            lineHeight: 0.98,
-            letterSpacing: "-0.045em",
-            fontWeight: 500,
             margin: 0,
+            fontFamily:
+              "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace",
+            fontSize: "clamp(2.25rem, 7.4vw, 6rem)",
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
             color: "var(--foreground)",
-            whiteSpace: "pre-line",
+            fontWeight: 700,
             maxWidth: "1100px",
           }}
         >
-          {hero.title}
+          <span
+            style={{
+              display: "block",
+              color: "var(--text-soft)",
+              fontWeight: 400,
+              fontSize: "0.55em",
+              letterSpacing: "0",
+              marginBottom: "0.4rem",
+            }}
+          >
+            {hero.line1}
+          </span>
+          <span style={{ display: "block" }}>{hero.line2}</span>
         </h1>
 
-        {/* Subtitle */}
+        {/* Tagline + subtitle */}
         <p
           style={{
-            fontSize: isMobile ? "1.05rem" : "1.25rem",
-            lineHeight: 1.6,
-            color: "var(--foreground)",
-            opacity: 0.7,
-            marginTop: "2rem",
-            maxWidth: "640px",
+            fontSize: isMobile ? "1.08rem" : "1.22rem",
+            lineHeight: 1.65,
+            color: "var(--text-soft)",
+            marginTop: "2.5rem",
+            maxWidth: "560px",
+            fontFamily: "var(--font-body), sans-serif",
           }}
         >
-          {hero.subtitle}
+          {linkifyPartners(hero.subtitle)}
         </p>
 
-        {/* Meta row: dates + location */}
+        {/* Meta strip — dates + location */}
         <div
           style={{
             display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            gap: isMobile ? "1.25rem" : "3rem",
-            marginTop: "3rem",
             flexWrap: "wrap",
+            gap: isMobile ? "1.25rem" : "2.5rem",
+            marginTop: "2.5rem",
+            justifyContent: isMobile ? "flex-start" : "center",
           }}
         >
           <MetaItem label="When" value={dates.display} />
-          <MetaItem label="Where" value={`${edition.location.name}, Munich`} />
+          <MetaItem label="Where" value="Munich, Germany" />
           <MetaItem label="Apply by" value={dates.deadline} />
         </div>
 
-        {/* CTAs */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            gap: "1rem",
-            marginTop: "2.5rem",
-          }}
-        >
-          <PrimaryCTA href={application.applyUrl}>Apply now</PrimaryCTA>
-          <SecondaryCTA href="#schedule">View schedule</SecondaryCTA>
-        </div>
-
-        {/* Partner strip */}
-        {partners.length > 0 && (
-          <div
+        {/* CTA */}
+        <div style={{ marginTop: "3rem" }}>
+          <Link
+            href={application.applyUrl}
+            target={application.applyUrl.startsWith("http") ? "_blank" : undefined}
+            rel={application.applyUrl.startsWith("http") ? "noopener noreferrer" : undefined}
             style={{
-              marginTop: "5rem",
-              paddingTop: "2.5rem",
-              borderTop: "1px solid var(--color-border)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.6rem",
+              padding: "0.95rem 1.9rem",
+              border: "1px solid var(--accent-coral)",
+              color: "var(--accent-coral)",
+              borderRadius: "4px",
+              textDecoration: "none",
+              fontSize: "1rem",
+              fontFamily: "var(--font-body), sans-serif",
+              letterSpacing: "0.02em",
+              transition: "background 0.25s ease",
+              fontWeight: 500,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(232, 165, 152, 0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
             }}
           >
-            <div
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                color: "var(--foreground)",
-                opacity: 0.5,
-                marginBottom: "1.5rem",
-              }}
-            >
-              In collaboration with
-            </div>
-            <div
-              style={{
-                display: "flex",
-                gap: isMobile ? "2rem" : "3rem",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              {partners.map((p) => (
-                <a
-                  key={p.name}
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "block", opacity: 0.85, transition: "opacity 0.2s" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.85")}
-                >
-                  <Image
-                    src={p.logo}
-                    alt={p.name}
-                    width={140}
-                    height={48}
-                    style={{ height: "40px", width: "auto", objectFit: "contain" }}
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+            Apply Now <span aria-hidden>→</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "2.5rem",
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          fontSize: "0.7rem",
+          letterSpacing: "0.3em",
+          textTransform: "uppercase",
+          color: "var(--text-soft)",
+          opacity: 0.85,
+          fontFamily: "var(--font-body), sans-serif",
+        }}
+      >
+        scroll ↓
       </div>
     </section>
   );
@@ -154,91 +209,28 @@ const MetaItem: React.FC<{ label: string; value: string }> = ({ label, value }) 
   <div>
     <div
       style={{
-        fontSize: "0.75rem",
+        fontSize: "0.7rem",
         fontWeight: 600,
         textTransform: "uppercase",
-        letterSpacing: "0.12em",
-        color: "var(--foreground)",
-        opacity: 0.5,
+        letterSpacing: "0.22em",
+        color: "var(--accent-coral)",
         marginBottom: "0.4rem",
+        fontFamily: "var(--font-body), sans-serif",
       }}
     >
       {label}
     </div>
-    <div style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--foreground)" }}>
+    <div
+      style={{
+        fontSize: "1.02rem",
+        fontWeight: 500,
+        color: "var(--foreground)",
+        fontFamily: "var(--font-body), sans-serif",
+      }}
+    >
       {value}
     </div>
   </div>
-);
-
-const PrimaryCTA: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => {
-  const isExternal = href.startsWith("http");
-  const style: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: 500,
-    fontSize: "1rem",
-    padding: "0.85rem 1.75rem",
-    borderRadius: "999px",
-    background: "var(--foreground)",
-    color: "var(--background)",
-    border: "1px solid var(--foreground)",
-    textDecoration: "none",
-    transition: "all 0.2s ease",
-    cursor: "pointer",
-  };
-  const onEnter = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.background = "transparent";
-    e.currentTarget.style.color = "var(--foreground)";
-  };
-  const onLeave = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.background = "var(--foreground)";
-    e.currentTarget.style.color = "var(--background)";
-  };
-  if (isExternal) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" style={style} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-        {children}
-      </a>
-    );
-  }
-  return (
-    <Link href={href} style={style} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-      {children}
-    </Link>
-  );
-};
-
-const SecondaryCTA: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-  <Link
-    href={href}
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontWeight: 500,
-      fontSize: "1rem",
-      padding: "0.85rem 1.75rem",
-      borderRadius: "999px",
-      background: "transparent",
-      color: "var(--foreground)",
-      border: "1px solid var(--foreground)",
-      textDecoration: "none",
-      transition: "all 0.2s ease",
-      cursor: "pointer",
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.background = "var(--foreground)";
-      e.currentTarget.style.color = "var(--background)";
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.background = "transparent";
-      e.currentTarget.style.color = "var(--foreground)";
-    }}
-  >
-    {children}
-  </Link>
 );
 
 export default HackathonHero;
