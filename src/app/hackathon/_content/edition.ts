@@ -22,13 +22,6 @@ export type Challenge = {
   summary: string;
 };
 
-export type Sponsor = {
-  name: string;
-  logo: string | null;
-  href: string;
-  displayText?: string; // shown when no logo file exists yet
-};
-
 export type ScheduleItem = {
   time?: string;
   event: string;
@@ -42,31 +35,64 @@ export type ScheduleDay = {
   items: ScheduleItem[];
 };
 
-export type FAQItem = { q: string; a: string };
+/**
+ * Each challenge card in the Past Editions carousel reads from one of these.
+ *
+ *   name            → long company/partner name shown as the header below the
+ *                     logo (e.g. "Deutsches Zentrum für Luft- und Raumfahrt").
+ *                     Required.
+ *   logo            → path under /public/, e.g. "/hackathon/dlr-logo.png".
+ *                     Required.
+ *   invertLogo      → Optional. Set to `true` if the logo file is dark
+ *                     monochrome (designed for light backgrounds) — the card
+ *                     will flip it to a white silhouette so it reads on the
+ *                     dark page. Leave unset / `false` for logos that are
+ *                     already white or have brand colours you want to keep.
+ *   description     → 1–2 sentences describing the challenge. Required.
+ *   publicationUrl  → Optional. If set, renders the "↗ Led to a publication"
+ *                     link below the description.
+ */
+export type PastEditionChallenge = {
+  name: string;
+  logo: string;
+  invertLogo?: boolean;
+  description: string;
+  publicationUrl?: string;
+};
+
+export type PastEdition = {
+  year: number;
+  edition: string; // "1st edition", "2nd edition", etc.
+  dateRange: string; // free-text display, e.g. "November 2025"
+  challenges: PastEditionChallenge[]; // company logo + challenge description per row
+  winner?: string; // simple winner team name, optional
+  recapHref?: string; // optional link to a recap article in /news
+};
 
 export const edition = {
   year: 2026,
-  edition: "TBD edition", // e.g. "5th edition"
+  edition: "4th edition",
 
   hero: {
     eyebrow: "Munich Neuromorphic Hackathon",
-    title: "Hack the brain.\nBuild the future.",
+    line1: "4th Munich",
+    line2: "Neuromorphic Hackathon",
+    tagline: "Hack the brain. Build the future.",
     subtitle:
       "Four days of brain-inspired computing in Munich, hosted by neuroTUM and OpenHardware in collaboration with fortiss.",
   },
 
   dates: {
-    display: "TBD — multi-day event in late 2026",
+    display: "6–9 October 2026",
     deadline: "TBD",
     notificationDate: "TBD",
   },
 
   // ISO dates power the calendar grid. Leave as empty arrays until confirmed.
-  // Example: eventDays: ["2026-11-06", "2026-11-07", "2026-11-09"]
-  eventDays: [] as string[],
+  eventDays: ["2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"] as string[],
   restDays: [] as string[],
   // Month the calendar should land on by default (YYYY-MM-01)
-  calendarDefaultMonth: "2026-11-01",
+  calendarDefaultMonth: "2026-10-01",
 
   location: {
     name: "TBD venue",
@@ -118,56 +144,106 @@ export const edition = {
     },
   ] as Challenge[],
 
-  sponsors: {
-    headline: [
-      { name: "Headline Sponsor", logo: null, href: "#", displayText: "TBD" },
-    ] as Sponsor[],
-    gold: [
-      { name: "Gold Sponsor", logo: null, href: "#", displayText: "TBD" },
-      { name: "Gold Sponsor", logo: null, href: "#", displayText: "TBD" },
-    ] as Sponsor[],
-    partners: [
-      { name: "Partner", logo: null, href: "#", displayText: "TBD" },
-      { name: "Partner", logo: null, href: "#", displayText: "TBD" },
-      { name: "Partner", logo: null, href: "#", displayText: "TBD" },
-    ] as Sponsor[],
-  },
+  pastEditions: [
+    {
+      year: 2023,
+      edition: "1st edition",
+      dateRange: "TBD",
+      challenges: [],
+      winner: undefined,
+      recapHref: undefined,
+    },
+    {
+      year: 2024,
+      edition: "2nd edition",
+      dateRange: "TBD",
+      challenges: [
+        {
+          name: "NeuroBus",
+          logo: "/hackathon/neurobus-logo.png",
+          invertLogo: true, // dark navy logo on transparent → flip to white
+          description:
+            "Onboard spacecraft pose estimation with event cameras and neuromorphic hardware.",
+          publicationUrl: "https://doi.org/10.48550/arXiv.2604.04117",
+        },
+        {
+          name: "Fortiss",
+          logo: "/hackathon/fortiss.png",
+          // logo file is already white on transparent — no invert needed
+          description:
+            "Depth estimation with binocular event cameras and spiking neural networks.",
+        },
+        {
+          name: "International Business Machines Corporation",
+          logo: "/hackathon/IBM_logo.svg",
+          // logo file is already white on transparent — no invert needed
+          description:
+            "",
+        },
+      ],
+      winner: undefined,
+      recapHref: undefined,
+    },
+    {
+      year: 2025,
+      edition: "3rd edition",
+      dateRange: "November 2025",
+      challenges: [
+        {
+          name: "Deutsches Zentrum für Luft- und Raumfahrt",
+          logo: "/hackathon/DLR_Logo-w.png",
+          // logo file is already white on transparent — no invert needed
+          description:
+            "Drone detection using event cameras and spiking neural networks.",
+        },
+        {
+          name: "Simi Reality Motion Systems",
+          logo: "/hackathon/simi-logo.png",
+          // logo file is already white on transparent — no invert needed
+          description:
+            "Event-based person identification using dataset training and real-world testing",
+        },
+        {
+          name: "Fortiss",
+          logo: "/hackathon/fortiss.png",
+          // logo file is already white on transparent — no invert needed
+          description:
+            "Anomaly detection on neuromorphic hardware with the ESA anomaly dataset.",
+        },
+      ],
+      winner: undefined,
+      recapHref: undefined,
+    },
+  ] as PastEdition[],
 
   schedule: [
     {
-      isoDate: "2026-11-06",
+      isoDate: "2026-10-06",
       label: "Day 1 — Kickoff",
       type: "event",
       items: [
         { time: "09:00", event: "Doors open", speaker: "" },
         { time: "09:30", event: "Welcome address", speaker: "neuroTUM & host" },
-        { time: "10:30", event: "Keynote: Lorem ipsum", speaker: "TBD speaker" },
-        { time: "11:30", event: "Challenge presentations", speaker: "Challenge partners" },
-        { time: "14:00", event: "Team formation & kickoff", speaker: "" },
+        { time: "10:30", event: "Challenge presentations", speaker: "Challenge partners" },
+        { time: "14:00", event: "Team formation", speaker: "" },
         { time: "19:00", event: "Day end", speaker: "" },
       ],
     },
     {
-      isoDate: "2026-11-07",
+      isoDate: "2026-10-07",
       label: "Day 2 — Build",
       type: "event",
       items: [{ time: "All day", event: "Hacking & mentorship", speaker: "" }],
     },
     {
-      isoDate: "2026-11-08",
-      label: "Day 3 — Rest",
-      type: "rest",
-      items: [{ event: "Rest day" }],
-    },
-    {
-      isoDate: "2026-11-09",
-      label: "Day 4 — Develop",
+      isoDate: "2026-10-08",
+      label: "Day 3 — Build",
       type: "event",
-      items: [{ time: "All day", event: "Development & testing", speaker: "" }],
+      items: [{ time: "All day", event: "Hacking & mentorship", speaker: "" }],
     },
     {
-      isoDate: "2026-11-10",
-      label: "Day 5 — Demo",
+      isoDate: "2026-10-09",
+      label: "Day 4 — Demo",
       type: "event",
       items: [
         { time: "09:00", event: "Final preparations", speaker: "" },
@@ -179,50 +255,9 @@ export const edition = {
 
   application: {
     applyUrl: "#", // e.g. "https://tally.so/r/XXXXX"
-    contactEmail: "neuromotion@neurotum.com",
-    requirements: [
-      {
-        title: "Who can apply",
-        description:
-          "Students and early-career researchers with an interest in neuromorphic computing. Lorem ipsum dolor sit amet.",
-      },
-      {
-        title: "Technical background",
-        description:
-          "Programming experience in Python, C++ or similar. Background in AI/ML, neuroscience or hardware is a plus.",
-      },
-      {
-        title: "What to submit",
-        description:
-          "A short CV and a brief paragraph on why you want to take part. Optional: links to past projects.",
-      },
-    ],
-    process: [
-      { step: "1", title: "Submit application", desc: "Fill in the online form before the deadline." },
-      { step: "2", title: "Review", desc: "Applications are reviewed by neuroTUM and partners." },
-      { step: "3", title: "Notification", desc: "Successful applicants are notified by email." },
-      { step: "4", title: "Confirm", desc: "Confirm attendance and receive event details." },
-    ],
+    contactEmail: "team@neurotum.com",
+    submissionGuidelinesUrl: "#",
   },
-
-  faq: [
-    {
-      q: "How much does it cost to participate?",
-      a: "Lorem ipsum — participation is free for accepted applicants. Meals and materials are covered by neuroTUM and our sponsors.",
-    },
-    {
-      q: "Do I need prior experience with neuromorphic hardware?",
-      a: "No. We provide tutorials and on-site mentorship throughout the event.",
-    },
-    {
-      q: "Can I apply as part of a pre-formed team?",
-      a: "Yes — you can apply individually or with a team of up to four. Solo applicants are matched on day one.",
-    },
-    {
-      q: "Will I need to bring my own laptop?",
-      a: "Yes, please bring a laptop capable of running standard Python ML stacks.",
-    },
-  ] as FAQItem[],
 };
 
 export type Edition = typeof edition;

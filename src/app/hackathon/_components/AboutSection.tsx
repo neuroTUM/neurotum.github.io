@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useDeviceSize } from "../../hooks/useDeviceSize";
-import SectionHeading from "./SectionHeading";
 
 const AboutSection: React.FC = () => {
   const { isMobile } = useDeviceSize();
@@ -11,49 +10,76 @@ const AboutSection: React.FC = () => {
     <section
       style={{
         width: "100%",
-        background: "var(--color-secondary)",
-        padding: isMobile ? "5rem 1.5rem" : "8rem 2rem",
+        padding: isMobile ? "6rem 1.5rem" : "10rem 2rem",
+        position: "relative",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <SectionHeading
-          eyebrow="About"
-          title="Brain-inspired computing, hands-on."
-          subtitle="Neuromorphic computing borrows the brain's architecture to build systems that are radically more efficient than traditional ones. Over the course of the hackathon, you'll work directly on real industrial problems with neuromorphic hardware and the people building it."
-        />
-
-        {/* Two-column body text */}
+      <div
+        style={{
+          maxWidth: "680px",
+          margin: "0 auto",
+        }}
+      >
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-            gap: isMobile ? "2rem" : "4rem",
-            marginTop: "2rem",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.22em",
+            color: "var(--text-muted)",
+            marginBottom: "1.5rem",
+            fontFamily: "var(--font-body), sans-serif",
           }}
         >
-          <p
-            style={{
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
-              color: "var(--foreground)",
-              margin: 0,
-            }}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          About the hackathon
+        </div>
+
+        <h2
+          style={{
+            margin: 0,
+            fontFamily:
+              "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace",
+            fontSize: "clamp(1.7rem, 3.6vw, 2.6rem)",
+            lineHeight: 1.15,
+            letterSpacing: "-0.015em",
+            fontWeight: 700,
+            color: "var(--foreground)",
+          }}
+        >
+          What is Neuromorphic Computing?
+        </h2>
+
+        <div
+          style={{
+            marginTop: "2.5rem",
+            fontSize: "1.1rem",
+            lineHeight: 1.85,
+            color: "var(--foreground)",
+            opacity: 0.82,
+            fontFamily: "var(--font-body), sans-serif",
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            The hackathon introduces participants to neuromorphic computing. A
+            brain-inspired paradigm for artificial intelligence that mimics the
+            structure and dynamics of biological neural systems. Unlike conventional
+            deep learning, neuromorphic approaches offer radical energy efficiency
+            and temporal processing capabilities that are reshaping the edge AI
+            landscape.
           </p>
+
           <p
             style={{
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
+              marginTop: "2rem",
+              marginBottom: 0,
+              fontFamily: "var(--font-display), Georgia, serif",
+              fontStyle: "italic",
+              fontSize: "1.4rem",
+              lineHeight: 1.5,
               color: "var(--foreground)",
-              margin: 0,
+              opacity: 1,
             }}
           >
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
       </div>

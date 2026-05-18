@@ -23,12 +23,13 @@ const SectionHeading: React.FC<Props> = ({ eyebrow, title, subtitle, align = "le
       {eyebrow && (
         <div
           style={{
-            fontSize: "0.85rem",
+            fontSize: "0.78rem",
             fontWeight: 600,
             textTransform: "uppercase",
-            letterSpacing: "0.12em",
-            color: "var(--color-blue)",
-            marginBottom: "1rem",
+            letterSpacing: "0.24em",
+            color: "var(--accent-coral)",
+            marginBottom: "1.25rem",
+            fontFamily: "var(--font-body), sans-serif",
           }}
         >
           {eyebrow}
@@ -36,12 +37,14 @@ const SectionHeading: React.FC<Props> = ({ eyebrow, title, subtitle, align = "le
       )}
       <h2
         style={{
-          fontSize: "clamp(2rem, 4.5vw, 3.25rem)",
-          fontWeight: 500,
-          letterSpacing: "-0.03em",
+          fontSize: "clamp(1.85rem, 4vw, 3rem)",
+          fontWeight: 700,
+          letterSpacing: "-0.015em",
           lineHeight: 1.1,
           margin: 0,
           color: "var(--foreground)",
+          fontFamily:
+            "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace",
         }}
       >
         {title}
@@ -49,14 +52,14 @@ const SectionHeading: React.FC<Props> = ({ eyebrow, title, subtitle, align = "le
       {subtitle && (
         <p
           style={{
-            fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
-            lineHeight: 1.6,
-            color: "var(--foreground)",
-            opacity: 0.65,
-            marginTop: "1.25rem",
+            fontSize: "clamp(1.02rem, 1.4vw, 1.18rem)",
+            lineHeight: 1.7,
+            color: "var(--text-soft)",
+            marginTop: "1.5rem",
             maxWidth: "640px",
             marginLeft: align === "center" ? "auto" : 0,
             marginRight: align === "center" ? "auto" : 0,
+            fontFamily: "var(--font-body), sans-serif",
           }}
         >
           {subtitle}
