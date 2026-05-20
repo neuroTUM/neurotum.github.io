@@ -61,15 +61,17 @@ const HackathonHero: React.FC = () => {
         minHeight: "calc(100dvh - var(--header-height))",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        padding: isMobile ? "4rem 1.5rem 3rem" : "5rem 2rem 4rem",
+        padding: isMobile ? "3rem 1.25rem 2rem" : "5rem 2rem 4rem",
         position: "relative",
       }}
     >
       <div
         style={{
           maxWidth: "1200px",
-          margin: "0 auto",
+          // Auto vertical margins centre the block when there's headroom;
+          // when content is taller than viewport (small phones) it just sits
+          // at the top and the scroll hint stays out of the way below.
+          margin: "auto auto",
           width: "100%",
           display: "flex",
           flexDirection: "column",
@@ -80,12 +82,12 @@ const HackathonHero: React.FC = () => {
         {/* Eyebrow */}
         <div
           style={{
-            fontSize: "0.8rem",
+            fontSize: isMobile ? "0.72rem" : "0.8rem",
             fontWeight: 600,
             textTransform: "uppercase",
             letterSpacing: "0.28em",
             color: "var(--accent-coral)",
-            marginBottom: "2rem",
+            marginBottom: isMobile ? "1.25rem" : "2rem",
             fontFamily: "var(--font-body), sans-serif",
           }}
         >
@@ -124,10 +126,10 @@ const HackathonHero: React.FC = () => {
         {/* Tagline + subtitle */}
         <p
           style={{
-            fontSize: isMobile ? "1.08rem" : "1.22rem",
+            fontSize: isMobile ? "1rem" : "1.22rem",
             lineHeight: 1.65,
             color: "var(--text-soft)",
-            marginTop: "2.5rem",
+            marginTop: isMobile ? "1.5rem" : "2.5rem",
             maxWidth: "560px",
             fontFamily: "var(--font-body), sans-serif",
           }}
@@ -140,8 +142,8 @@ const HackathonHero: React.FC = () => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: isMobile ? "1.25rem" : "2.5rem",
-            marginTop: "2.5rem",
+            gap: isMobile ? "1rem 1.5rem" : "2.5rem",
+            marginTop: isMobile ? "1.75rem" : "2.5rem",
             justifyContent: isMobile ? "flex-start" : "center",
           }}
         >
@@ -151,7 +153,7 @@ const HackathonHero: React.FC = () => {
         </div>
 
         {/* CTA */}
-        <div style={{ marginTop: "3rem" }}>
+        <div style={{ marginTop: isMobile ? "2rem" : "3rem" }}>
           <Link
             href={application.applyUrl}
             target={application.applyUrl.startsWith("http") ? "_blank" : undefined}
@@ -183,24 +185,26 @@ const HackathonHero: React.FC = () => {
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "2.5rem",
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          fontSize: "0.7rem",
-          letterSpacing: "0.3em",
-          textTransform: "uppercase",
-          color: "var(--text-soft)",
-          opacity: 0.85,
-          fontFamily: "var(--font-body), sans-serif",
-        }}
-      >
-        scroll ↓
-      </div>
+      {/* Scroll hint — natural flex child so it always sits below content,
+          never on top of the CTA. Hidden on mobile where content below is
+          its own cue. */}
+      {!isMobile && (
+        <div
+          style={{
+            marginTop: "auto",
+            paddingTop: "3rem",
+            textAlign: "center",
+            fontSize: "0.7rem",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "var(--text-soft)",
+            opacity: 0.85,
+            fontFamily: "var(--font-body), sans-serif",
+          }}
+        >
+          scroll ↓
+        </div>
+      )}
     </section>
   );
 };

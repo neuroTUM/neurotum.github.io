@@ -20,6 +20,10 @@ export type Challenge = {
   href: string;
   title: string;
   summary: string;
+  // Set true if the logo file is dark monochrome (designed for light bgs).
+  // The challenge card will flip it to a white silhouette so it reads on
+  // the dark page. Leave unset for logos that are already light or full-colour.
+  invertLogo?: boolean;
 };
 
 export type ScheduleItem = {
@@ -79,17 +83,17 @@ export const edition = {
     line2: "Neuromorphic Hackathon",
     tagline: "Hack the brain. Build the future.",
     subtitle:
-      "Four days of brain-inspired computing in Munich, hosted by neuroTUM and OpenHardware in collaboration with fortiss.",
+      "Five days of brain-inspired computing in Munich, hosted by neuroTUM and OpenHardware in collaboration with fortiss.",
   },
 
   dates: {
-    display: "6–9 October 2026",
+    display: "5–9 October 2026",
     deadline: "TBD",
     notificationDate: "TBD",
   },
 
   // ISO dates power the calendar grid. Leave as empty arrays until confirmed.
-  eventDays: ["2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"] as string[],
+  eventDays: ["2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09"] as string[],
   restDays: [] as string[],
   // Month the calendar should land on by default (YYYY-MM-01)
   calendarDefaultMonth: "2026-10-01",
@@ -119,28 +123,70 @@ export const edition = {
 
   challenges: [
     {
-      company: "Challenge Partner 1",
-      logo: "/hackathon/placeholder-logo.svg",
+      company: "Fortiss",
+      logo: "/hackathon/fortiss.png",
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "BCI Challange",
       summary:
-        "Dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Develop a neuromorphic Brain-Computer Interface",
     },
     {
       company: "Challenge Partner 2",
-      logo: "/hackathon/placeholder-logo.svg",
+      logo: "/hackathon/neura-logo.png",
+      invertLogo: true,
       href: "#",
       title: "Lorem ipsum challenge",
       summary:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "To be Confirmed",
     },
     {
       company: "Challenge Partner 3",
+      logo: "/hackathon/neurobus-logo.png",
+      invertLogo: true,
+      href: "#",
+      title: "Lorem ipsum challenge",
+      summary:
+        "To be Confirmed",
+    },
+    {
+      company: "Challenge Partner 4",
+      logo: "/hackathon/Innatera-logo.png",
+      href: "#",
+      title: "Lorem ipsum challenge",
+      summary:
+        "To be Confirmed",
+    },
+    {
+      company: "Challenge Partner 5",
+      logo: "/hackathon/DLR_logo-w.png",
+      href: "#",
+      title: "Lorem ipsum challenge",
+      summary:
+        "To be Confirmed",
+    },
+    {
+      company: "Challenge Partner 6",
       logo: "/hackathon/placeholder-logo.svg",
       href: "#",
       title: "Lorem ipsum challenge",
       summary:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "To be Confirmed",
+    },
+    {
+      company: "Challenge Partner 7",
+      logo: "/hackathon/placeholder-logo.svg",
+      href: "#",
+      title: "Lorem ipsum challenge",
+      summary:
+        "To be Confirmed",
+    },
+    {
+      company: "Challenge Partner 8",
+      logo: "/hackathon/placeholder-logo.svg",
+      href: "#",
+      title: "Lorem ipsum challenge",
+      summary:
+        "To be Confirmed",
     },
   ] as Challenge[],
 
@@ -149,7 +195,16 @@ export const edition = {
       year: 2023,
       edition: "1st edition",
       dateRange: "TBD",
-      challenges: [],
+      challenges: [
+                {
+          name: "Intel",
+          logo: "/hackathon/intel-logo.png",
+          invertLogo: true, // dark navy logo on transparent → flip to white
+          description:
+            "Continual Learning with LAVA",
+        },
+
+      ],
       winner: undefined,
       recapHref: undefined,
     },
@@ -218,32 +273,43 @@ export const edition = {
 
   schedule: [
     {
-      isoDate: "2026-10-06",
-      label: "Day 1 — Kickoff",
+      isoDate: "2026-10-05",
+      label: "Day 1 — Arrival",
       type: "event",
       items: [
-        { time: "09:00", event: "Doors open", speaker: "" },
-        { time: "09:30", event: "Welcome address", speaker: "neuroTUM & host" },
-        { time: "10:30", event: "Challenge presentations", speaker: "Challenge partners" },
-        { time: "14:00", event: "Team formation", speaker: "" },
+        { time: "12:00", event: "Check-in opens for arrivers", speaker: "" },
+        { time: "12:30", event: "Welcome address", speaker: "neuroTUM & host" },
+        { time: "13:30", event: "Challenge presentations", speaker: "Challenge partners" },
+        { time: "15:00", event: "Team formation", speaker: "" },
         { time: "19:00", event: "Day end", speaker: "" },
       ],
     },
     {
-      isoDate: "2026-10-07",
-      label: "Day 2 — Build",
+      isoDate: "2026-10-06",
+      label: "Day 2 — Kickoff",
       type: "event",
-      items: [{ time: "All day", event: "Hacking & mentorship", speaker: "" }],
+      items: [
+      { time: "All day", event: "Hacking & mentorship", speaker: "" }
+      ],
     },
     {
-      isoDate: "2026-10-08",
+      isoDate: "2026-10-07",
       label: "Day 3 — Build",
       type: "event",
       items: [{ time: "All day", event: "Hacking & mentorship", speaker: "" }],
     },
     {
+      isoDate: "2026-10-08",
+      label: "Day 4 — Build",
+      type: "event",
+      items: [
+        { time: "All day", event: "Hacking & mentorship", speaker: "" },
+        { time: "Evening", event: "Presentation preparation", speaker: "All teams" },
+      ],
+    },
+    {
       isoDate: "2026-10-09",
-      label: "Day 4 — Demo",
+      label: "Day 5 — Demo",
       type: "event",
       items: [
         { time: "09:00", event: "Final preparations", speaker: "" },

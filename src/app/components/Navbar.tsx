@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
           backdropFilter: theme.navBackdrop,
           WebkitBackdropFilter: theme.navBackdrop,
           borderBottom: theme.navBorder,
-          padding: "0 2rem",
+          padding: isMobile ? "0 1.25rem" : "0 2rem",
           zIndex: 1000,
           display: "flex",
           alignItems: "center",
