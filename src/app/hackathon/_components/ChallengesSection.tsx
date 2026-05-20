@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useDeviceSize } from "../../hooks/useDeviceSize";
 import SectionHeading from "./SectionHeading";
 import { edition } from "../_content/edition";
@@ -30,7 +31,7 @@ const ChallengesSection: React.FC = () => {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <SectionHeading
           eyebrow={`${year} Challenges`}
-          title={areChallengesReady ? "Real problems, from real partners." : "Challenges. Coming soon."}
+          title={areChallengesReady ? "Challenges." : "Challenges. Coming soon."}
           subtitle={
             areChallengesReady
               ? "Each challenge is brought by a research lab or industry partner. Teams pick a track on day one and work on it for the whole event."
@@ -40,9 +41,14 @@ const ChallengesSection: React.FC = () => {
 
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-            gap: "1.5rem",
+            // Flex-wrap + center so the last row of any odd count (5, 7, 8,
+            // 11, ...) sits centred under the full rows above instead of
+            // hanging off to the left. Cards keep a fixed flex-basis so 3
+            // fit per row at desktop, 2 at tablet, 1 at mobile.
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "1.75rem",
             marginTop: "3rem",
           }}
         >
@@ -51,8 +57,12 @@ const ChallengesSection: React.FC = () => {
                 <ChallengeCard
                   key={`${c.company}-${i}`}
                   company={c.company}
+                  logo={c.logo}
+                  invertLogo={c.invertLogo}
+                  href={c.href}
                   title={c.title}
                   summary={c.summary}
+                  accent={ACCENTS[i % ACCENTS.length]}
                 />
               ))
             : Array.from({ length: 3 }).map((_, i) => <ComingSoonCard key={i} index={i} />)}
@@ -77,63 +87,204 @@ const ChallengesSection: React.FC = () => {
   );
 };
 
-const ChallengeCard: React.FC<{ company: string; title: string; summary: string }> = ({
-  company,
-  title,
-  summary,
-}) => (
-  <div
-    style={{
-      padding: "2rem 2rem 2rem 1.75rem",
-      borderLeft: "3px solid var(--accent-teal)",
-      transition: "border-color 0.3s ease",
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.borderLeftColor = "var(--accent-coral)";
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.borderLeftColor = "var(--accent-teal)";
-    }}
-  >
-    <div
+/** Logo target height — matches the past-editions card so the two sections
+ *  read as siblings of the same visual family. */
+const LOGO_HEIGHT = 88;
+const LOGO_MAX_WIDTH = 240;
+
+/** Per-card accent palette. Cycled by index so a row of three cards reads
+ *  as coral / teal / violet — gives the section colour without leaving the
+ *  page's palette. RGB tuples so we can compose multiple alpha values
+ *  inline for the gradient wash, border, and link. */
+type Accent = { name: string; rgb: string; cssVar: string };
+const ACCENTS: Accent[] = [
+  { name: "coral",  rgb: "232, 165, 152", cssVar: "var(--accent-coral)"  },
+  { name: "teal",   rgb: "122, 208, 232", cssVar: "var(--accent-teal)"   },
+  { name: "violet", rgb: "177, 140, 242", cssVar: "var(--accent-violet)" },
+];
+
+const ChallengeCard: React.FC<{
+  company: string;
+  logo: string;
+  invertLogo?: boolean;
+  href: string;
+  title: string;
+  summary: string;
+  accent: Accent;
+}> = ({ company, logo, invertLogo, href, title, summary, accent }) => {
+  const isLinked = href && href !== "#";
+  const Wrapper: React.ElementType = isLinked ? "a" : "div";
+  const wrapperProps = isLinked
+    ? { href, target: href.startsWith("http") ? "_blank" : undefined, rel: href.startsWith("http") ? "noopener noreferrer" : undefined }
+    : {};
+
+  const baseBorder = `1px solid rgba(${accent.rgb}, 0.18)`;
+  const hoverBorder = `1px solid rgba(${accent.rgb}, 0.55)`;
+
+  return (
+    <Wrapper
+      {...wrapperProps}
       style={{
-        fontSize: "0.74rem",
-        fontWeight: 600,
-        textTransform: "uppercase",
-        letterSpacing: "0.24em",
-        color: "var(--accent-coral)",
-        marginBottom: "1rem",
-        fontFamily: "var(--font-body), sans-serif",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.1rem",
+        padding: "2.25rem 2rem 2.4rem",
+        textDecoration: "none",
+        color: "inherit",
+        // Fixed flex basis so cards line up in tidy rows; min/max keep them
+        // sensible across viewports without media queries.
+        flex: "0 0 min(360px, 100%)",
+        maxWidth: "360px",
+        // Min height locks all cards to the same vertical footprint so short
+        // "To be Confirmed" cards don't render shorter than full ones. The
+        // "Learn more" / spacing inside the card uses marginTop: auto so the
+        // extra space pads cleanly to the bottom.
+        minHeight: "350px",
+        // Layered gradient — diagonal coloured wash with a soft glow from
+        // the top-left + a darker fade toward the bottom-right keeps the
+        // card from feeling flat or grey.
+        background: `
+          radial-gradient(ellipse 70% 60% at 25% 10%, rgba(${accent.rgb}, 0.22) 0%, rgba(${accent.rgb}, 0) 70%),
+          linear-gradient(155deg, rgba(${accent.rgb}, 0.10) 0%, rgba(10, 12, 22, 0.45) 55%, rgba(5, 6, 12, 0.20) 100%)
+        `,
+        border: baseBorder,
+        borderRadius: "12px",
+        cursor: isLinked ? "pointer" : "default",
+        transition:
+          "transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease",
+        overflow: "hidden",
+      }}
+      onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
+        e.currentTarget.style.transform = "translateY(-4px)";
+        e.currentTarget.style.borderColor = hoverBorder.split(" ").pop() ?? "";
+        e.currentTarget.style.boxShadow = `0 22px 60px -22px rgba(${accent.rgb}, 0.35), 0 6px 18px -8px rgba(0,0,0,0.45)`;
+      }}
+      onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.borderColor = baseBorder.split(" ").pop() ?? "";
+        e.currentTarget.style.boxShadow = "none";
       }}
     >
-      {company}
-    </div>
-    <h3
-      style={{
-        fontFamily: "var(--font-display), Georgia, serif",
-        fontSize: "1.45rem",
-        lineHeight: 1.2,
-        letterSpacing: "-0.02em",
-        margin: "0 0 0.85rem 0",
-        color: "var(--foreground)",
-        fontWeight: 400,
-      }}
-    >
-      {title}
-    </h3>
-    <p
-      style={{
-        fontSize: "0.98rem",
-        lineHeight: 1.7,
-        color: "var(--text-soft)",
-        margin: 0,
-        fontFamily: "var(--font-body), sans-serif",
-      }}
-    >
-      {summary}
-    </p>
-  </div>
-);
+      {/* Top-edge sheen using the card's accent. */}
+      <span
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "1px",
+          background: `linear-gradient(to right, transparent, rgba(${accent.rgb}, 0.85), transparent)`,
+        }}
+      />
+
+      {/* Logo block — uniform height across cards for visual integrity. */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: `${LOGO_HEIGHT}px`,
+          padding: "0.25rem 0 0.5rem",
+        }}
+      >
+        {logo ? (
+          <Image
+            src={logo}
+            alt={company}
+            width={LOGO_MAX_WIDTH}
+            height={LOGO_HEIGHT}
+            style={{
+              height: `${LOGO_HEIGHT}px`,
+              width: "auto",
+              maxWidth: `${LOGO_MAX_WIDTH}px`,
+              objectFit: "contain",
+              // Flip dark monochrome logos to a white silhouette so they
+              // read against the dark page.
+              filter: invertLogo ? "brightness(0) invert(1)" : "none",
+              opacity: 0.96,
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontFamily: "var(--font-display), Georgia, serif",
+              fontSize: "1.6rem",
+              color: "var(--foreground)",
+            }}
+          >
+            {company}
+          </span>
+        )}
+      </div>
+
+      {/* Company name */}
+      <div
+        style={{
+          fontSize: "0.72rem",
+          fontWeight: 600,
+          textTransform: "uppercase",
+          letterSpacing: "0.24em",
+          color: accent.cssVar,
+          textAlign: "center",
+          fontFamily: "var(--font-body), sans-serif",
+        }}
+      >
+        {company}
+      </div>
+
+      {/* Challenge title — bold mono so it reads as the dominant element. */}
+      <h3
+        style={{
+          margin: 0,
+          textAlign: "center",
+          fontFamily:
+            "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace",
+          fontSize: "1.35rem",
+          lineHeight: 1.25,
+          letterSpacing: "-0.015em",
+          color: "var(--foreground)",
+          fontWeight: 700,
+        }}
+      >
+        {title}
+      </h3>
+
+      {/* Summary */}
+      <p
+        style={{
+          margin: 0,
+          fontSize: "0.95rem",
+          lineHeight: 1.65,
+          color: "var(--text-soft)",
+          fontFamily: "var(--font-body), sans-serif",
+          textAlign: "center",
+        }}
+      >
+        {summary}
+      </p>
+
+      {isLinked && (
+        <div
+          style={{
+            marginTop: "auto",
+            paddingTop: "0.5rem",
+            textAlign: "center",
+            fontSize: "0.78rem",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: accent.cssVar,
+            fontFamily: "var(--font-body), sans-serif",
+            fontWeight: 600,
+          }}
+        >
+          Learn more <span aria-hidden>↗</span>
+        </div>
+      )}
+    </Wrapper>
+  );
+};
 
 const ComingSoonCard: React.FC<{ index: number }> = ({ index }) => {
   // Stagger the apparent placeholder size to feel less rigid.

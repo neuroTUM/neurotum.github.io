@@ -7,7 +7,6 @@ import ChallengesSection from "./_components/ChallengesSection";
 import ScheduleSection from "./_components/ScheduleSection";
 import ApplicationSection from "./_components/ApplicationSection";
 import HackathonFooter from "./_components/HackathonFooter";
-import ScrollReveal from "./_components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "4th Munich Neuromorphic Hackathon | neuroTUM",
@@ -20,21 +19,11 @@ export default function HackathonPage() {
     <main>
       <HackathonShell>
         <HackathonHero />
-        <ScrollReveal>
-          <AboutSection />
-        </ScrollReveal>
-        <ScrollReveal>
-          <ChallengesSection />
-        </ScrollReveal>
-        <ScrollReveal>
-          <PastEditionsSection />
-        </ScrollReveal>
-        <ScrollReveal>
-          <ScheduleSection />
-        </ScrollReveal>
-        <ScrollReveal>
-          <ApplicationSection />
-        </ScrollReveal>
+        <AboutSection />
+        <ChallengesSection />
+        <PastEditionsSection />
+        <ScheduleSection />
+        <ApplicationSection />
         <HackathonFooter />
       </HackathonShell>
     </main>

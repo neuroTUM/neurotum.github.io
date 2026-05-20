@@ -44,7 +44,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
           "--coming-soon-bg": "rgba(255, 255, 255, 0.06)",
           // Subtle vertical gradient stops the deep base from feeling dead-flat.
           background:
-            "linear-gradient(180deg, #07080f 0%, #06060c 55%, #050507 100%)",
+            "linear-gradient(180deg, #05060b 0%, #040409 55%, #030305 100%)",
           color: "#ece9e2",
           fontFamily: "var(--font-body), system-ui, sans-serif",
           position: "relative",
@@ -66,7 +66,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
         left="-15vw"
         width="95vw"
         height="780px"
-        color="rgba(60, 78, 240, 0.68)"
+        color="rgba(60, 78, 240, 0.48)"
         blur={70}
       />
       <AuroraBloom
@@ -74,7 +74,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
         left="-5vw"
         width="60vw"
         height="640px"
-        color="rgba(194, 82, 232, 0.5)"
+        color="rgba(194, 82, 232, 0.34)"
         blur={60}
       />
       <AuroraBloom
@@ -82,7 +82,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
         left="2vw"
         width="22vw"
         height="320px"
-        color="rgba(240, 230, 255, 0.4)"
+        color="rgba(240, 230, 255, 0.26)"
         blur={45}
       />
 
@@ -91,7 +91,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
         left="55vw"
         width="80vw"
         height="640px"
-        color="rgba(64, 60, 220, 0.38)"
+        color="rgba(64, 60, 220, 0.26)"
         blur={70}
       />
 
@@ -100,7 +100,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
         left="-25vw"
         width="120vw"
         height="720px"
-        color="rgba(72, 80, 230, 0.58)"
+        color="rgba(72, 80, 230, 0.40)"
         blur={80}
       />
       <AuroraBloom
@@ -108,7 +108,7 @@ const HackathonShell: React.FC<{ children: React.ReactNode }> = ({ children }) =
         left="40vw"
         width="55vw"
         height="540px"
-        color="rgba(180, 80, 220, 0.4)"
+        color="rgba(180, 80, 220, 0.28)"
         blur={70}
       />
 
@@ -159,7 +159,7 @@ const AuroraBloom: React.FC<{
 const GrainLayer: React.FC = () => (
   <>
     {/* Bright grain pass — adds light specks via screen blend.
-        Dialled down from 0.7 → 0.48 so it doesn't swallow body text on dark sections. */}
+        Held low so the darker base reads through. */}
     <svg
       aria-hidden
       style={{
@@ -169,7 +169,7 @@ const GrainLayer: React.FC = () => (
         height: "100vh",
         pointerEvents: "none",
         zIndex: 2,
-        opacity: 0.48,
+        opacity: 0.24,
         mixBlendMode: "screen",
       }}
     >
@@ -191,8 +191,7 @@ const GrainLayer: React.FC = () => (
       <rect width="100%" height="100%" filter="url(#hackathon-grain-light)" />
     </svg>
 
-    {/* Dark grain pass — adds slight pitting via multiply blend for grit.
-        Held to 0.2 so it doesn't pull aurora saturation down. */}
+    {/* Dark grain pass — adds slight pitting via multiply blend for grit. */}
     <svg
       aria-hidden
       style={{
@@ -202,7 +201,7 @@ const GrainLayer: React.FC = () => (
         height: "100vh",
         pointerEvents: "none",
         zIndex: 2,
-        opacity: 0.2,
+        opacity: 0.1,
         mixBlendMode: "multiply",
       }}
     >

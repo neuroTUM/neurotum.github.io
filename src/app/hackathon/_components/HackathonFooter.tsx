@@ -2,13 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
+import { useDeviceSize } from "../../hooks/useDeviceSize";
 
 const HackathonFooter: React.FC = () => {
+  const { isMobile } = useDeviceSize();
+
   return (
     <footer
       style={{
         width: "100%",
-        padding: "3rem 2rem 4rem",
+        padding: isMobile ? "2.5rem 1.25rem 3rem" : "3rem 2rem 4rem",
         borderTop: "1px solid var(--color-border)",
         color: "var(--text-soft)",
         fontSize: "0.92rem",
@@ -21,10 +24,10 @@ const HackathonFooter: React.FC = () => {
           maxWidth: "1200px",
           margin: "0 auto",
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "1.5rem",
+          flexDirection: isMobile ? "column" : "row",
+          justifyContent: isMobile ? "flex-start" : "space-between",
+          alignItems: isMobile ? "flex-start" : "center",
+          gap: isMobile ? "1.25rem" : "1.5rem",
         }}
       >
         <div>
@@ -36,7 +39,7 @@ const HackathonFooter: React.FC = () => {
             neuroTUM
           </Link>
         </div>
-        <div style={{ display: "flex", gap: "1.5rem" }}>
+        <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
           <Link href="/contact" style={{ color: "var(--text-soft)" }}>
             Contact
           </Link>
