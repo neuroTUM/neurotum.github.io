@@ -6,19 +6,14 @@ import { useDeviceSize } from "../../hooks/useDeviceSize";
 import SectionHeading from "./SectionHeading";
 import { edition } from "../_content/edition";
 
+const isPlaceholderChallenge = (company: string) =>
+  /^challenge partner/i.test(company.trim());
+
 const ChallengesSection: React.FC = () => {
   const { isMobile } = useDeviceSize();
   const { challenges, year } = edition;
 
-  // Treat the placeholder lorem-ipsum challenges as "not yet announced".
-  // When real challenges get added with concrete titles, the gate flips
-  // automatically and the section reveals them.
-  const areChallengesReady = challenges.some(
-    (c) =>
-      c.title &&
-      !c.title.toLowerCase().includes("lorem") &&
-      !c.summary.toLowerCase().includes("lorem"),
-  );
+  const allPlaceholders = challenges.every((c) => isPlaceholderChallenge(c.company));
 
   return (
     <section
@@ -31,11 +26,11 @@ const ChallengesSection: React.FC = () => {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <SectionHeading
           eyebrow={`${year} Challenges`}
-          title={areChallengesReady ? "Challenges." : "Challenges. Coming soon."}
+          title={allPlaceholders ? "Challenges. Coming soon." : "Challenges."}
           subtitle={
-            areChallengesReady
-              ? "Each challenge is brought by a research lab or industry partner. Teams pick a track on day one and work on it for the whole event."
-              : "Challenges will be revealed closer to the event date. Teams pick a track on day one and work on it for the whole event."
+            allPlaceholders
+              ? "Challenges will be revealed closer to the event date. Teams pick a track on day one and work on it for the whole event."
+              : "Each challenge is brought by a research lab or industry partner. Teams pick a track on day one and work on it for the whole event."
           }
         />
 
@@ -52,36 +47,23 @@ const ChallengesSection: React.FC = () => {
             marginTop: "3rem",
           }}
         >
-          {areChallengesReady
-            ? challenges.map((c, i) => (
-                <ChallengeCard
-                  key={`${c.company}-${i}`}
-                  company={c.company}
-                  logo={c.logo}
-                  invertLogo={c.invertLogo}
-                  href={c.href}
-                  title={c.title}
-                  summary={c.summary}
-                  accent={ACCENTS[i % ACCENTS.length]}
-                />
-              ))
-            : Array.from({ length: 3 }).map((_, i) => <ComingSoonCard key={i} index={i} />)}
+          {challenges.map((c, i) =>
+            isPlaceholderChallenge(c.company) ? (
+              <ComingSoonCard key={`placeholder-${i}`} index={i} />
+            ) : (
+              <ChallengeCard
+                key={`${c.company}-${i}`}
+                company={c.company}
+                logo={c.logo}
+                invertLogo={c.invertLogo}
+                href={c.href}
+                title={c.title}
+                summary={c.summary}
+                accent={ACCENTS[i % ACCENTS.length]}
+              />
+            ),
+          )}
         </div>
-
-        {!areChallengesReady && (
-          <p
-            style={{
-              marginTop: "3rem",
-              textAlign: "center",
-              fontSize: "0.98rem",
-              color: "var(--text-soft)",
-              fontFamily: "var(--font-body), sans-serif",
-              fontStyle: "italic",
-            }}
-          >
-            Challenges will be revealed closer to the event date.
-          </p>
-        )}
       </div>
     </section>
   );
@@ -219,7 +201,7 @@ const ChallengeCard: React.FC<{
         )}
       </div>
 
-      {/* Company name */}
+      {/* Challenge index — small uppercase eyebrow above the company name. */}
       <div
         style={{
           fontSize: "0.72rem",
@@ -231,10 +213,10 @@ const ChallengeCard: React.FC<{
           fontFamily: "var(--font-body), sans-serif",
         }}
       >
-        {company}
+        {title}
       </div>
 
-      {/* Challenge title — bold mono so it reads as the dominant element. */}
+      {/* Company name — dominant element, bold mono so it carries the card. */}
       <h3
         style={{
           margin: 0,
@@ -248,7 +230,7 @@ const ChallengeCard: React.FC<{
           fontWeight: 700,
         }}
       >
-        {title}
+        {company}
       </h3>
 
       {/* Summary */}
@@ -287,19 +269,19 @@ const ChallengeCard: React.FC<{
 };
 
 const ComingSoonCard: React.FC<{ index: number }> = ({ index }) => {
-  // Stagger the apparent placeholder size to feel less rigid.
-  const minHeight = ["260px", "300px", "260px"][index] ?? "280px";
   return (
     <div
       style={{
+        flex: "0 0 min(360px, 100%)",
+        maxWidth: "360px",
+        minHeight: "350px",
         padding: "2.5rem 2rem",
         border: "1px dashed var(--color-border)",
-        borderRadius: "6px",
+        borderRadius: "12px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        minHeight,
         textAlign: "center",
         gap: "1.25rem",
       }}

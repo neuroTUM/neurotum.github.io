@@ -93,7 +93,7 @@ const ApplicationSection: React.FC = () => {
             letterSpacing: "0.02em",
           }}
         >
-          Applications open · {dates.display} · Munich, Germany
+          Apply by {dates.deadline} · Selection by {dates.notificationDate} · Munich, Germany
         </p>
 
         {/* Contact */}

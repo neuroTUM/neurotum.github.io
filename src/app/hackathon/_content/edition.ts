@@ -14,6 +14,13 @@ export type Partner = {
   href: string;
 };
 
+export type Sponsor = {
+  name: string;
+  logo: string; // path under /public/hackathon/
+  href: string;
+  invertLogo?: boolean;
+};
+
 export type Challenge = {
   company: string;
   logo: string;
@@ -88,8 +95,8 @@ export const edition = {
 
   dates: {
     display: "5–9 October 2026",
-    deadline: "TBD",
-    notificationDate: "TBD",
+    deadline: "16 August 2026",
+    notificationDate: "21 August 2026",
   },
 
   // ISO dates power the calendar grid. Leave as empty arrays until confirmed.
@@ -99,10 +106,10 @@ export const edition = {
   calendarDefaultMonth: "2026-10-01",
 
   location: {
-    name: "TBD venue",
-    line1: "Lorem ipsum strasse 0",
-    line2: "00000 Munich",
-    transitNotes: ["TBD: U-Bahn line", "TBD: walking distance from station"],
+    name: "fortiss Headquarters",
+    line1: "",
+    line2: "Munich",
+    transitNotes: [],
   },
 
   participants: {
@@ -121,54 +128,58 @@ export const edition = {
     { name: "fortiss", logo: "/hackathon/placeholder-logo.svg", href: "https://www.fortiss.org/en/" },
   ] as Partner[],
 
+  // Rolling sponsor strip shown above the "Ready to apply" CTA. Leave empty
+  // to hide the section entirely — adding a single entry makes it appear.
+  sponsors: [] as Sponsor[],
+
   challenges: [
     {
       company: "Fortiss",
       logo: "/hackathon/fortiss.png",
       href: "#",
-      title: "BCI Challange",
+      title: "Challenge 1",
       summary:
         "Develop a neuromorphic Brain-Computer Interface",
     },
     {
-      company: "Challenge Partner 2",
+      company: "Neura Robotics",
       logo: "/hackathon/neura-logo.png",
       invertLogo: true,
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 2",
       summary:
         "To be Confirmed",
     },
     {
-      company: "Challenge Partner 3",
+      company: "NeuroBus",
       logo: "/hackathon/neurobus-logo.png",
       invertLogo: true,
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 3",
       summary:
         "To be Confirmed",
     },
     {
-      company: "Challenge Partner 4",
+      company: "Innatera",
       logo: "/hackathon/Innatera-logo.png",
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 4",
       summary:
         "To be Confirmed",
     },
     {
-      company: "Challenge Partner 5",
+      company: "DLR",
       logo: "/hackathon/DLR_logo-w.png",
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 5",
       summary:
         "To be Confirmed",
     },
     {
-      company: "Challenge Partner 6",
-      logo: "/hackathon/placeholder-logo.svg",
+      company: "OpenHardware",
+      logo: "/hackathon/openhardware-logo.png",
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 6",
       summary:
         "To be Confirmed",
     },
@@ -176,7 +187,7 @@ export const edition = {
       company: "Challenge Partner 7",
       logo: "/hackathon/placeholder-logo.svg",
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 7",
       summary:
         "To be Confirmed",
     },
@@ -184,7 +195,7 @@ export const edition = {
       company: "Challenge Partner 8",
       logo: "/hackathon/placeholder-logo.svg",
       href: "#",
-      title: "Lorem ipsum challenge",
+      title: "Challenge 8",
       summary:
         "To be Confirmed",
     },
@@ -228,6 +239,7 @@ export const edition = {
           description:
             "Depth estimation with binocular event cameras and spiking neural networks.",
         },
+        /*
         {
           name: "International Business Machines Corporation",
           logo: "/hackathon/IBM_logo.svg",
@@ -235,6 +247,7 @@ export const edition = {
           description:
             "",
         },
+        */
       ],
       winner: undefined,
       recapHref: undefined,
@@ -274,7 +287,7 @@ export const edition = {
   schedule: [
     {
       isoDate: "2026-10-05",
-      label: "Day 1 — Arrival",
+      label: "Day 1 — Kickoff",
       type: "event",
       items: [
         { time: "12:00", event: "Check-in opens for arrivers", speaker: "" },
@@ -286,7 +299,7 @@ export const edition = {
     },
     {
       isoDate: "2026-10-06",
-      label: "Day 2 — Kickoff",
+      label: "Day 2 — Build",
       type: "event",
       items: [
       { time: "All day", event: "Hacking & mentorship", speaker: "" }
@@ -300,7 +313,7 @@ export const edition = {
     },
     {
       isoDate: "2026-10-08",
-      label: "Day 4 — Build",
+      label: "Day 4 — Polish",
       type: "event",
       items: [
         { time: "All day", event: "Hacking & mentorship", speaker: "" },
