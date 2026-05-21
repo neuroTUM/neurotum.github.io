@@ -11,6 +11,7 @@ import { edition } from "../_content/edition";
  * promote specific partner names to clickable links without touching data.
  */
 const PARTNER_LINKS: Record<string, string> = {
+  neuroTUM: "https://neurotum.com/",
   OpenHardware: "https://open-hardware-initiative.com/",
   fortiss: "https://www.fortiss.org/en/",
 };
@@ -52,7 +53,7 @@ const linkifyPartners = (text: string): React.ReactNode[] => {
 
 const HackathonHero: React.FC = () => {
   const { isMobile } = useDeviceSize();
-  const { hero, dates, application } = edition;
+  const { hero, dates, application, location } = edition;
 
   return (
     <section
@@ -148,8 +149,9 @@ const HackathonHero: React.FC = () => {
           }}
         >
           <MetaItem label="When" value={dates.display} />
-          <MetaItem label="Where" value="Munich, Germany" />
+          <MetaItem label="Where" value={`${location.name}\nMunich, Germany`} />
           <MetaItem label="Apply by" value={dates.deadline} />
+          <MetaItem label="Selection by" value={dates.notificationDate} />
         </div>
 
         {/* CTA */}
@@ -230,6 +232,8 @@ const MetaItem: React.FC<{ label: string; value: string }> = ({ label, value }) 
         fontWeight: 500,
         color: "var(--foreground)",
         fontFamily: "var(--font-body), sans-serif",
+        whiteSpace: "pre-line",
+        lineHeight: 1.35,
       }}
     >
       {value}
