@@ -14,11 +14,19 @@ type NewsItem = {
 
 const NEWS_DATA: NewsItem[] = [
   {
+    id: "4",
+    category: "Events",
+    title: "neuroTUM × Mentalab webinar",
+    date: "April 29, 2026",
+    image: "/news_page_imgs/webinar_titlecard.jpg",
+    href: "/news/neurotum-mentalab-webinar",
+  },
+  {
     id: "1",
     category: "Summer semester 2026",
     title: "Applications are open!",
     date: "March 22, 2026",
-    image: "/news_page_imgs/applications_open.jpg", 
+    image: "/news_page_imgs/applications_open.jpg",
     href: "/news/applications-are-open",
   },
   {
@@ -34,7 +42,7 @@ const NEWS_DATA: NewsItem[] = [
     category: "Events",
     title: "NeuroTUM hosts the newest edition of Munich Neuromorphic Hackathon",
     date: "November 25, 2025",
-    image: "/news_page_imgs/hackathon_main.jpg", 
+    image: "/news_page_imgs/hackathon_main.jpg",
     href: "/news/neuromorphic-hackathon-2025",
   },
   {
@@ -50,7 +58,7 @@ const NEWS_DATA: NewsItem[] = [
 const NewsPage: React.FC = () => {
   const containerStyle: React.CSSProperties = {
     // Matched to Team page div padding
-    paddingTop: "2rem", 
+    paddingTop: "2rem",
     paddingBottom: "8rem",
     maxWidth: "1300px",
     margin: "0 auto",
@@ -60,7 +68,7 @@ const NewsPage: React.FC = () => {
 
   const headerStyle: React.CSSProperties = {
     // Matched to Team page H1 styles
-    fontSize: "clamp(3rem, 8vw, 5rem)", 
+    fontSize: "clamp(3rem, 8vw, 5rem)",
     fontWeight: 500,
     letterSpacing: "-0.04em",
     margin: "0 0 3rem 0",
@@ -99,28 +107,56 @@ const FeaturedCard: React.FC<{ article: NewsItem }> = ({ article }) => {
     color: "inherit",
   };
   return (
-    <Link 
-      href={article.href} 
+    <Link
+      href={article.href}
       style={featuredStyle}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", backgroundColor: "var(--background)" }}>
-        <img 
-          src={article.image} 
-          alt={article.title} 
-          style={{ 
-            width: "100%", 
-            height: "100%", 
+      <div
+        style={{
+          position: "relative",
+          aspectRatio: "16/9",
+          overflow: "hidden",
+          backgroundColor: "var(--background)",
+        }}
+      >
+        <img
+          src={article.image}
+          alt={article.title}
+          style={{
+            width: "100%",
+            height: "100%",
             objectFit: "contain",
-            transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)", 
-            transform: "scale(1)" 
-          }} 
+            transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
+            transform: "scale(1)",
+          }}
         />
       </div>
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <div style={{ fontSize: "0.9rem", fontWeight: 600, textTransform: "uppercase", marginBottom: "1rem", letterSpacing: "0.05em" }}>{article.category}</div>
-        <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 500, lineHeight: 1.1, marginBottom: "1.5rem", transition: "opacity 0.2s ease", opacity: isHovered ? 0.7 : 1 }}>{article.title}</h2>
+        <div
+          style={{
+            fontSize: "0.9rem",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            marginBottom: "1rem",
+            letterSpacing: "0.05em",
+          }}
+        >
+          {article.category}
+        </div>
+        <h2
+          style={{
+            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+            fontWeight: 500,
+            lineHeight: 1.1,
+            marginBottom: "1.5rem",
+            transition: "opacity 0.2s ease",
+            opacity: isHovered ? 0.7 : 1,
+          }}
+        >
+          {article.title}
+        </h2>
         <div style={{ fontSize: "1rem", opacity: 0.5 }}>{article.date}</div>
       </div>
     </Link>
@@ -130,24 +166,60 @@ const FeaturedCard: React.FC<{ article: NewsItem }> = ({ article }) => {
 const NewsCard: React.FC<{ article: NewsItem }> = ({ article }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <Link href={article.href} style={{ textDecoration: "none", color: "inherit" }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <Link
+      href={article.href}
+      style={{ textDecoration: "none", color: "inherit" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={{ position: "relative", width: "100%", aspectRatio: "16/10", marginBottom: "1.5rem", overflow: "hidden", backgroundColor: "var(--background)" }}>
-          <img 
-            src={article.image} 
-            alt={article.title} 
-            style={{ 
-              width: "100%", 
-              height: "100%", 
-              objectFit: "contain", 
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: "16/10",
+            marginBottom: "1.5rem",
+            overflow: "hidden",
+            backgroundColor: "var(--background)",
+          }}
+        >
+          <img
+            src={article.image}
+            alt={article.title}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
               objectPosition: "left",
-              transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)", 
-              transform: "scale(1)" 
-            }} 
+              transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
+              transform: "scale(1)",
+            }}
           />
         </div>
-        <div style={{ fontSize: "0.8rem", fontWeight: 600, textTransform: "uppercase", marginBottom: "0.75rem", letterSpacing: "0.05em", opacity: 0.8 }}>{article.category}</div>
-        <h2 style={{ fontSize: "1.4rem", fontWeight: 500, lineHeight: 1.25, marginBottom: "1rem", transition: "opacity 0.2s ease", opacity: isHovered ? 0.7 : 1 }}>{article.title}</h2>
+        <div
+          style={{
+            fontSize: "0.8rem",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            marginBottom: "0.75rem",
+            letterSpacing: "0.05em",
+            opacity: 0.8,
+          }}
+        >
+          {article.category}
+        </div>
+        <h2
+          style={{
+            fontSize: "1.4rem",
+            fontWeight: 500,
+            lineHeight: 1.25,
+            marginBottom: "1rem",
+            transition: "opacity 0.2s ease",
+            opacity: isHovered ? 0.7 : 1,
+          }}
+        >
+          {article.title}
+        </h2>
         <div style={{ fontSize: "0.9rem", opacity: 0.5 }}>{article.date}</div>
       </div>
     </Link>
