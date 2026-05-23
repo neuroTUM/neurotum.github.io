@@ -101,8 +101,8 @@ export default function WebinarRecapPage() {
           <p style={{ marginBottom: "2rem" }}>
             A central theme throughout the session was that{" "}
             <em>
-              "BCIs are not only about algorithms, they rely on thoughtful system design, training,
-              feedback, and building solutions that work beyond controlled lab environments."
+              &ldquo;BCIs are not only about algorithms, they rely on thoughtful system design, training,
+              feedback, and building solutions that work beyond controlled lab environments.&rdquo;
             </em>{" "}
             The speakers drew on their own research and hands-on experience to illustrate what it
             actually takes to move a BCI from a lab setup to something that can help people in
