@@ -60,12 +60,12 @@ const AboutSection: React.FC = () => {
           }}
         >
           <p style={{ margin: 0 }}>
-            The hackathon introduces participants to neuromorphic computing. A
-            brain-inspired paradigm for artificial intelligence that mimics the
-            structure and dynamics of biological neural systems. Unlike conventional
-            deep learning, neuromorphic approaches offer radical energy efficiency
-            and temporal processing capabilities that are reshaping the edge AI
-            landscape.
+            The hackathon lets participants dive into real-world applications of
+            neuromorphic computing, a brain-inspired paradigm for artificial
+            intelligence that mimics the structure and dynamics of biological
+            neural systems. Unlike conventional deep learning, neuromorphic
+            approaches offer radical energy efficiency and temporal processing
+            capabilities that are reshaping the edge AI landscape.
           </p>
 
           <p

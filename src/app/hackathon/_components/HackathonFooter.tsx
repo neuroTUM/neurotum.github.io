@@ -38,6 +38,15 @@ const HackathonFooter: React.FC = () => {
           >
             neuroTUM
           </Link>
+          {" "}and{" "}
+          <a
+            href="https://www.fortiss.org/en/research/fields-of-competence/detail/neuromorphic-computing"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--foreground)", textDecoration: "none", opacity: 0.85 }}
+          >
+            fortiss
+          </a>
         </div>
         <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
           <Link href="/contact" style={{ color: "var(--text-soft)" }}>

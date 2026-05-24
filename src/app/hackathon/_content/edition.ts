@@ -90,7 +90,7 @@ export const edition = {
     line2: "Neuromorphic Hackathon",
     tagline: "Hack the brain. Build the future.",
     subtitle:
-      "Five days of brain-inspired computing in Munich, hosted by neuroTUM and OpenHardware in collaboration with fortiss.",
+      "Five days of brain-inspired computing in Munich, hosted by neuroTUM and fortiss, in collaboration with OpenHardware.",
   },
 
   dates: {
@@ -125,7 +125,7 @@ export const edition = {
 
   partners: [
     // Top-of-page logos shown alongside neuroTUM in the hero.
-    { name: "fortiss", logo: "/hackathon/placeholder-logo.svg", href: "https://www.fortiss.org/en/" },
+    { name: "fortiss", logo: "/hackathon/placeholder-logo.svg", href: "https://www.fortiss.org/en/research/fields-of-competence/detail/neuromorphic-computing" },
   ] as Partner[],
 
   // Rolling sponsor strip shown above the "Ready to apply" CTA. Leave empty
@@ -173,7 +173,7 @@ export const edition = {
       href: "#",
       title: "Challenge 5",
       summary:
-        "To be Confirmed",
+        "Neuromorphic space situational awareness",
     },
     {
       company: "OpenHardware",
@@ -290,11 +290,12 @@ export const edition = {
       label: "Day 1 — Kickoff",
       type: "event",
       items: [
-        { time: "12:00", event: "Check-in opens for arrivers", speaker: "" },
-        { time: "12:30", event: "Welcome address", speaker: "neuroTUM & host" },
+        { time: "12:00", event: "Check-in opens & snacks on site", speaker: "" },
+        { time: "13:00", event: "Welcome address", speaker: "neuroTUM & host" },
         { time: "13:30", event: "Challenge presentations", speaker: "Challenge partners" },
-        { time: "15:00", event: "Team formation", speaker: "" },
-        { time: "19:00", event: "Day end", speaker: "" },
+        { time: "15:30", event: "Team formation", speaker: "" },
+        { time: "16:00", event: "Team setup", speaker: "" },
+        { time: "20:00", event: "Day end", speaker: "" },
       ],
     },
     {
@@ -317,7 +318,7 @@ export const edition = {
       type: "event",
       items: [
         { time: "All day", event: "Hacking & mentorship", speaker: "" },
-        { time: "Evening", event: "Presentation preparation", speaker: "All teams" },
+        { time: "Evening", event: "Pitch preparation", speaker: "All teams" },
       ],
     },
     {
@@ -325,9 +326,11 @@ export const edition = {
       label: "Day 5 — Demo",
       type: "event",
       items: [
-        { time: "09:00", event: "Final preparations", speaker: "" },
-        { time: "13:00", event: "Team presentations", speaker: "All teams" },
-        { time: "15:00", event: "Awards & closing", speaker: "neuroTUM & sponsors" },
+        { time: "09:00", event: "Challenge pitches", speaker: "All teams" },
+        { time: "12:00", event: "Pizza lunch & jury deliberation", speaker: "" },
+        { time: "13:00", event: "Prize nomination", speaker: "" },
+        { time: "14:00", event: "Concluding remarks", speaker: "neuroTUM & sponsors" },
+        { time: "14:30", event: "Open end", speaker: "" },
       ],
     },
   ] as ScheduleDay[],

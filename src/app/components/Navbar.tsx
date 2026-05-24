@@ -199,9 +199,11 @@ const Navbar: React.FC = () => {
           </button>
         ) : (
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Link href="/join-us" style={{ textDecoration: "none" }}>
-              <NavCTA theme={theme} isHackathon={isHackathon}>Apply now</NavCTA>
-            </Link>
+            {!isHackathon && (
+              <Link href="/join-us" style={{ textDecoration: "none" }}>
+                <NavCTA theme={theme} isHackathon={isHackathon}>Apply now</NavCTA>
+              </Link>
+            )}
             <Link href="/contact" style={{ textDecoration: "none" }}>
               <NavCTA theme={theme} isHackathon={isHackathon}>Become a sponsor</NavCTA>
             </Link>
@@ -244,23 +246,25 @@ const Navbar: React.FC = () => {
               {item.name}
             </Link>
           ))}
-          <Link
-            href="/join-us"
-            style={{
-              textDecoration: "none",
-              fontSize: "1.2rem",
-              fontWeight: 500,
-              color: isHackathon ? theme.accent : "var(--background)",
-              background: isHackathon ? "transparent" : "var(--foreground)",
-              border: isHackathon ? `1px solid ${theme.accent}` : "1px solid var(--foreground)",
-              padding: "1rem 2rem",
-              borderRadius: "999px",
-              textAlign: "center",
-              marginTop: "1rem",
-            }}
-          >
-            Apply now
-          </Link>
+          {!isHackathon && (
+            <Link
+              href="/join-us"
+              style={{
+                textDecoration: "none",
+                fontSize: "1.2rem",
+                fontWeight: 500,
+                color: "var(--background)",
+                background: "var(--foreground)",
+                border: "1px solid var(--foreground)",
+                padding: "1rem 2rem",
+                borderRadius: "999px",
+                textAlign: "center",
+                marginTop: "1rem",
+              }}
+            >
+              Apply now
+            </Link>
+          )}
           <Link
             href="/contact"
             style={{

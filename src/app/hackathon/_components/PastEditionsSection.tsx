@@ -109,7 +109,7 @@ const PastEditionsSection: React.FC = () => {
             fontFamily: "var(--font-body), sans-serif",
           }}
         >
-          Archive
+          Past editions
         </div>
         <h2
           style={{
@@ -146,7 +146,7 @@ const PastEditionsSection: React.FC = () => {
               e.currentTarget.style.color = "var(--foreground)";
             }}
           >
-            Past editions.
+            Past challenges.
             <span
               aria-hidden
               style={{
@@ -159,6 +159,72 @@ const PastEditionsSection: React.FC = () => {
             </span>
           </a>
         </h2>
+
+        <div
+          style={{
+            marginTop: "1.5rem",
+            maxWidth: "820px",
+            fontSize: "1rem",
+            lineHeight: 1.7,
+            color: "var(--text-soft)",
+            fontFamily: "var(--font-body), sans-serif",
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            Many challenges from previous editions have stuck with their teams
+            beyond the event, with work continuing well after the hackathon
+            ended. Two have so far led to peer-reviewed publications at top
+            conferences:
+          </p>
+          <ol
+            style={{
+              margin: "0.75rem 0 0",
+              padding: 0,
+              listStyle: "none",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.45rem",
+            }}
+          >
+            <li style={{ display: "flex", gap: "0.6rem" }}>
+              <span style={{ color: "var(--accent-coral)", fontWeight: 600 }}>
+                [1]
+              </span>
+              <a
+                href="https://link.springer.com/chapter/10.1007/978-3-031-92460-6_15"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "var(--foreground)",
+                  textDecoration: "none",
+                  borderBottom: "1px solid var(--accent-coral)",
+                  fontStyle: "italic",
+                }}
+              >
+                Scaling Up Resonate-and-Fire Networks for Fast Deep Learning
+              </a>
+            </li>
+            <li style={{ display: "flex", gap: "0.6rem" }}>
+              <span style={{ color: "var(--accent-coral)", fontWeight: 600 }}>
+                [2]
+              </span>
+              <a
+                href="https://doi.org/10.48550/arXiv.2604.04117"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "var(--foreground)",
+                  textDecoration: "none",
+                  borderBottom: "1px solid var(--accent-coral)",
+                  fontStyle: "italic",
+                }}
+              >
+                Efficient Onboard Spacecraft Pose Estimation with Event Cameras
+                and Neuromorphic Hardware
+              </a>
+            </li>
+          </ol>
+        </div>
       </div>
 
       {/* Carousel */}
