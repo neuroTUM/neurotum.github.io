@@ -169,7 +169,7 @@ export const edition = {
     },
     {
       company: "DLR",
-      logo: "/hackathon/DLR_logo-w.png",
+      logo: "/hackathon/DLR_Logo-w.png",
       href: "#",
       title: "Challenge 5",
       summary:
