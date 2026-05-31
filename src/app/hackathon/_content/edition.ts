@@ -139,7 +139,7 @@ export const edition = {
       href: "#",
       title: "Challenge 1",
       summary:
-        "Develop a neuromorphic Brain-Computer Interface",
+        "Developing a Neuromorphic Brain-Computer Interface",
     },
     {
       company: "Neura Robotics",
@@ -147,6 +147,22 @@ export const edition = {
       invertLogo: true,
       href: "#",
       title: "Challenge 2",
+      summary:
+        "Developing a Neuromorphic Motor-Reflex Application",
+    },
+    {
+      company: "DLR",
+      logo: "/hackathon/DLR_Logo-w.png",
+      href: "#",
+      title: "Challenge 5",
+      summary:
+        "Neuromorphic space situational awareness",
+    },
+    {
+      company: "Innatera",
+      logo: "/hackathon/Innatera-logo.png",
+      href: "#",
+      title: "Challenge 4",
       summary:
         "To be Confirmed",
     },
@@ -158,22 +174,6 @@ export const edition = {
       title: "Challenge 3",
       summary:
         "To be Confirmed",
-    },
-    {
-      company: "Innatera",
-      logo: "/hackathon/Innatera-logo.png",
-      href: "#",
-      title: "Challenge 4",
-      summary:
-        "To be Confirmed",
-    },
-    {
-      company: "DLR",
-      logo: "/hackathon/DLR_Logo-w.png",
-      href: "#",
-      title: "Challenge 5",
-      summary:
-        "Neuromorphic space situational awareness",
     },
     {
       company: "OpenHardware",
@@ -336,7 +336,7 @@ export const edition = {
   ] as ScheduleDay[],
 
   application: {
-    applyUrl: "#", // e.g. "https://tally.so/r/XXXXX"
+    applyUrl: "https://tally.so/r/44Pdar", // e.g. "https://tally.so/r/XXXXX"
     contactEmail: "team@neurotum.com",
     submissionGuidelinesUrl: "#",
   },
