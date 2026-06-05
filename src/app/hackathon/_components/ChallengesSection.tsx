@@ -29,8 +29,8 @@ const ChallengesSection: React.FC = () => {
           title={allPlaceholders ? "Challenges. Coming soon." : "Challenges."}
           subtitle={
             allPlaceholders
-              ? "Challenges will be revealed closer to the event date. Teams pick a track on day one and work on it for the whole event."
-              : "Each challenge is brought by a research lab or industry partner. Teams pick a track on day one and work on it for the whole event."
+              ? "Challenges will be revealed closer to the event date. Teams pick a track on day one and work on it for the whole event, under the supervision of expert neuromorphic engineers and topic providers."
+              : "Each challenge is brought by a research lab or industry partner. Teams pick a track on day one and work on it for the whole event, under the supervision of expert neuromorphic engineers and topic providers."
           }
         />
 

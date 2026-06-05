@@ -13,7 +13,7 @@ import { edition } from "../_content/edition";
 const PARTNER_LINKS: Record<string, string> = {
   neuroTUM: "https://neurotum.com/",
   OpenHardware: "https://open-hardware-initiative.com/",
-  fortiss: "https://www.fortiss.org/en/",
+  fortiss: "https://www.fortiss.org/en/research/fields-of-competence/detail/neuromorphic-computing",
 };
 
 const linkifyPartners = (text: string): React.ReactNode[] => {
