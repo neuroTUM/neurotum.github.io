@@ -130,7 +130,12 @@ export const edition = {
 
   // Rolling sponsor strip shown above the "Ready to apply" CTA. Leave empty
   // to hide the section entirely — adding a single entry makes it appear.
-  sponsors: [] as Sponsor[],
+  sponsors: [
+   //{ name: "BrainChip", logo: "/hackathon/sponsors/brainchip-logo.png", href: "#" },
+    //{ name: "Bayern Innovativ", logo: "/hackathon/sponsors/bayern-innovativ-logo.png", href: "#" },
+    { name: "GAIN", logo: "/hackathon/sponsors/gain-logo.png", href: "#", invertLogo: true },
+    { name: "Stance", logo: "/hackathon/sponsors/stance-logo.png", href: "#" },
+  ] as Sponsor[],
 
   challenges: [
     {
@@ -142,38 +147,36 @@ export const edition = {
         "Developing a Neuromorphic Brain-Computer Interface",
     },
     {
-      company: "Neura Robotics",
-      logo: "/hackathon/neura-logo.png",
-      invertLogo: true,
+      company: "Airbus Defence and Space",
+      logo: "/hackathon/airbus-logo.png",
       href: "#",
       title: "Challenge 2",
+      summary:
+        "Neuromorphic detection of propeller icing",
+    },
+    {
+      company: "Neura Robotics",
+      logo: "/hackathon/neura-logo.png",
+      href: "#",
+      title: "Challenge 3",
       summary:
         "Developing a Neuromorphic Motor-Reflex Application",
     },
     {
-      company: "DLR",
-      logo: "/hackathon/DLR_Logo-w.png",
-      href: "#",
-      title: "Challenge 5",
-      summary:
-        "Neuromorphic space situational awareness",
-    },
-    {
-      company: "Innatera",
-      logo: "/hackathon/Innatera-logo.png",
+      company: "OHB Hellas",
+      logo: "/hackathon/OHBHellas-logo.png",
       href: "#",
       title: "Challenge 4",
       summary:
-        "To be Confirmed",
+        "Drone flight on Akida hardware",
     },
     {
       company: "NeuroBus",
       logo: "/hackathon/neurobus-logo.png",
-      invertLogo: true,
       href: "#",
-      title: "Challenge 3",
+      title: "Challenge 5",
       summary:
-        "To be Confirmed",
+        "Neuromorphic counter-UAS drone detection",
     },
     {
       company: "OpenHardware",
@@ -181,7 +184,7 @@ export const edition = {
       href: "#",
       title: "Challenge 6",
       summary:
-        "To be Confirmed",
+        "TinyML on FPGA",
     },
     {
       company: "Challenge Partner 7",
@@ -199,6 +202,24 @@ export const edition = {
       summary:
         "To be Confirmed",
     },
+    /**
+    {
+      company: "DLR",
+      logo: "/hackathon/DLR_Logo-w.png",
+      href: "#",
+      title: "Challenge 4",
+      summary:
+        "Neuromorphic space situational awareness",
+    },
+    {
+      company: "Innatera",
+      logo: "/hackathon/Innatera-logo.png",
+      href: "#",
+      title: "Challenge 4",
+      summary:
+        "To be Confirmed",
+    },
+     */
   ] as Challenge[],
 
   pastEditions: [
@@ -227,7 +248,6 @@ export const edition = {
         {
           name: "NeuroBus",
           logo: "/hackathon/neurobus-logo.png",
-          invertLogo: true, // dark navy logo on transparent → flip to white
           description:
             "Onboard spacecraft pose estimation with event cameras and neuromorphic hardware.",
           publicationUrl: "https://doi.org/10.48550/arXiv.2604.04117",
