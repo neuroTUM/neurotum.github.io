@@ -14,6 +14,14 @@ type NewsItem = {
 
 const NEWS_DATA: NewsItem[] = [
   {
+    id: "5",
+    category: "Announcements",
+    title: "The 4th Munich Neuromorphic Hackathon is coming",
+    date: "July 1, 2026",
+    image: "/news_page_imgs/Hackathon_addOn.jpg",
+    href: "/news/hackathon-2026",
+  },
+  {
     id: "4",
     category: "Events",
     title: "neuroTUM × Mentalab webinar",
