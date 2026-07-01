@@ -56,6 +56,8 @@ const ChallengesSection: React.FC = () => {
                 company={c.company}
                 logo={c.logo}
                 invertLogo={c.invertLogo}
+                logo2={c.logo2}
+                invertLogo2={c.invertLogo2}
                 href={c.href}
                 title={c.title}
                 summary={c.summary}
@@ -89,11 +91,13 @@ const ChallengeCard: React.FC<{
   company: string;
   logo: string;
   invertLogo?: boolean;
+  logo2?: string;
+  invertLogo2?: boolean;
   href: string;
   title: string;
   summary: string;
   accent: Accent;
-}> = ({ company, logo, invertLogo, href, title, summary, accent }) => {
+}> = ({ company, logo, invertLogo, logo2, invertLogo2, href, title, summary, accent }) => {
   const isLinked = href && href !== "#";
   const Wrapper: React.ElementType = isLinked ? "a" : "div";
   const wrapperProps = isLinked
@@ -171,7 +175,53 @@ const ChallengeCard: React.FC<{
           padding: "0.25rem 0 0.5rem",
         }}
       >
-        {logo ? (
+        {logo && logo2 ? (
+          // Two-partner card (e.g. "Fortiss × TUM Klinikum"): both logos sit
+          // side by side, scaled down a touch with an "×" between them so the
+          // pair fits the same logo band as single-logo cards.
+          <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", justifyContent: "center" }}>
+            <Image
+              src={logo}
+              alt={company}
+              width={LOGO_MAX_WIDTH}
+              height={LOGO_HEIGHT}
+              style={{
+                height: `${LOGO_HEIGHT * 0.6}px`,
+                width: "auto",
+                maxWidth: `${LOGO_MAX_WIDTH * 0.68}px`,
+                objectFit: "contain",
+                filter: invertLogo ? "brightness(0) invert(1)" : "none",
+                opacity: 0.96,
+              }}
+            />
+            <span
+              aria-hidden
+              style={{
+                fontFamily: "var(--font-body), sans-serif",
+                fontSize: "1.15rem",
+                fontWeight: 300,
+                color: "var(--text-soft)",
+                opacity: 0.7,
+              }}
+            >
+              ×
+            </span>
+            <Image
+              src={logo2}
+              alt=""
+              width={LOGO_MAX_WIDTH}
+              height={LOGO_HEIGHT}
+              style={{
+                height: `${LOGO_HEIGHT * 0.6}px`,
+                width: "auto",
+                maxWidth: `${LOGO_MAX_WIDTH * 0.68}px`,
+                objectFit: "contain",
+                filter: invertLogo2 ? "brightness(0) invert(1)" : "none",
+                opacity: 0.96,
+              }}
+            />
+          </div>
+        ) : logo ? (
           <Image
             src={logo}
             alt={company}

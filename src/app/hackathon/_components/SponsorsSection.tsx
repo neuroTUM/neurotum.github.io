@@ -45,7 +45,7 @@ const SponsorsSection: React.FC = () => {
       >
         <SectionHeading
           eyebrow="Sponsors"
-          title="Made possible by"
+          title="In partnership with"
           subtitle="The Munich Neuromorphic Hackathon is supported by these organisations."
           align="center"
         />

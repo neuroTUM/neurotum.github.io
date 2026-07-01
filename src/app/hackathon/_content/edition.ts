@@ -31,6 +31,10 @@ export type Challenge = {
   // The challenge card will flip it to a white silhouette so it reads on
   // the dark page. Leave unset for logos that are already light or full-colour.
   invertLogo?: boolean;
+  // Optional co-host / second partner. When set, the card shows both logos
+  // side by side with an "×" between them (e.g. "Fortiss × TUM Klinikum").
+  logo2?: string;
+  invertLogo2?: boolean;
 };
 
 export type ScheduleItem = {
@@ -135,19 +139,22 @@ export const edition = {
     //{ name: "Bayern Innovativ", logo: "/hackathon/sponsors/bayern-innovativ-logo.png", href: "#" },
     { name: "GAIN", logo: "/hackathon/sponsors/gain-logo.png", href: "#", invertLogo: true },
     { name: "Stance", logo: "/hackathon/sponsors/stance-logo.png", href: "#" },
+    { name: "TUM Klinikum", logo: "/hackathon/TUMKlinikum-logo.png", href: "#", invertLogo: true },
   ] as Sponsor[],
 
   challenges: [
     {
-      company: "Fortiss",
+      company: "Fortiss × TUM Klinikum",
       logo: "/hackathon/fortiss.png",
+      logo2: "/hackathon/TUMKlinikum-logo.png",
+      invertLogo2: true, // dark-blue MRI logo → flip to white on the dark page
       href: "#",
       title: "Challenge 1",
       summary:
         "Developing a Neuromorphic Brain-Computer Interface",
     },
     {
-      company: "Airbus Defence and Space",
+      company: "Airbus",
       logo: "/hackathon/airbus-logo.png",
       href: "#",
       title: "Challenge 2",
