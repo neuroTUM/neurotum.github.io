@@ -136,10 +136,10 @@ export const edition = {
   // to hide the section entirely — adding a single entry makes it appear.
   sponsors: [
    //{ name: "BrainChip", logo: "/hackathon/sponsors/brainchip-logo.png", href: "#" },
-    //{ name: "Bayern Innovativ", logo: "/hackathon/sponsors/bayern-innovativ-logo.png", href: "#" },
-    { name: "GAIN", logo: "/hackathon/sponsors/gain-logo.png", href: "#", invertLogo: true },
+    { name: "Bayern Innovativ", logo: "/hackathon/sponsors/bayern-innovativ-logo.png", href: "#" },
+    { name: "GAIN", logo: "/hackathon/sponsors/gain-logo.png", href: "#" },
     { name: "Stance", logo: "/hackathon/sponsors/stance-logo.png", href: "#" },
-    { name: "TUM Klinikum", logo: "/hackathon/TUMKlinikum-logo.png", href: "#", invertLogo: true },
+    { name: "TUM Klinikum", logo: "/hackathon/sponsors/TUM_MRI_logo_white.png", href: "#", invertLogo: true },
   ] as Sponsor[],
 
   challenges: [
@@ -170,47 +170,6 @@ export const edition = {
         "Developing a Neuromorphic Motor-Reflex Application",
     },
     {
-      company: "OHB Hellas",
-      logo: "/hackathon/OHBHellas-logo.png",
-      href: "#",
-      title: "Challenge 4",
-      summary:
-        "Drone flight on Akida hardware",
-    },
-    {
-      company: "NeuroBus",
-      logo: "/hackathon/neurobus-logo.png",
-      href: "#",
-      title: "Challenge 5",
-      summary:
-        "Neuromorphic counter-UAS drone detection",
-    },
-    {
-      company: "OpenHardware",
-      logo: "/hackathon/openhardware-logo.png",
-      href: "#",
-      title: "Challenge 6",
-      summary:
-        "TinyML on FPGA",
-    },
-    {
-      company: "Challenge Partner 7",
-      logo: "/hackathon/placeholder-logo.svg",
-      href: "#",
-      title: "Challenge 7",
-      summary:
-        "To be Confirmed",
-    },
-    {
-      company: "Challenge Partner 8",
-      logo: "/hackathon/placeholder-logo.svg",
-      href: "#",
-      title: "Challenge 8",
-      summary:
-        "To be Confirmed",
-    },
-    /**
-    {
       company: "DLR",
       logo: "/hackathon/DLR_Logo-w.png",
       href: "#",
@@ -219,14 +178,37 @@ export const edition = {
         "Neuromorphic space situational awareness",
     },
     {
+      company: "OHB Hellas",
+      logo: "/hackathon/OHBHellas-logo.png",
+      href: "#",
+      title: "Challenge 5",
+      summary:
+        "Drone flight on Akida hardware",
+    },
+    {
+      company: "NeuroBus",
+      logo: "/hackathon/neurobus-logo.png",
+      href: "#",
+      title: "Challenge 6",
+      summary:
+        "Neuromorphic counter-UAS drone detection",
+    },
+    {
+      company: "OpenHardware",
+      logo: "/hackathon/openhardware-logo.png",
+      href: "#",
+      title: "Challenge 7",
+      summary:
+        "TinyML on FPGA",
+    },
+    {
       company: "Innatera",
       logo: "/hackathon/Innatera-logo.png",
       href: "#",
-      title: "Challenge 4",
+      title: "Challenge 8",
       summary:
-        "To be Confirmed",
+        "Neuromorphic singing voice recognition",
     },
-     */
   ] as Challenge[],
 
   pastEditions: [
