@@ -140,7 +140,7 @@ export const edition = {
     { name: "GAIN", logo: "/hackathon/sponsors/gain-logo.png", href: "#" },
     { name: "Stance", logo: "/hackathon/sponsors/stance-logo.png", href: "#" },
     { name: "TUM Klinikum", logo: "/hackathon/sponsors/TUM_MRI_logo_white.png", href: "#", invertLogo: true },
-    { name: "Airbus", logo: "/hackathon/airbus-logo.png", href: "#", invertLogo: true },
+    { name: "Airbus", logo: "/hackathon/airbus-logo.png", href: "#"},
   ] as Sponsor[],
 
   challenges: [
