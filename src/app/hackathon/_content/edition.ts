@@ -35,6 +35,10 @@ export type Challenge = {
   // side by side with an "×" between them (e.g. "Fortiss × TUM Klinikum").
   logo2?: string;
   invertLogo2?: boolean;
+  // Set true when BOTH logos are wide wordmarks. Side by side they would each
+  // be squeezed to a sliver, so the card stacks them vertically instead —
+  // each one then gets the card's full width (e.g. "Innatera × Sofilab").
+  stackLogos?: boolean;
 };
 
 export type ScheduleItem = {
@@ -203,8 +207,10 @@ export const edition = {
         "TinyML on FPGA",
     },
     {
-      company: "Innatera",
+      company: "Innatera x Sofilab",
       logo: "/hackathon/Innatera-logo.png",
+      logo2: "/hackathon/sofilab-logo.png",
+      stackLogos: true, // both are wide wordmarks → stack instead of side by side
       href: "#",
       title: "Challenge 8",
       summary:
