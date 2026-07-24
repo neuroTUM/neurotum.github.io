@@ -58,6 +58,7 @@ const ChallengesSection: React.FC = () => {
                 invertLogo={c.invertLogo}
                 logo2={c.logo2}
                 invertLogo2={c.invertLogo2}
+                stackLogos={c.stackLogos}
                 href={c.href}
                 title={c.title}
                 summary={c.summary}
@@ -93,11 +94,12 @@ const ChallengeCard: React.FC<{
   invertLogo?: boolean;
   logo2?: string;
   invertLogo2?: boolean;
+  stackLogos?: boolean;
   href: string;
   title: string;
   summary: string;
   accent: Accent;
-}> = ({ company, logo, invertLogo, logo2, invertLogo2, href, title, summary, accent }) => {
+}> = ({ company, logo, invertLogo, logo2, invertLogo2, stackLogos, href, title, summary, accent }) => {
   const isLinked = href && href !== "#";
   const Wrapper: React.ElementType = isLinked ? "a" : "div";
   const wrapperProps = isLinked
@@ -176,19 +178,30 @@ const ChallengeCard: React.FC<{
         }}
       >
         {logo && logo2 ? (
-          // Two-partner card (e.g. "Fortiss × TUM Klinikum"): both logos sit
-          // side by side, scaled down a touch with an "×" between them so the
-          // pair fits the same logo band as single-logo cards.
-          <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", justifyContent: "center" }}>
+          // Two-partner card. Default is side by side with an "×" between
+          // (e.g. "Fortiss × TUM Klinikum"). When both logos are wide
+          // wordmarks, `stackLogos` puts one above the other instead so
+          // neither gets squeezed — each then gets the card's full width.
+          <div
+            style={{
+              display: "flex",
+              flexDirection: stackLogos ? "column" : "row",
+              alignItems: "center",
+              justifyContent: "center",
+              // Stacked needs a tighter gap: the "×" sits between the rows and
+              // the gap applies twice, so keep the whole block inside the band.
+              gap: stackLogos ? "0.3rem" : "0.85rem",
+            }}
+          >
             <Image
               src={logo}
               alt={company}
               width={LOGO_MAX_WIDTH}
               height={LOGO_HEIGHT}
               style={{
-                height: `${LOGO_HEIGHT * 0.6}px`,
+                height: `${LOGO_HEIGHT * (stackLogos ? 0.38 : 0.6)}px`,
                 width: "auto",
-                maxWidth: `${LOGO_MAX_WIDTH * 0.68}px`,
+                maxWidth: `${LOGO_MAX_WIDTH * (stackLogos ? 1 : 0.68)}px`,
                 objectFit: "contain",
                 filter: invertLogo ? "brightness(0) invert(1)" : "none",
                 opacity: 0.96,
@@ -198,8 +211,10 @@ const ChallengeCard: React.FC<{
               aria-hidden
               style={{
                 fontFamily: "var(--font-body), sans-serif",
-                fontSize: "1.15rem",
+                fontSize: stackLogos ? "0.95rem" : "1.15rem",
                 fontWeight: 300,
+                // lineHeight 1 keeps the stacked row from adding stray leading.
+                lineHeight: 1,
                 color: "var(--text-soft)",
                 opacity: 0.7,
               }}
@@ -212,9 +227,9 @@ const ChallengeCard: React.FC<{
               width={LOGO_MAX_WIDTH}
               height={LOGO_HEIGHT}
               style={{
-                height: `${LOGO_HEIGHT * 0.6}px`,
+                height: `${LOGO_HEIGHT * (stackLogos ? 0.38 : 0.6)}px`,
                 width: "auto",
-                maxWidth: `${LOGO_MAX_WIDTH * 0.68}px`,
+                maxWidth: `${LOGO_MAX_WIDTH * (stackLogos ? 1 : 0.68)}px`,
                 objectFit: "contain",
                 filter: invertLogo2 ? "brightness(0) invert(1)" : "none",
                 opacity: 0.96,
