@@ -188,7 +188,7 @@ export const edition = {
       href: "#",
       title: "Challenge 5",
       summary:
-        "Drone flight on Akida hardware",
+        "Neuromorphic lunar landing site detection",
     },
     {
       company: "NeuroBus",

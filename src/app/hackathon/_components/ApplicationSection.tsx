@@ -83,6 +83,20 @@ const ApplicationSection: React.FC = () => {
           </Link>
         </div>
 
+        {/* Eligibility note */}
+        <p
+          style={{
+            marginTop: "1.25rem",
+            fontSize: "0.92rem",
+            fontStyle: "italic",
+            color: "var(--accent-coral)",
+            fontFamily: "var(--font-body), sans-serif",
+            letterSpacing: "0.02em",
+          }}
+        >
+          Open to active students only (Bachelor’s, Master’s or PhD level).
+        </p>
+
         {/* Caption */}
         <p
           style={{
