@@ -184,6 +184,21 @@ const HackathonHero: React.FC = () => {
           >
             Apply Now <span aria-hidden>→</span>
           </Link>
+
+          {/* Eligibility note */}
+          <p
+            style={{
+              marginTop: "1.25rem",
+              marginBottom: 0,
+              fontSize: "0.88rem",
+              fontStyle: "italic",
+              color: "var(--accent-coral)",
+              fontFamily: "var(--font-body), sans-serif",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Open to active students only (Bachelor’s, Master’s or PhD level).
+          </p>
         </div>
       </div>
 
