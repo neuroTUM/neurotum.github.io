@@ -59,6 +59,8 @@ const ChallengesSection: React.FC = () => {
                 logo2={c.logo2}
                 invertLogo2={c.invertLogo2}
                 stackLogos={c.stackLogos}
+                logoScale={c.logoScale}
+                logo2Scale={c.logo2Scale}
                 href={c.href}
                 title={c.title}
                 summary={c.summary}
@@ -95,11 +97,13 @@ const ChallengeCard: React.FC<{
   logo2?: string;
   invertLogo2?: boolean;
   stackLogos?: boolean;
+  logoScale?: number;
+  logo2Scale?: number;
   href: string;
   title: string;
   summary: string;
   accent: Accent;
-}> = ({ company, logo, invertLogo, logo2, invertLogo2, stackLogos, href, title, summary, accent }) => {
+}> = ({ company, logo, invertLogo, logo2, invertLogo2, stackLogos, logoScale = 1, logo2Scale = 1, href, title, summary, accent }) => {
   const isLinked = href && href !== "#";
   const Wrapper: React.ElementType = isLinked ? "a" : "div";
   const wrapperProps = isLinked
@@ -199,7 +203,7 @@ const ChallengeCard: React.FC<{
               width={LOGO_MAX_WIDTH}
               height={LOGO_HEIGHT}
               style={{
-                height: `${LOGO_HEIGHT * (stackLogos ? 0.38 : 0.6)}px`,
+                height: `${LOGO_HEIGHT * (stackLogos ? 0.38 : 0.6) * logoScale}px`,
                 width: "auto",
                 maxWidth: `${LOGO_MAX_WIDTH * (stackLogos ? 1 : 0.68)}px`,
                 objectFit: "contain",
@@ -227,7 +231,7 @@ const ChallengeCard: React.FC<{
               width={LOGO_MAX_WIDTH}
               height={LOGO_HEIGHT}
               style={{
-                height: `${LOGO_HEIGHT * (stackLogos ? 0.38 : 0.6)}px`,
+                height: `${LOGO_HEIGHT * (stackLogos ? 0.38 : 0.6) * logo2Scale}px`,
                 width: "auto",
                 maxWidth: `${LOGO_MAX_WIDTH * (stackLogos ? 1 : 0.68)}px`,
                 objectFit: "contain",

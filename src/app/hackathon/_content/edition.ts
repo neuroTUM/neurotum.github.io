@@ -39,6 +39,11 @@ export type Challenge = {
   // be squeezed to a sliver, so the card stacks them vertically instead —
   // each one then gets the card's full width (e.g. "Innatera × Sofilab").
   stackLogos?: boolean;
+  // Optional size multipliers for two-logo cards (default 1). Use when one
+  // logo reads visibly smaller than its partner at the same height — e.g. a
+  // thin lowercase wordmark next to a bold block logo.
+  logoScale?: number;
+  logo2Scale?: number;
 };
 
 export type ScheduleItem = {
@@ -153,8 +158,9 @@ export const edition = {
     {
       company: "Fortiss × TUM Klinikum",
       logo: "/hackathon/fortiss.png",
-      logo2: "/hackathon/TUMKlinikum-logo.png",
-      invertLogo2: true, // dark-blue MRI logo → flip to white on the dark page
+      logo2: "/hackathon/sponsors/TUM_MRI_logo_white.png",
+      stackLogos: true, // both are wide wordmarks → stack instead of side by side
+      logoScale: 1.35, // thin fortiss wordmark looks small next to the bold TUM mark
       href: "#",
       title: "Challenge 1",
       summary:
