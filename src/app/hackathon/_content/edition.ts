@@ -139,7 +139,9 @@ export const edition = {
   // Rolling sponsor strip shown above the "Ready to apply" CTA. Leave empty
   // to hide the section entirely — adding a single entry makes it appear.
   sponsors: [
-   //{ name: "BrainChip", logo: "/hackathon/sponsors/brainchip-logo.png", href: "#" },
+    { name: "BrainChip", logo: "/hackathon/sponsors/brainchip-logo.png", href: "#" },
+    { name: "Neuromorphyx", logo: "/hackathon/sponsors/neuromorphyx-logo.png", href: "#" },
+    { name: "LRZ", logo: "/hackathon/sponsors/lrz-logo.png", href: "#" },
     { name: "Bayern Innovativ", logo: "/hackathon/sponsors/bayern-innovativ-logo.png", href: "#" },
     { name: "GAIN", logo: "/hackathon/sponsors/gain-logo.png", href: "#" },
     { name: "Stance", logo: "/hackathon/sponsors/stance-logo.png", href: "#" },
