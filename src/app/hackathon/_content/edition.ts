@@ -153,8 +153,7 @@ export const edition = {
     {
       company: "Fortiss × TUM Klinikum",
       logo: "/hackathon/fortiss.png",
-      logo2: "/hackathon/TUMKlinikum-logo.png",
-      invertLogo2: true, // dark-blue MRI logo → flip to white on the dark page
+      logo2: "/hackathon/sponsors/TUM_MRI_logo_white.png",
       href: "#",
       title: "Challenge 1",
       summary:
