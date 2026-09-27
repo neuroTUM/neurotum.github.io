@@ -10,6 +10,7 @@ const allImages = [
   "/collaborator_images/TUM_venture_labs.png",
   "/collaborator_images/makerspace.png",
   "/collaborator_images/mbraintrain.png",
+  "/collaborator_images/mentalab-logo.png",
   "/collaborator_images/logo-tum.png",
   "/sponsor_images/industrial_innovators.svg",
   "/sponsor_images/TUM_bund_der_freunde.svg",
