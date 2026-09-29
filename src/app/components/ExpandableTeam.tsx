@@ -9,9 +9,11 @@ interface ExpandableTeamProps {
   description: string;
   fullText: string;
   niceToHave?: string[]; // Made optional with '?'
+  projects?: string[]; // Optional: what the team works on this semester
+  projectsTitle?: string; // Heading above `projects`, e.g. "WiSe 26/27 Projects:"
 }
 
-const ExpandableTeam: React.FC<ExpandableTeamProps> = ({ title, description, fullText, niceToHave }) => {
+const ExpandableTeam: React.FC<ExpandableTeamProps> = ({ title, description, fullText, niceToHave, projects, projectsTitle = "Projects:" }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -48,7 +50,19 @@ const ExpandableTeam: React.FC<ExpandableTeamProps> = ({ title, description, ful
             <div style={{ paddingTop: "1rem" }}>
               <p style={{ fontWeight: 600, marginBottom: "1rem", color: "var(--color-blue)" }}>{description}</p>
               <p style={{ lineHeight: 1.6, opacity: 0.8, marginBottom: "1.5rem" }}>{fullText}</p>
-              
+
+              {/* Only renders if projects is actually provided */}
+              {projects && projects.length > 0 && (
+                <>
+                  <h4 style={{ fontSize: "1.1rem", marginBottom: "0.5rem", fontWeight: 600 }}>{projectsTitle}</h4>
+                  <ul style={{ paddingLeft: "1.2rem", opacity: 0.8, lineHeight: 1.6, marginBottom: "1.5rem" }}>
+                    {projects.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
               {/* Only renders if niceToHave is actually provided */}
               {niceToHave && niceToHave.length > 0 && (
                 <>
