@@ -15,6 +15,7 @@ const allPartners = [
   { src: "/collaborator_images/TUM_chair_of_ai_processor_design.png", name: "TUM AI Processor Design" },
   { src: "/collaborator_images/TUM_institute_of_cognitive_systems.png", name: "TUM ICS" },
   { src: "/collaborator_images/TUM_venture_labs.png", name: "TUM Venture Labs" },
+  { src: "/collaborator_images/mentalab-logo.png", name: "Mentalab" },
   { src: "/sponsor_images/industrial_innovators.svg", name: "Industrial Innovators" },
   { src: "/sponsor_images/TUM_bund_der_freunde.svg", name: "TUM Bund der Freunde" },
   { src: "/sponsor_images/mouser-electronics.png", name: "Mouser Electronics" },

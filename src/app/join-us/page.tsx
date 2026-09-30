@@ -35,10 +35,10 @@ const JoinUsPage = () => {
           {/* Timeline */}
           <JoinCard title="Application Timeline">
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <p><strong>Applications open:</strong> 20.03.2026 - 06.04.2026</p>
-              <p><strong>Interviews:</strong> 10.04.2026 - 12.04.2026</p>
-              <p><strong>Final decisions:</strong> 16.04.2026</p>
-              <p><strong>Onboarding:</strong> 18.04 - 19.04</p>
+              <p><strong>Applications open:</strong> 01.10.2026 - 23.10.2026</p>
+              <p><strong>Interviews:</strong> 26.10.2026 - 28.10.2026</p>
+              <p><strong>Final decisions:</strong> 29.10.2026</p>
+              <p><strong>Onboarding:</strong> 31.10.2026 - 01.11.2026</p>
               <p style={{ marginTop: "1rem", color: "var(--color-error)", fontWeight: 600 }}>
                 Please note that onboarding is mandatory. If you are unavailable during those dates, acceptance to the club will not be possible.
               </p>
@@ -51,12 +51,28 @@ const JoinUsPage = () => {
               title="Pipeline Design"
               description="Develop innovative signal processing and machine learning pipelines to interpret EEG data effectively."
               fullText="The Pipeline Design team focuses on building and improving the computational foundations of our brain-computer interface (BCI) research. Members work on designing and implementing digital filters, feature extraction methods, and novel signal processing techniques to enhance EEG signal quality. The team also develops and optimizes machine learning and deep learning models to achieve robust and accurate classification of neural activity, directly contributing to real-world BCI applications such as robotic control or neurofeedback tasks."
+              projectsTitle="Project ideas:"
+              projects={[
+                  "Dynamic transfer function implementation",
+                  "Integrating error-related potential detection",
+                  "Streamlining and documenting repository for public access"
+              ]}
               niceToHave={[
                 "Strong programming skills in Python",
                 "Teamwork and familiarity with collaborative workflows (Git, CI/CD, Kanban boards)",
                 "Familiarity with signal processing",
                 "Understanding of machine learning/deep learning concepts",
                 "Knowledge or interest of neuroscience or neuropsychology"
+              ]}
+            />
+            <ExpandableTeam 
+              title="Software Engineering"
+              description="Build the shared software infrastructure that powers our research, from device APIs to experiment tooling."
+              fullText="The Software Engineering team develops cross-cutting software used by every team to conduct and manage experiments, and tackles the broader challenges of running a growing experimental laboratory. Our work spans a wide range of areas: implementing APIs that interface directly with biosignal devices, building GUI applications that support experiment execution, and developing control planes for managing datasets. No background in neuroengineering is required. If you have solid programming skills and want to learn from experienced engineers how to build impactful software collaboratively, this is the team for you."
+              niceToHave={[
+                "Programming experience, ideally in Python",
+                "Familiarity with git",
+                "Interest in learning about neuroengineering and biosignal devices"
               ]}
             />
 
@@ -72,47 +88,50 @@ const JoinUsPage = () => {
 
             <ExpandableTeam 
               title="Robotics"
-              description="We build robotic systems controlled by brain signals to help people with tetraplegia manipulate objects in their environment again."
-              fullText="We receive decoded brain commands from the BCI pipeline and turn them into real robot actions. That means using cameras to understand the environment, planning how the arm should move, designing grip strategies to reliably handle objects, and modeling custom parts when needed. The biggest challenge is making all of this work together fast and reliably enough for an online brain signal pipeline. The end goal right now: a user selects a chess move, and a robotic arm executes it."
+              description="We build robotic systems controlled by brain signals to help people with tetraplegia manipulate objects in their physical environment independently again."
+              fullText="We receive decoded brain commands from the BCI pipeline and turn them into robot actions. This means using camera vision to perceive the environment state and control to plan how the arm moves and manipulates objects. We are starting with pick-and-place tasks, such as gripping a cup of coffee and putting a bottle into a box, and will later integrate EEG control to select options and initiate the robot actions."
               niceToHave={[
-                "Familiarity with Python or C++",
-                "Some exposure to ROS 2, computer vision, or motion planning",
-                "Interest in robotics and assistive technology",
-                "Willingness to pick up new topics quickly"
-              ]}
-            />
-
-            <ExpandableTeam 
-              title="Games Engineering"
-              description="Design and develop engaging games that can be controlled through brain-computer interfaces."
-              fullText="The Games Engineering team creates interactive training environments that help users learn and improve their control of brain-computer interfaces (BCIs). Members design and develop video games that respond to neural input, implement infrastructure to ensure compatibility across different BCI controllers, and enable multiplayer functionality. The team also supports the preparation and maintenance of games for events such as the BCI Graz competition, where BCI users compete in real time."
-              niceToHave={[
-                "Experience in video game development (preferably in Pygame, but also Unity, Unreal, or Godot)",
-                "Teamwork and familiarity with collaborative workflows (Git, CI/CD, Kanban boards)",
-                "Understanding of game design and user engagement principles",
-                "Strong programming skills in Python",
-                "Interest in multiplayer game development, and interest in neuroscience or neuropsychology"
-              ]}
+                  "Familiarity with Python or C++",
+                  "CoBot or Robotic Arm experience",
+                  "Exposure to ROS 2, computer vision, or motion planning",
+                  "Interest in robotics and assistive technology",
+                  "Willingness to pick up new topics quickly",
+                  "Curiosity and intrinsic Motivation",
+                  "Ability to work in a small team"
+                ]}
             />
 
             <ExpandableTeam 
               title="Experimental Design"
               description="Design and conduct EEG experiments to test and improve brain-computer interface control systems."
               fullText="The Experimental Design team is responsible for planning, running, and evaluating EEG-based experiments that investigate how humans can control external systems, such as computer games or a robotic arm, through neural signals. The team combines methodological rigor with creative problem-solving to ensure experiments are well-controlled, ethically sound, and aligned with the broader goals of our research."
+              projectsTitle="Project ideas:"
+              projects={[
+                "Conducting EEG experiments and piloting our BCI system",
+                "Continue building on our EEG dataset standardization",
+                "Improving EEG data analysis to get better insights",
+                "Building a live GUI to help real-time experiments",
+                "Trying new BCI paradigms, or",
+                "Testing your own project!"
+ 
+
+              ]}
               niceToHave={[
                 "Interest or knowledge in cognitive neuroscience and experimental methods",
-                "Teamwork and communication abilities"
+                "Teamwork and communication abilities",
+                "Python and Git experience"
               ]}
             />
 
             <ExpandableTeam 
               title="Communications"
               description="We manage neuroTUM's social media presence, as well as event planning."
-              fullText="We collaborate closely with other teams as well as working on our own content ideas. Currently, we are working on updating the website and writing blog posts about what's happening in the initiative. Each semester we make new merch and organize events in the world of neurotech, which helps people meet potential collaborators for the work that neuroTUM does."
+              fullText="The Communications team owns how neuroTUM looks and sounds. We build the visual identity behind our social media, website, posters and merch, and we design and run the events that bring the Munich neurotech community together. We work closely with every other team, turning what they build into stories worth following. Help us shape the neuroTUM brand."
               niceToHave={[
-                "Know how to use Canva",
                 "Knowledge of web design",
+                "Knowledge of how to use Canva",
                 "Enjoyment of writing",
+                "Good communication skills",
                 "Interest in neurotechnology"
               ]}
             />
@@ -167,7 +186,7 @@ const JoinUsPage = () => {
               Ready to join us? We&apos;re excited to meet you!
             </p>
             <a 
-              href="https://tally.so/r/VL89JM" 
+              href="https://tally.so/r/GxMgL2" 
               target="_blank" 
               style={{
                 display: "inline-block",

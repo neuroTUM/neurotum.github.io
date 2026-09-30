@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -116,24 +115,18 @@ const Hero: React.FC = () => {
         >
           neuroTUM
         </h1>
-        <Link href="/research" style={{ textDecoration: "none" }}>
-          <p
-            style={{
-              fontSize: isMobile ? "clamp(1.1rem, 4.5vw, 1.5rem)" : "clamp(1.8rem, 3vw, 2.5rem)",
-              color: "var(--color-blue)",
-              opacity: 0.9,
-              marginTop: isMobile ? "1.5rem" : "3rem",
-              fontWeight: 600,
-              minHeight: "1.5em",
-              cursor: "pointer",
-              transition: "opacity 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.9")}
-          >
-            {missionText}
-          </p>
-        </Link>
+        <p
+          style={{
+            fontSize: isMobile ? "clamp(1.1rem, 4.5vw, 1.5rem)" : "clamp(1.8rem, 3vw, 2.5rem)",
+            color: "var(--color-blue)",
+            opacity: 0.9,
+            marginTop: isMobile ? "1.5rem" : "3rem",
+            fontWeight: 600,
+            minHeight: "1.5em",
+          }}
+        >
+          {missionText}
+        </p>
       </div>
 
       {/* ASCII brain art — stretched wider via scaleX for natural proportions */}
