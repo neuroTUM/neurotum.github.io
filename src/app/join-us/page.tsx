@@ -51,7 +51,7 @@ const JoinUsPage = () => {
               title="Pipeline Design"
               description="Develop innovative signal processing and machine learning pipelines to interpret EEG data effectively."
               fullText="The Pipeline Design team focuses on building and improving the computational foundations of our brain-computer interface (BCI) research. Members work on designing and implementing digital filters, feature extraction methods, and novel signal processing techniques to enhance EEG signal quality. The team also develops and optimizes machine learning and deep learning models to achieve robust and accurate classification of neural activity, directly contributing to real-world BCI applications such as robotic control or neurofeedback tasks."
-              projectsTitle="WiSe 26/27 Projects:"
+              projectsTitle="Project ideas:"
               projects={[
                   "Dynamic transfer function implementation",
                   "Integrating error-related potential detection",
@@ -63,6 +63,16 @@ const JoinUsPage = () => {
                 "Familiarity with signal processing",
                 "Understanding of machine learning/deep learning concepts",
                 "Knowledge or interest of neuroscience or neuropsychology"
+              ]}
+            />
+            <ExpandableTeam 
+              title="Software Engineering"
+              description="Build the shared software infrastructure that powers our research, from device APIs to experiment tooling."
+              fullText="The Software Engineering team develops cross-cutting software used by every team to conduct and manage experiments, and tackles the broader challenges of running a growing experimental laboratory. Our work spans a wide range of areas: implementing APIs that interface directly with biosignal devices, building GUI applications that support experiment execution, and developing control planes for managing datasets. No background in neuroengineering is required. If you have solid programming skills and want to learn from experienced engineers how to build impactful software collaboratively, this is the team for you."
+              niceToHave={[
+                "Programming experience, ideally in Python",
+                "Familiarity with git",
+                "Interest in learning about neuroengineering and biosignal devices"
               ]}
             />
 
@@ -87,21 +97,24 @@ const JoinUsPage = () => {
                   "Interest in robotics and assistive technology",
                   "Willingness to pick up new topics quickly",
                   "Curiosity and intrinsic Motivation",
-                  "Ability to work in a small team",
-                  "Willingness to work on weekend"
-              ]}
+                  "Ability to work in a small team"
+                ]}
             />
 
             <ExpandableTeam 
               title="Experimental Design"
               description="Design and conduct EEG experiments to test and improve brain-computer interface control systems."
               fullText="The Experimental Design team is responsible for planning, running, and evaluating EEG-based experiments that investigate how humans can control external systems, such as computer games or a robotic arm, through neural signals. The team combines methodological rigor with creative problem-solving to ensure experiments are well-controlled, ethically sound, and aligned with the broader goals of our research."
-              projectsTitle="WiSe 26/27 Projects:"
+              projectsTitle="Project ideas:"
               projects={[
-                "Standardized dataset format (BIDS, MOABB)",
-                "Live GUI and data analysis (PCA, ERDS, Fisher Score)",
-                "BCI paradigms (motor-imagery, SSVEP, c-VEP)",
-                "Your own project!"
+                "Conducting EEG experiments and piloting our BCI system",
+                "Continue building on our EEG dataset standardization",
+                "Improving EEG data analysis to get better insights",
+                "Building a live GUI to help real-time experiments",
+                "Trying new BCI paradigms, or",
+                "Testing your own project!"
+ 
+
               ]}
               niceToHave={[
                 "Interest or knowledge in cognitive neuroscience and experimental methods",
@@ -173,7 +186,7 @@ const JoinUsPage = () => {
               Ready to join us? We&apos;re excited to meet you!
             </p>
             <a 
-              href="https://tally.so/r/VL89JM" 
+              href="https://tally.so/r/GxMgL2" 
               target="_blank" 
               style={{
                 display: "inline-block",
